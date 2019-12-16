@@ -55,4 +55,8 @@ public class Nonogram {
         return "Gefeliciteerd, heeft het nonogram "+this.naam+" afgewerkt";
     }
 
+    public String toonGrid(){
+
+    }
+
 }
