@@ -47,16 +47,20 @@ public class Nonogram {
         this.naam = naam;
     }
 
-    public void controlleren(){
+    public void controlleren() {
 
     }
 
-    public String feliciteren(){
-        return "Gefeliciteerd, heeft het nonogram "+this.naam+" afgewerkt";
+    public String feliciteren() {
+        return "Gefeliciteerd, heeft het nonogram " + this.naam + " afgewerkt";
     }
 
-    public String toonGrid(){
-
+    public void toonGrid() {
+        for (int rij = 0; rij < patroon.length; rij++) {
+            for (int kolom = 0; kolom < patroon[rij].length; kolom++) {
+                System.out.println(patroon[rij][kolom] + "\t");
+            }
+        }
     }
 
 }
