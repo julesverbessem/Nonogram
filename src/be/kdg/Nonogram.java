@@ -40,19 +40,23 @@ public class Nonogram {
     }
 
     public void toonGrid(){
+        int counter = 0;
         StringBuilder builder = new StringBuilder();
-        for(int rij = 1; rij < grootte; rij++){
-            for(int kolom = 1; kolom < grootte; kolom++){
+        for (int rij = 1; rij <= grootte; rij++) {
+            for (int kolom = 1; kolom <= grootte; kolom++) {
                 int r = rij;
                 int k = kolom;
-                builder.append(patroon[r-1][k-1].getWaarde()).append(" ");
-                if(kolom%grootte==0){
-
-                    builder.append(patroon[r-1][k-1].getWaarde()).append(" ").append("\n");
+                if (k % grootte == 0) {
+                    counter++;
+                    builder.append(patroon[r - 1][k-1].getWaarde()).append(" ").append("\n");
+                }
+                else {
+                    builder.append(patroon[r - 1][k - 1].getWaarde()).append(" ");
                 }
             }
         }
         System.out.println(builder.append("\n").toString());
+        System.out.println(counter);
     }
 
 
