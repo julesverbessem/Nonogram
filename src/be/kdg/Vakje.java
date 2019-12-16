@@ -2,9 +2,19 @@ package be.kdg;
 
 public class Vakje {
     private boolean ingekleurd;
+    private String waarde;
 
     public Vakje() {
         this.ingekleurd = false;
+        this.waarde = "X";
+    }
+
+    public String getWaarde() {
+        return waarde;
+    }
+
+    public void setWaarde(String waarde) {
+        this.waarde = waarde;
     }
 
     public boolean isIngekleurd() {
@@ -17,6 +27,10 @@ public class Vakje {
 
     public void kleurIn(){
         this.ingekleurd = true;
+    }
+
+    public void veranderWaarde(){
+        this.waarde = "O";
     }
 
 }

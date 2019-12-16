@@ -6,13 +6,13 @@ public class Nonogram {
     private int moeilijkheidsgraad;
     private int grootte;
     private String naam;
-    private Vakje[][] patroon;
+    private Vakje[] patroon;
 
     public Nonogram(int moeilijkheidsgraad, int grootte, String naam) {
         this.moeilijkheidsgraad = moeilijkheidsgraad;
         this.grootte = grootte;
         this.naam = naam;
-        this.patroon = new Vakje[grootte][grootte];
+        this.patroon = new Vakje[grootte];
     }
 
     public int getMoeilijkheidsgraad() {
@@ -35,11 +35,11 @@ public class Nonogram {
         return naam;
     }
 
-    public Vakje[][] getPatroon() {
+    public Vakje[] getPatroon() {
         return patroon;
     }
 
-    public void setPatroon(Vakje[][] patroon) {
+    public void setPatroon(Vakje[] patroon) {
         this.patroon = patroon;
     }
 
@@ -56,11 +56,16 @@ public class Nonogram {
     }
 
     public void toonGrid() {
-        for (int rij = 0; rij < patroon.length; rij++) {
-            for (int kolom = 0; kolom < patroon[rij].length; kolom++) {
-                System.out.println(patroon[rij][kolom] + "\t");
-            }
+        StringBuilder grid = new StringBuilder();
+        for(int i = 0; i < grootte*grootte;i++){
+            if(i%grootte == 0){
+                grid.append(patroon[i-1].getWaarde()).append(" ").append("\n");
+            }else{
+                grid.append(patroon[i-1].getWaarde()).append(" ");                }
         }
+
+
+
     }
 
 }
