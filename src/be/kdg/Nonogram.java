@@ -40,14 +40,13 @@ public class Nonogram {
     }
 
     public void toonGrid(){
-        int counter = 0;
         StringBuilder builder = new StringBuilder();
         for (int rij = 1; rij <= grootte; rij++) {
             for (int kolom = 1; kolom <= grootte; kolom++) {
                 int r = rij;
                 int k = kolom;
                 if (k % grootte == 0) {
-                    counter++;
+
                     builder.append(patroon[r - 1][k-1].getWaarde()).append(" ").append("\n");
                 }
                 else {
@@ -56,8 +55,30 @@ public class Nonogram {
             }
         }
         System.out.println(builder.append("\n").toString());
-        System.out.println(counter);
     }
 
+    public void setAchterliggendeWaarde1(){
+
+        for (int rij = 1; rij <= grootte; rij++) {
+            for (int kolom = 1; kolom <= grootte; kolom++) {
+                int r = rij;
+                int k = kolom;
+                if (k % grootte == 0) {
+                    patroon[r - 1][k - 1].veranderWaarde();
+                }
+
+            }
+        }
+        toonGrid();
+    }
+
+    public String vergelijk(int rij, int kolom){
+        if (patroon[rij-1][kolom-1].getWaarde().equals("O")) {
+            return "juist";
+        }
+        else{
+            return "fout";
+        }
+    }
 
 }
