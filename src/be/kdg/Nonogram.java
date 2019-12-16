@@ -57,15 +57,13 @@ public class Nonogram {
 
     public void toonGrid() {
         StringBuilder grid = new StringBuilder();
-        for(int i = 0; i < grootte*grootte;i++){
+        for(int i = 1; i < (grootte*grootte); i++){
             if(i%grootte == 0){
                 grid.append(patroon[i-1].getWaarde()).append(" ").append("\n");
             }else{
-                grid.append(patroon[i-1].getWaarde()).append(" ");                }
+                grid.append(patroon[i-1].getWaarde()).append(" ");
+            }
         }
-
-
-
+        System.out.println(grid.append("\n").toString());
     }
-
 }
