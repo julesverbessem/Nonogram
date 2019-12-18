@@ -13,14 +13,14 @@ public class Nonogram {
         this.naam = naam;
         this.grootte = grootte;
         this.patroon = new Vakje[grootte][grootte];
-        for (int rij = 1; rij <= grootte; rij++) {
-            for (int kolom = 1; kolom <= grootte; kolom++) {
+        for(int rij = 1; rij <= grootte; rij++){
+            for(int kolom = 1; kolom <= grootte; kolom++){
                 int r = rij;
                 int k = kolom;
-                this.patroon[r - 1][k - 1] = new Vakje();
+                this.patroon[r-1][k-1] = new Vakje();
             }
         }
-    }
+        }
 
     public int getMoeilijkheidsgraad() {
         return moeilijkheidsgraad;
@@ -45,15 +45,40 @@ public class Nonogram {
             for (int kolom = 1; kolom <= grootte; kolom++) {
                 int r = rij;
                 int k = kolom;
-                builder.append(patroon[r - 1][k - 1].getWaarde()).append(" ");
-                if (kolom % grootte == 0) {
+                if (k % grootte == 0) {
 
-                    builder.append(patroon[r - 1][k - 1].getWaarde()).append(" ").append("\n");
+                    builder.append(patroon[r - 1][k-1].getWaarde()).append(" ").append("\n");
+                }
+                else {
+                    builder.append(patroon[r - 1][k - 1].getWaarde()).append(" ");
                 }
             }
         }
         System.out.println(builder.append("\n").toString());
     }
 
+    public void setAchterliggendeWaarde1(){
+
+        for (int rij = 1; rij <= grootte; rij++) {
+            for (int kolom = 1; kolom <= grootte; kolom++) {
+                int r = rij;
+                int k = kolom;
+                if (k % grootte == 0) {
+                    patroon[r - 1][k - 1].veranderWaarde();
+                }
+
+            }
+        }
+        toonGrid();
+    }
+
+    public String vergelijk(int rij, int kolom){
+        if (patroon[rij-1][kolom-1].getWaarde().equals("O")) {
+            return "juist";
+        }
+        else{
+            return "fout";
+        }
+    }
 
 }
