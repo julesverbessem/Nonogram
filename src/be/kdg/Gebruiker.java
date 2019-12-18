@@ -9,12 +9,8 @@ public class Gebruiker {
         this.gebruikersnaam = gebruikersnaam;
         this.passwoord = passwoord;
     }
+    public Gebruiker(){}
 
-    public Gebruiker(String gebruikersnaam, String passwoord, Spel opgeslagenSpel) {
-        this.gebruikersnaam = gebruikersnaam;
-        this.passwoord = passwoord;
-        this.opgeslagenSpel = opgeslagenSpel;
-    }
 
     public String getGebruikersnaam() {
         return gebruikersnaam;

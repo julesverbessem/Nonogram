@@ -13,24 +13,17 @@ public class Vakje {
         return waarde;
     }
 
-    public void setWaarde(String waarde) {
-        this.waarde = waarde;
-    }
-
     public boolean isIngekleurd() {
         return ingekleurd;
     }
 
-    public void setIngekleurd(boolean ingekleurd) {
-        this.ingekleurd = ingekleurd;
-    }
-
     public void kleurIn(){
+        this.waarde = "O";
         this.ingekleurd = true;
     }
-
-    public void veranderWaarde(){
-        this.waarde = "O";
+    public void duidAan(){
+        this.waarde="*";
+        this.ingekleurd = false;
     }
 
 }
