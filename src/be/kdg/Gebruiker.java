@@ -1,17 +1,21 @@
 package be.kdg;
 
+import java.time.LocalDateTime;
+
 public class Gebruiker {
     private String gebruikersnaam;
     private String passwoord;
     public Spel opgeslagenSpel;
     private int level;
+    private LocalDateTime datum;
 
     public Gebruiker(String gebruikersnaam, String passwoord) {
         this.gebruikersnaam = gebruikersnaam;
         this.passwoord = passwoord;
         this.opgeslagenSpel = new Spel();
+        this.datum = LocalDateTime.now();
     }
-    public Gebruiker(){}
+    public Gebruiker(){};
 
     public String getGebruikersnaam() {
         return gebruikersnaam;
@@ -43,5 +47,18 @@ public class Gebruiker {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public LocalDateTime getDatum() {
+        return datum;
+    }
+
+    public void setDatum(LocalDateTime datum) {
+        this.datum = datum;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.level;
     }
 }

@@ -1,6 +1,7 @@
 package be.kdg;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class GebruikersLijst extends Gebruiker {
     private ArrayList<Gebruiker> lijst;
@@ -39,6 +40,7 @@ public class GebruikersLijst extends Gebruiker {
     }
 
     public void overzichtSpelers() {
+        /* PEERTUTOR VRAGEN      Collections.sort();*/
         for (Gebruiker huidigeGebruiker : lijst) {
             System.out.println(String.format("%s -- %d", huidigeGebruiker.getGebruikersnaam(), huidigeGebruiker.getLevel()));
         }
