@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {/*
+    public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
         GebruikersLijst lijst = new GebruikersLijst();
 
         lijst.startScherm();
         System.out.println("Heeft u al een account(y/n):");
         String heeftUAlAccount = keyboard.nextLine();
-        while(!heeftUAlAccount.toUpperCase().equals("Y")||!heeftUAlAccount.toUpperCase().equals("N")){
+        while(!heeftUAlAccount.toUpperCase().equals("Y")&&!heeftUAlAccount.toUpperCase().equals("N")){
             System.out.println("Heeft u al een account(y/n):");
             heeftUAlAccount = keyboard.nextLine();
         }
@@ -28,7 +28,7 @@ public class Main {
             System.out.println("Geef uw passwoord in:");
             String passwoord = keyboard.nextLine();
             lijst.setGebruiker(gebruikersnaam,passwoord);
-        }*/
+        }
 
 	    Nonogram test = new Nonogram(5);
 	    test.toonGrid();
@@ -42,5 +42,7 @@ public class Main {
 
         test.duidAan(1,2);
         test.duidAan(1,5);
+
+        test.nonogram2_lijnVerticaal();
     }
 }

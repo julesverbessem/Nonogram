@@ -12,6 +12,9 @@ public class Vakje {
     public String getWaarde() {
         return waarde;
     }
+    public void setDefaultWaarde(){
+        this.waarde =  "X";
+    }
 
     public boolean isIngekleurd() {
         return ingekleurd;

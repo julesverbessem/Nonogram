@@ -31,7 +31,7 @@ public class GebruikersLijst extends Gebruiker{
                 if (huidigeGebruiker.getOpgeslagenSpel() == null) {
                     huidigeGebruiker.setOpgeslagenSpel(new Spel());
                 }
-                //spel starten
+               // huidigeGebruiker.spel;
             } else {
                 System.out.println("Foute gebruikersnaam of wachtwoord");
             }

@@ -43,14 +43,16 @@ public class Nonogram {
         return naam;
     }
 
-
+    public void setGrootte(int grootte) {
+        this.grootte = grootte;
+    }
     //functionele methodes
     public void controlleren() {
 
     }
 
     public String feliciteren() {
-        return "Gefeliciteerd, u heeft het nonogram " + this.naam + " afgewerkt";
+        return "Gefeliciteerd, een " + this.naam + "!";
     }
 
     public void toonGrid() {
@@ -139,6 +141,7 @@ public class Nonogram {
             for (int kolom = 1; kolom <= grootte; kolom++) {
                 int r = rij;
                 int k = kolom;
+                this.achterLiggendPatroon[r-1][k-1].setDefaultWaarde();
                 if (k % grootte == 0) {
                     this.achterLiggendPatroon[r - 1][k - 1].kleurIn();
                 }
@@ -149,6 +152,33 @@ public class Nonogram {
         toonAchterLiggendPatroon();
     }
 
+    public void nonogram2_lijnVerticaal(){
+        //attributen
+        this.naam="Verticale lijn";
+        this.moeilijkheidsgraad = 2;
 
+        //waarde rij
+        Arrays.fill(this.rij,"1");
+        //waarde kolom
+        Arrays.fill(this.kolom,"");
+        this.rij[3] = String.valueOf(this.rij.length);//derde rij
+
+        //patroon
+        for (int rij = 1; rij <= grootte; rij++) {
+            for (int kolom = 1; kolom <= grootte; kolom++) {
+                int r = rij;
+                int k = kolom;
+                this.achterLiggendPatroon[r-1][k-1].setDefaultWaarde();
+                if (r==3) {
+                    this.achterLiggendPatroon[r - 1][k - 1].kleurIn();
+                }
+
+            }
+        }
+        toonAchterLiggendPatroon();
+
+    }
+
+    //aanvullen tot 10 nonogrammen
 
 }
