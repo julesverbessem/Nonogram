@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner keyboard = new Scanner(System.in);
+       Scanner keyboard = new Scanner(System.in);
         GebruikersLijst lijst = new GebruikersLijst();
 
         lijst.startScherm();
@@ -30,6 +30,7 @@ public class Main {
             System.out.println("Geef uw passwoord in:");
             String passwoord = keyboard.nextLine();
             lijst.login(gebruikersnaam, passwoord);
+
         } else {
             System.out.println("Geef uw gebruikersnaam in:");
             String gebruikersnaam = keyboard.nextLine();
@@ -38,10 +39,37 @@ public class Main {
             lijst.setGebruiker(gebruikersnaam, passwoord);
         }
 
+
         Nonogram test = new Nonogram(5);
+        boolean isKlaar = false;
+        int opdracht;
+        int kolom = 0;
+        int rij = 0;
         test.toonGrid();
         test.nonogram1_lijn();
 
+        while (!isKlaar){
+            System.out.println("Inkleuren(1) of aanduiden(2):");
+            opdracht = keyboard.nextInt();
+            if(opdracht == 1){
+                System.out.println("Geef een coördinaat in (kolom,rij):");
+                kolom = keyboard.nextInt();
+                rij = keyboard.nextInt();
+                System.out.println(test.kleurIn(rij,kolom));
+            }
+            else {
+                System.out.println("Geef een coördinaat in (kolom,rij):");
+                kolom = keyboard.nextInt();
+                rij = keyboard.nextInt();
+                test.duidAan(rij,kolom);
+            }
+
+            if(test.controlleren()){
+                isKlaar= true;
+            }
+        }
+
+        /*
         System.out.println(test.kleurIn(1, 5));
 
         System.out.println(test.kleurIn(1, 3));
@@ -50,5 +78,7 @@ public class Main {
 
         test.duidAan(1, 2);
         test.duidAan(1, 5);
+*/
+
     }
 }

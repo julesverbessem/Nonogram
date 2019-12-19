@@ -21,8 +21,7 @@ public class GebruikersLijst extends Gebruiker {
     public void setGebruiker(String gebruikersnaam, String passwoord) {
         Gebruiker gebruiker = new Gebruiker(gebruikersnaam, passwoord);
         this.lijst.add(gebruiker);
-        gebruiker.setOpgeslagenSpel(new Spel());
-        //moet spel nog starten
+        gebruiker.opgeslagenSpel.startSpel(gebruiker);
     }
 
     public void login(String gebruikersnaam, String passwoord) {
@@ -32,7 +31,7 @@ public class GebruikersLijst extends Gebruiker {
                 if (huidigeGebruiker.getOpgeslagenSpel() == null) {
                     huidigeGebruiker.setOpgeslagenSpel(new Spel());
                 }
-                // huidigeGebruiker.spel;
+                huidigeGebruiker.opgeslagenSpel.startSpel(huidigeGebruiker);
             } else {
                 System.out.println("Foute gebruikersnaam of wachtwoord");
             }

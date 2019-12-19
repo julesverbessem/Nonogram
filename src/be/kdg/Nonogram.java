@@ -47,8 +47,15 @@ public class Nonogram {
         this.grootte = grootte;
     }
     //functionele methodes
-    public void controlleren() {
-
+    public boolean controlleren() {//verder afwerken met peerTutor
+        boolean rtrn;
+        if(patroon==achterLiggendPatroon){//vast
+            rtrn = true;
+        }
+        else{
+            rtrn = false;
+        }
+        return  rtrn;
     }
 
     public String feliciteren() {
