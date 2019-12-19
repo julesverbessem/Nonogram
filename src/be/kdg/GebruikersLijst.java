@@ -2,7 +2,7 @@ package be.kdg;
 
 import java.util.ArrayList;
 
-public class GebruikersLijst extends Gebruiker{
+public class GebruikersLijst extends Gebruiker {
     private ArrayList<Gebruiker> lijst;
 
     public GebruikersLijst() {
@@ -17,8 +17,8 @@ public class GebruikersLijst extends Gebruiker{
         this.lijst = lijst;
     }
 
-    public void setGebruiker(String gebruikersnaam, String passwoord){
-        Gebruiker gebruiker = new Gebruiker(gebruikersnaam,passwoord);
+    public void setGebruiker(String gebruikersnaam, String passwoord) {
+        Gebruiker gebruiker = new Gebruiker(gebruikersnaam, passwoord);
         this.lijst.add(gebruiker);
         gebruiker.setOpgeslagenSpel(new Spel());
         //moet spel nog starten
@@ -31,14 +31,20 @@ public class GebruikersLijst extends Gebruiker{
                 if (huidigeGebruiker.getOpgeslagenSpel() == null) {
                     huidigeGebruiker.setOpgeslagenSpel(new Spel());
                 }
-               // huidigeGebruiker.spel;
+                // huidigeGebruiker.spel;
             } else {
                 System.out.println("Foute gebruikersnaam of wachtwoord");
             }
         }
     }
 
-    public void startScherm(){
+    public void overzichtSpelers() {
+        for (Gebruiker huidigeGebruiker : lijst) {
+            System.out.println(String.format("%s -- %d", huidigeGebruiker.getGebruikersnaam(), huidigeGebruiker.getLevel()));
+        }
+    }
+
+    public void startScherm() {
         System.out.println("-----NONOGRAM-----");
         System.out.println("");
         System.out.println("");
