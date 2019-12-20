@@ -2,7 +2,7 @@ package be.kdg;
 
 import java.time.LocalDateTime;
 
-public class Gebruiker {
+public class Gebruiker implements Comparable<Gebruiker>{
     private String gebruikersnaam;
     private String passwoord;
     public Spel opgeslagenSpel;
@@ -57,8 +57,16 @@ public class Gebruiker {
         this.datum = datum;
     }
 
+    public int compareTo(Gebruiker gbrkr1){
+        if(this.getLevel()<=gbrkr1.getLevel()){
+            return 1;
+        }else{
+            return -1;
+        }
+    }
+
     @Override
     public int hashCode() {
-        return this.level;
+        return super.hashCode();
     }
 }

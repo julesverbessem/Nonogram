@@ -39,7 +39,8 @@ public class GebruikersLijst extends Gebruiker {
     }
 
     public void overzichtSpelers() {
-        /* PEERTUTOR VRAGEN      Collections.sort();*/
+        /* PEERTUTOR VRAGEN      */
+        Collections.sort(lijst);
         for (Gebruiker huidigeGebruiker : lijst) {
             System.out.println(String.format("%s -- %d", huidigeGebruiker.getGebruikersnaam(), huidigeGebruiker.getLevel()));
         }

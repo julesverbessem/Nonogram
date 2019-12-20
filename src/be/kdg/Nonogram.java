@@ -19,18 +19,18 @@ public class Nonogram {
         this.kolom = new String[grootte];
         this.grootte = grootte;
 
-        for(int rij = 1; rij <= grootte; rij++){//aan te passe patroon waarde geven
-            for(int kolom = 1; kolom <= grootte; kolom++){
+        for (int rij = 1; rij <= grootte; rij++) {//aan te passe patroon waarde geven
+            for (int kolom = 1; kolom <= grootte; kolom++) {
                 int r = rij;
                 int k = kolom;
-                this.patroon[r-1][k-1] = new Vakje();
+                this.patroon[r - 1][k - 1] = new Vakje();
             }
         }
-        for(int rij = 1; rij <= grootte; rij++){//nonogram patroon waarde geven
-            for(int kolom = 1; kolom <= grootte; kolom++){
+        for (int rij = 1; rij <= grootte; rij++) {//nonogram patroon waarde geven
+            for (int kolom = 1; kolom <= grootte; kolom++) {
                 int r = rij;
                 int k = kolom;
-                this.achterLiggendPatroon[r-1][k-1] = new Vakje();
+                this.achterLiggendPatroon[r - 1][k - 1] = new Vakje();
             }
         }
     }
@@ -46,16 +46,29 @@ public class Nonogram {
     public void setGrootte(int grootte) {
         this.grootte = grootte;
     }
+
     //functionele methodes
     public boolean controlleren() {//verder afwerken met peerTutor
-        boolean rtrn;
-        if(patroon==achterLiggendPatroon){//vast
-            rtrn = true;
+        boolean rtrn = false;
+        String userPatroon = "";
+        String spelPatroon = "";
+
+        for (int rij = 1; rij <= grootte; rij++) {
+            for (int kolom = 1; kolom <= grootte; kolom++) {
+                int r = rij;
+                int k = kolom;
+                userPatroon = this.achterLiggendPatroon[r - 1][k - 1].getWaarde();
+                spelPatroon = this.patroon[r - 1][k - 1].getWaarde();
+
+                if (userPatroon.equals(spelPatroon)) {//vast
+                    rtrn = true;
+                } else {
+                    rtrn = false;
+                }
+            }
         }
-        else{
-            rtrn = false;
-        }
-        return  rtrn;
+
+        return rtrn;
     }
 
     public String feliciteren() {
@@ -70,16 +83,16 @@ public class Nonogram {
                 int k = kolom;
                 if (k % grootte == 0) {
 
-                    builder.append(patroon[r - 1][k-1].getWaarde()).append(" ").append("\n");
-                }
-                else {
+                    builder.append(patroon[r - 1][k - 1].getWaarde()).append(" ").append("\n");
+                } else {
                     builder.append(patroon[r - 1][k - 1].getWaarde()).append(" ");
                 }
             }
         }
         System.out.println(builder.append("\n").toString());
     }
-    public void toonAchterLiggendPatroon(){
+
+    public void toonAchterLiggendPatroon() {
         StringBuilder builder = new StringBuilder();
         for (int rij = 1; rij <= grootte; rij++) {
             for (int kolom = 1; kolom <= grootte; kolom++) {
@@ -87,9 +100,8 @@ public class Nonogram {
                 int k = kolom;
                 if (k % grootte == 0) {
 
-                    builder.append(achterLiggendPatroon[r - 1][k-1].getWaarde()).append(" ").append("\n");
-                }
-                else {
+                    builder.append(achterLiggendPatroon[r - 1][k - 1].getWaarde()).append(" ").append("\n");
+                } else {
                     builder.append(achterLiggendPatroon[r - 1][k - 1].getWaarde()).append(" ");
                 }
             }
@@ -97,32 +109,31 @@ public class Nonogram {
         System.out.println(builder.append("\n").toString());
     }
 
-    public String kleurIn(int rij, int kolom){
+    public String kleurIn(int rij, int kolom) {
         String message;
-        if(rij <= grootte && kolom <= grootte){
-            if (achterLiggendPatroon[rij-1][kolom-1].getWaarde().equals("O")) {
-                message =  "juist";
-                patroon[rij-1][kolom-1].kleurIn();
+        if (rij <= grootte && kolom <= grootte) {
+            if (achterLiggendPatroon[rij - 1][kolom - 1].getWaarde().equals("O")) {
+                message = "juist";
+                patroon[rij - 1][kolom - 1].kleurIn();
                 toonGrid();
-            }
-            else{
+            } else {
                 message = "fout";
+                patroon[rij - 1][kolom - 1].kleurIn();
                 toonGrid();
 
             }
-        }else {
-            message="Ingevoerd getal is te groot!";
+        } else {
+            message = "Ingevoerd getal is te groot!";
         }
 
         return message;
     }
 
-    public void duidAan(int rij, int kolom){
-        if(!patroon[rij-1][kolom-1].getWaarde().equals("O")){
-            patroon[rij-1][kolom-1].duidAan();
+    public void duidAan(int rij, int kolom) {
+        if (!patroon[rij - 1][kolom - 1].getWaarde().equals("O")) {
+            patroon[rij - 1][kolom - 1].duidAan();
             toonGrid();
-        }
-        else{
+        } else {
             System.out.println("U heeft dit al ingekleurd");
             toonGrid();
         }
@@ -131,16 +142,16 @@ public class Nonogram {
 
 
     //Voorgemaakte nonogramen
-    public void nonogram1_lijn(){
+    public void nonogram1_lijn() {
         //attributen
         this.naam = "Horizontale lijn";
         this.moeilijkheidsgraad = 1;
 
         //waarde rij
-        Arrays.fill(this.rij, "");//ieder element heeft waarde ""
-        this.rij[grootte-1] = String.valueOf(this.rij.length);
+        Arrays.fill(this.kolom, "");//ieder element heeft waarde ""
+        this.rij[grootte - 1] = String.valueOf(this.kolom.length);
         //waarde kolom
-        Arrays.fill(this.kolom,"1");
+        Arrays.fill(this.rij, "1");
 
 
         //patroon
@@ -148,7 +159,7 @@ public class Nonogram {
             for (int kolom = 1; kolom <= grootte; kolom++) {
                 int r = rij;
                 int k = kolom;
-                this.achterLiggendPatroon[r-1][k-1].setDefaultWaarde();
+                this.achterLiggendPatroon[r - 1][k - 1].setDefaultWaarde();
                 if (k % grootte == 0) {
                     this.achterLiggendPatroon[r - 1][k - 1].kleurIn();
                 }
@@ -159,15 +170,15 @@ public class Nonogram {
         toonAchterLiggendPatroon();
     }
 
-    public void nonogram2_lijnVerticaal(){
+    public void nonogram2_lijnVerticaal() {
         //attributen
-        this.naam="Verticale lijn";
+        this.naam = "Verticale lijn";
         this.moeilijkheidsgraad = 2;
 
         //waarde rij
-        Arrays.fill(this.rij,"1");
+        Arrays.fill(this.rij, "1");
         //waarde kolom
-        Arrays.fill(this.kolom,"");
+        Arrays.fill(this.kolom, "");
         this.rij[3] = String.valueOf(this.rij.length);//derde rij
 
         //patroon
@@ -175,8 +186,8 @@ public class Nonogram {
             for (int kolom = 1; kolom <= grootte; kolom++) {
                 int r = rij;
                 int k = kolom;
-                this.achterLiggendPatroon[r-1][k-1].setDefaultWaarde();
-                if (r==3) {
+                this.achterLiggendPatroon[r - 1][k - 1].setDefaultWaarde();
+                if (r == 3) {
                     this.achterLiggendPatroon[r - 1][k - 1].kleurIn();
                 }
 
