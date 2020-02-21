@@ -1,4 +1,4 @@
-package be.kdg;
+package be.kdg.model;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,6 +1,5 @@
-package be.kdg;
+package be.kdg.model;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Nonogram {

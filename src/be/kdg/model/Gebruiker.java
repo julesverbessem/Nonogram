@@ -1,4 +1,4 @@
-package be.kdg;
+package be.kdg.model;
 
 import java.time.LocalDateTime;
 
@@ -58,7 +58,7 @@ public class Gebruiker implements Comparable<Gebruiker>{
     }
 
     public int compareTo(Gebruiker gbrkr1){
-        if(this.getLevel()<=gbrkr1.getLevel()){
+        if(this.getLevel()<gbrkr1.getLevel()){
             return 1;
         }else{
             return -1;

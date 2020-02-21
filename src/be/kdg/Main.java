@@ -1,10 +1,21 @@
 package be.kdg;
 
+import be.kdg.model.GebruikersLijst;
+import be.kdg.model.Nonogram;
+import be.kdg.model.Spel;
+import be.kdg.view.start.StartPresenter;
+import be.kdg.view.start.StartView;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 import java.util.Scanner;
 
-public class Main {
+public class Main extends Application {
 
     public static void main(String[] args) {
+        launch(args);
+        /*
        Scanner keyboard = new Scanner(System.in);
         GebruikersLijst lijst = new GebruikersLijst();
 
@@ -78,7 +89,20 @@ public class Main {
 
         test.duidAan(1, 2);
         test.duidAan(1, 5);
-*/
 
+         */
+
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        Spel model = new Spel();
+        StartView view = new StartView();
+        StartPresenter presenter = new StartPresenter(model,view);
+
+        stage.setWidth(1000);
+        stage.setHeight(900);
+        stage.setScene(new Scene(view));
+        stage.show();
     }
 }

@@ -1,4 +1,4 @@
-package be.kdg;
+package be.kdg.model;
 
 public class Vakje {
     private boolean ingekleurd;

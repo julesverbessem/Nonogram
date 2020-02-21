@@ -1,4 +1,7 @@
-package be.kdg;
+package be.kdg.model;
+
+import be.kdg.model.Gebruiker;
+import be.kdg.model.Nonogram;
 
 public class Spel {
     Nonogram mijnNonogram = new Nonogram(1);
