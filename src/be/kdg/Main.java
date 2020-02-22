@@ -96,10 +96,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Spel model = new Spel();
+        GebruikersLijst model = new GebruikersLijst();
         StartView view = new StartView();
         StartPresenter presenter = new StartPresenter(model,view);
 
+        stage.setTitle("Nonogram startscherm");
         stage.setWidth(1000);
         stage.setHeight(900);
         stage.setScene(new Scene(view));

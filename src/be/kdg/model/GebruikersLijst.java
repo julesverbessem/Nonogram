@@ -8,6 +8,7 @@ public class GebruikersLijst extends Gebruiker {
 
     public GebruikersLijst() {
         this.lijst = new ArrayList<>();
+        setGebruiker("Jules","Test");
     }
 
     public ArrayList<Gebruiker> getLijst() {
@@ -24,18 +25,25 @@ public class GebruikersLijst extends Gebruiker {
         gebruiker.opgeslagenSpel.startSpel(gebruiker);
     }
 
-    public void login(String gebruikersnaam, String passwoord) {
+    public boolean login(String gebruikersnaam, String passwoord) {
         //later lijst overlopen om user te vinden
         for (Gebruiker huidigeGebruiker : lijst) {
             if (huidigeGebruiker.getGebruikersnaam().equals(gebruikersnaam) && huidigeGebruiker.getPasswoord().equals(passwoord)) {
                 if (huidigeGebruiker.getOpgeslagenSpel() == null) {
                     huidigeGebruiker.setOpgeslagenSpel(new Spel());
+                    huidigeGebruiker.setLevel(1);
+                    System.out.println("Gebruiker heeft nog geen spel, hij start bij 1");
+                    return true;
                 }
                 huidigeGebruiker.opgeslagenSpel.startSpel(huidigeGebruiker);
+                System.out.println("Gebruiker is ingeloged");
+                return true;
             } else {
                 System.out.println("Foute gebruikersnaam of wachtwoord");
             }
+            return false;
         }
+        return false;
     }
 
     public void overzichtSpelers() {
@@ -44,12 +52,6 @@ public class GebruikersLijst extends Gebruiker {
         for (Gebruiker huidigeGebruiker : lijst) {
             System.out.println(String.format("%s -- %d", huidigeGebruiker.getGebruikersnaam(), huidigeGebruiker.getLevel()));
         }
-    }
-
-    public void startScherm() {
-        System.out.println("-----NONOGRAM-----");
-        System.out.println("");
-        System.out.println("");
     }
 }
 
