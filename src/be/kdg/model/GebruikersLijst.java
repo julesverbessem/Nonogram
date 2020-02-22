@@ -8,7 +8,7 @@ public class GebruikersLijst extends Gebruiker {
 
     public GebruikersLijst() {
         this.lijst = new ArrayList<>();
-        setGebruiker("Jules","Test");
+        setGebruiker(new Gebruiker("Jules","Test"));
     }
 
     public ArrayList<Gebruiker> getLijst() {
@@ -19,10 +19,9 @@ public class GebruikersLijst extends Gebruiker {
         this.lijst = lijst;
     }
 
-    public void setGebruiker(String gebruikersnaam, String passwoord) {
-        Gebruiker gebruiker = new Gebruiker(gebruikersnaam, passwoord);
-        this.lijst.add(gebruiker);
-        gebruiker.opgeslagenSpel.startSpel(gebruiker);
+    public void setGebruiker(Gebruiker nieweSpeler) {
+        this.lijst.add(nieweSpeler);
+        //nieweSpeler.opgeslagenSpel.startSpel(nieweSpeler);
     }
 
     public boolean login(String gebruikersnaam, String passwoord) {

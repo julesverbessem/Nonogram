@@ -16,6 +16,7 @@ public class StartView extends BorderPane {
     private HBox usernameBox;
     private HBox passwordBox;
     private VBox spelerLogInBox;
+    private VBox buttonBox;
 
     private Label lblUsernaam;
     private TextField txtUsernaam;
@@ -42,8 +43,13 @@ public class StartView extends BorderPane {
         //De button moet gecentreerd worden en groot genoeg zijn
 
         this.usernameBox = new HBox();
+        usernameBox.setSpacing(10);
         this.passwordBox = new HBox();
+        passwordBox.setSpacing(10);
         this.spelerLogInBox = new VBox();
+        spelerLogInBox.setSpacing(15);
+        this.buttonBox = new VBox();
+        spelerLogInBox.setSpacing(15);
 
         this.lblUsernaam = new Label("Username:");
         this.txtUsernaam = new TextField();
@@ -57,7 +63,7 @@ public class StartView extends BorderPane {
         //Er moet genoeg ruimte tussen die lables en textfields en buttons komen
         //die labels moeten groter
         //textfields moeten langer
-        //buttons moten meer naar rechts & groter
+        //buttons moten groter
         // alles moet meer gecentreerd zijn
     }
 
@@ -67,15 +73,17 @@ public class StartView extends BorderPane {
 
         usernameBox.getChildren().add(lblUsernaam);
         usernameBox.getChildren().add(txtUsernaam);
-        usernameBox.getChildren().add(btnLogIn);
 
         passwordBox.getChildren().add(lblPassword);
         passwordBox.getChildren().add(pwfPassword);
-        passwordBox.getChildren().add(btnSignUp);
 
         spelerLogInBox.getChildren().add(usernameBox);
         spelerLogInBox.getChildren().add(passwordBox);
         this.setCenter(spelerLogInBox);
+
+        buttonBox.getChildren().add(btnLogIn);
+        buttonBox.getChildren().add(btnSignUp);
+        this.setRight(buttonBox);
     }
 
     public Button getBtnScorenboard() {
