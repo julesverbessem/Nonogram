@@ -1,5 +1,9 @@
 package be.kdg.model;
 
+import javax.swing.text.DateFormatter;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -45,12 +49,18 @@ public class GebruikersLijst extends Gebruiker {
         return false;
     }
 
-    public void overzichtSpelers() {
+    public String overzichtSpelers() {
         /* PEERTUTOR VRAGEN      */
         Collections.sort(lijst);
+        StringBuilder stringBuilder = new StringBuilder();
+        int counter = 0;
         for (Gebruiker huidigeGebruiker : lijst) {
-            System.out.println(String.format("%s -- %d", huidigeGebruiker.getGebruikersnaam(), huidigeGebruiker.getLevel()));
+            counter++;
+            //datum moet nog aangepast worden naar het juiste formaat
+            System.out.println(String.format("%d. %s ( %s) ------- %d",counter, huidigeGebruiker.getGebruikersnaam(),huidigeGebruiker.getDatum().toString(), huidigeGebruiker.getLevel()));
+            stringBuilder.append(String.format("%d. %s ( %s) ------- %d",counter, huidigeGebruiker.getGebruikersnaam(),huidigeGebruiker.getDatum().toString(), huidigeGebruiker.getLevel()));
         }
+        return stringBuilder.toString();
     }
 }
 

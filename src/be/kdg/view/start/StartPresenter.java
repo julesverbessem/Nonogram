@@ -39,6 +39,7 @@ public class StartPresenter {
                 stage.initOwner(view.getScene().getWindow());
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(new Scene(scorenboardView));
+                scorenboardPresenter.addWindowEventHandlers();
                 stage.setWidth(1000);
                 stage.setHeight(900);
                 stage.showAndWait();
