@@ -1,7 +1,9 @@
 package be.kdg.view.nonogram;
 
 import be.kdg.model.GebruikersLijst;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -29,7 +31,11 @@ public class NonogramView extends BorderPane {
     }
 
     private void initialiseNodes() {
-        this.lblTitel = new Label();//waarde geven via de model in de presenter
+        this.lblTitel = new Label();
+        lblTitel.setStyle("-fx-font-size: 36");
+        lblTitel.setAlignment(Pos.CENTER);
+        lblTitel.setContentDisplay(ContentDisplay.CENTER);
+        lblTitel.getStyleClass().add("outline");//waarde geven via de model in de presenter
         //Het label moet gecentreerd worden, een solid border hebben en groot genoeg zijn
 
         Image backButton = new Image("./backbutton.png");

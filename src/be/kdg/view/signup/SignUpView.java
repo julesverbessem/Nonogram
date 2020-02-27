@@ -1,9 +1,7 @@
 package be.kdg.view.signup;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -38,9 +36,12 @@ public class SignUpView extends BorderPane {
     private void initialiseNodes() {
         this.lblTitel = new Label("Sign up");
         lblTitel.setStyle("-fx-font-size: 36");
-        //lblTitel.setAlignment(Pos.CENTER_RIGHT);
+        lblTitel.setAlignment(Pos.CENTER);
+        lblTitel.setContentDisplay(ContentDisplay.CENTER);
+        lblTitel.getStyleClass().add("outline");
         //lblTitel.setStyle("-fx-border-style: solid");
         //Het label moet gecentreerd worden, een solid border hebben en groot genoeg zijn
+        //moet ook normaal oke zijn zo
 
         this.usernameBox = new HBox();
         usernameBox.setSpacing(10);

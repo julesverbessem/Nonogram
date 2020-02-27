@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Main extends Application {
 
     public static void main(String[] args) {
-        launch(args);
+        Application.launch(args);
         /*
        Scanner keyboard = new Scanner(System.in);
         GebruikersLijst lijst = new GebruikersLijst();

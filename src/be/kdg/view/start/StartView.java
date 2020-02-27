@@ -1,13 +1,11 @@
 package be.kdg.view.start;
 
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 public class StartView extends BorderPane {
     private Label lblTitel;
@@ -35,11 +33,18 @@ public class StartView extends BorderPane {
     private void initialiseNodes() {
         this.lblTitel = new Label("Nonogram");
         lblTitel.setStyle("-fx-font-size: 36");
-        //lblTitel.setAlignment(Pos.CENTER_RIGHT);
+        lblTitel.setAlignment(Pos.CENTER);
+        lblTitel.setContentDisplay(ContentDisplay.CENTER);
+        lblTitel.getStyleClass().add("outline");
         //lblTitel.setStyle("-fx-border-style: solid");
         //Het label moet gecentreerd worden, een solid border hebben en groot genoeg zijn
+        //Is volgens mij oke zo, kan het niet testen want krijg de applicatie ni gestart en snap de foutmelding ni direct
 
         this.btnScorenboard = new Button("Scorenboard");
+        btnScorenboard.setAlignment(Pos.CENTER);
+        btnScorenboard.setContentDisplay(ContentDisplay.CENTER);
+        Font font = new Font(30);
+        btnScorenboard.setFont(font);
         //De button moet gecentreerd worden en groot genoeg zijn
 
         this.usernameBox = new HBox();
