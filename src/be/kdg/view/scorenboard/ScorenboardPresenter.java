@@ -45,8 +45,6 @@ public class ScorenboardPresenter {
             @Override
             public void handle(WindowEvent windowEvent) {
                 view.getLblScorenboard().setText(model.overzichtSpelers());
-                //datum moet nog aangepast worden naar het juiste formaat
-
             }
         });
     }

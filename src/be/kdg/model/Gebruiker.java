@@ -1,6 +1,7 @@
 package be.kdg.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Gebruiker implements Comparable<Gebruiker>{
     private String gebruikersnaam;
@@ -13,7 +14,7 @@ public class Gebruiker implements Comparable<Gebruiker>{
         this.gebruikersnaam = gebruikersnaam;
         this.passwoord = passwoord;
         this.opgeslagenSpel = new Spel();
-        this.level = 1;
+        //this.level = 1;
         this.datum = LocalDateTime.now();
     }
     public Gebruiker(){};

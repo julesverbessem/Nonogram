@@ -78,13 +78,14 @@ public class StartPresenter {
                     }
                 }else {
                     NonogramView nonogramView = new NonogramView();
-                    NonogramPresenter nonogramPresenter = new NonogramPresenter(model,nonogramView);
+                    NonogramPresenter nonogramPresenter = new NonogramPresenter(model,nonogramView,view.getTxtUsernaam().getText());
 
                     Stage stage = new Stage();
                     stage.setTitle("Nonogram speelscherm");
                     stage.initOwner(view.getScene().getWindow());
                     stage.initModality(Modality.APPLICATION_MODAL);
                     stage.setScene(new Scene(nonogramView));
+                    nonogramPresenter.addWindowEventHandlers();
                     stage.setWidth(1000);
                     stage.setHeight(900);
                     stage.showAndWait();

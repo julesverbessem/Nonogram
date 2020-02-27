@@ -19,6 +19,15 @@ public class GebruikersLijst extends Gebruiker {
         return lijst;
     }
 
+    public Gebruiker getGebruiker(String gebruikersnaam){
+        for (Gebruiker huidigeGebruiker: lijst) {
+            if(gebruikersnaam==huidigeGebruiker.getGebruikersnaam()){
+                return huidigeGebruiker;
+            }
+        }
+        return null;
+    }
+
     public void setLijst(ArrayList<Gebruiker> lijst) {
         this.lijst = lijst;
     }
@@ -56,9 +65,10 @@ public class GebruikersLijst extends Gebruiker {
         int counter = 0;
         for (Gebruiker huidigeGebruiker : lijst) {
             counter++;
-            //datum moet nog aangepast worden naar het juiste formaat
-            System.out.println(String.format("%d. %s ( %s) ------- %d",counter, huidigeGebruiker.getGebruikersnaam(),huidigeGebruiker.getDatum().toString(), huidigeGebruiker.getLevel()));
-            stringBuilder.append(String.format("%d. %s ( %s) ------- %d",counter, huidigeGebruiker.getGebruikersnaam(),huidigeGebruiker.getDatum().toString(), huidigeGebruiker.getLevel()));
+            DateTimeFormatter format =  DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            String date = format.format(huidigeGebruiker.getDatum());
+            System.out.println(String.format("%d. %s ( %s) --------------------- %d",counter, huidigeGebruiker.getGebruikersnaam(),date, huidigeGebruiker.getLevel()));
+            stringBuilder.append(String.format("%d. %s ( %s) --------------------- %d",counter, huidigeGebruiker.getGebruikersnaam(),date, huidigeGebruiker.getLevel()));
         }
         return stringBuilder.toString();
     }
