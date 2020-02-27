@@ -101,8 +101,8 @@ public class Main extends Application {
         StartPresenter presenter = new StartPresenter(model,view);
 
         stage.setTitle("Nonogram startscherm");
-        stage.setWidth(1000);
-        stage.setHeight(900);
+        stage.setWidth(900);
+        stage.setHeight(800);
         stage.setScene(new Scene(view));
         stage.show();
     }

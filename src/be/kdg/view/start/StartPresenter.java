@@ -40,8 +40,8 @@ public class StartPresenter {
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(new Scene(scorenboardView));
                 scorenboardPresenter.addWindowEventHandlers();
-                stage.setWidth(1000);
-                stage.setHeight(900);
+                stage.setWidth(900);
+                stage.setHeight(800);
                 stage.showAndWait();
             }
         });
@@ -72,8 +72,8 @@ public class StartPresenter {
                         stage.initOwner(view.getScene().getWindow());
                         stage.initModality(Modality.APPLICATION_MODAL);
                         stage.setScene(new Scene(signUpView));
-                        stage.setWidth(1000);
-                        stage.setHeight(900);
+                        stage.setWidth(900);
+                        stage.setHeight(800);
                         stage.showAndWait();
                     }
                 }else {
@@ -86,8 +86,8 @@ public class StartPresenter {
                     stage.initModality(Modality.APPLICATION_MODAL);
                     stage.setScene(new Scene(nonogramView));
                     nonogramPresenter.addWindowEventHandlers();
-                    stage.setWidth(1000);
-                    stage.setHeight(900);
+                    stage.setWidth(900);
+                    stage.setHeight(800);
                     stage.showAndWait();
                 }
             }
@@ -104,8 +104,8 @@ public class StartPresenter {
                 stage.initOwner(view.getScene().getWindow());
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(new Scene(signUpView));
-                stage.setWidth(1000);
-                stage.setHeight(900);
+                stage.setWidth(900);
+                stage.setHeight(800);
                 stage.showAndWait();
             }
         });

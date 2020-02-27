@@ -40,8 +40,8 @@ public class FelicitatiePresenter {
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(new Scene(nonogramView));
                 nonogramPresenter.addWindowEventHandlers();
-                stage.setWidth(1000);
-                stage.setHeight(900);
+                stage.setWidth(900);
+                stage.setHeight(800);
                 stage.showAndWait();
             }
         });
@@ -57,8 +57,8 @@ public class FelicitatiePresenter {
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(new Scene(scorenboardView));
                 scorenboardPresenter.addWindowEventHandlers();
-                stage.setWidth(1000);
-                stage.setHeight(900);
+                stage.setWidth(900);
+                stage.setHeight(800);
                 stage.showAndWait();
             }
         });
@@ -73,8 +73,8 @@ public class FelicitatiePresenter {
                 stage.initOwner(view.getScene().getWindow());
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(new Scene(startView));
-                stage.setWidth(1000);
-                stage.setHeight(900);
+                stage.setWidth(900);
+                stage.setHeight(800);
                 stage.showAndWait();
             }
         });
