@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
@@ -21,9 +22,12 @@ public class NonogramView extends BorderPane {
     private Button btnSpelregels;
     private HBox buttonBox;
 
-    private GridPane grid;
-    private ArrayList<Label> nonogram;
+    private GridPane nonogramGrid;
+    private ArrayList<ArrayList<Label>> nonogram;//niet zeker of deze lijst nodig is
 
+    private GridPane rijGrid;
+    private GridPane kolomGrid;
+    private GridPane centerGrid;
 
     public NonogramView(){
         this.initialiseNodes();
@@ -50,16 +54,31 @@ public class NonogramView extends BorderPane {
 
 
         //!!!! AFWERKEN
-        this.grid = new GridPane();
-        grid.setGridLinesVisible(true);
-        this.nonogram = new ArrayList<>();
+        this.nonogramGrid = new GridPane();
+        nonogramGrid.setGridLinesVisible(true);
+
+        this.rijGrid = new GridPane();
+        rijGrid.setGridLinesVisible(true);
+
+        this.kolomGrid = new GridPane();
+        kolomGrid.setGridLinesVisible(true);
+
+        this.centerGrid = new GridPane();
+
+        this.nonogram = new ArrayList<ArrayList<Label>>();
 
     }
 
     private void layoutNodes() {
         this.setTop(lblTitel);
         this.setLeft(btnBack);
-        this.setCenter(grid);
+
+        centerGrid.add(new Label(),0,0);
+        centerGrid.add(rijGrid,0,1);
+        centerGrid.add(kolomGrid,1,0);
+        centerGrid.add(nonogramGrid,1,1);
+
+        this.setCenter(centerGrid);
 
         buttonBox.getChildren().add(btnSpelregels);
         buttonBox.getChildren().add(btnScorenboard);
@@ -82,7 +101,19 @@ public class NonogramView extends BorderPane {
         return btnSpelregels;
     }
 
-    public ArrayList<Label> getNonogram() {
+    public ArrayList<ArrayList<Label>> getNonogram() {
         return nonogram;
+    }
+
+    public GridPane getNonogramGrid() {
+        return nonogramGrid;
+    }
+
+    public GridPane getRijGrid() {
+        return rijGrid;
+    }
+
+    public GridPane getKolomGrid() {
+        return kolomGrid;
     }
 }

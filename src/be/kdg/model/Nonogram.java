@@ -42,9 +42,7 @@ public class Nonogram {
         return naam;
     }
 
-    public void setGrootte(int grootte) {
-        this.grootte = grootte;
-    }
+    public int getGrootte(){ return this.grootte;}
 
     //functionele methodes
     public boolean controlleren() {//verder afwerken met peerTutor

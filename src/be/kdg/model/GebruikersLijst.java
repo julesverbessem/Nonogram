@@ -21,7 +21,7 @@ public class GebruikersLijst extends Gebruiker {
 
     public Gebruiker getGebruiker(String gebruikersnaam){
         for (Gebruiker huidigeGebruiker: lijst) {
-            if(gebruikersnaam==huidigeGebruiker.getGebruikersnaam()){
+            if(gebruikersnaam.equals(huidigeGebruiker.getGebruikersnaam())){
                 return huidigeGebruiker;
             }
         }
@@ -47,7 +47,7 @@ public class GebruikersLijst extends Gebruiker {
                     System.out.println("Gebruiker heeft nog geen spel, hij start bij 1");
                     return true;
                 }
-                huidigeGebruiker.opgeslagenSpel.startSpel(huidigeGebruiker);
+                //huidigeGebruiker.opgeslagenSpel.startSpel(huidigeGebruiker);
                 System.out.println("Gebruiker is ingeloged");
                 return true;
             } else {
@@ -59,7 +59,6 @@ public class GebruikersLijst extends Gebruiker {
     }
 
     public String overzichtSpelers() {
-        /* PEERTUTOR VRAGEN      */
         Collections.sort(lijst);
         StringBuilder stringBuilder = new StringBuilder();
         int counter = 0;

@@ -1,5 +1,6 @@
 package be.kdg.view.nonogram;
 
+import be.kdg.model.Gebruiker;
 import be.kdg.model.GebruikersLijst;
 import be.kdg.view.felicitatie.FelicitatiePresenter;
 import be.kdg.view.felicitatie.FelicitatieView;
@@ -12,19 +13,24 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.RowConstraints;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import java.util.ArrayList;
+
 public class NonogramPresenter {
     private GebruikersLijst model;
     private NonogramView view;
-    private String gebruikersnaam;
+    private Gebruiker speler;
 
     public NonogramPresenter(GebruikersLijst model, NonogramView view, String gebruikersnaam) {
         this.model = model;
         this.view = view;
-        this.gebruikersnaam = gebruikersnaam;
+        this.speler = model.getGebruiker(gebruikersnaam);
 
         this.addEventHandlers();
     }
@@ -37,7 +43,7 @@ public class NonogramPresenter {
                 Alert cancelNonogram = new Alert(Alert.AlertType.WARNING);
                 cancelNonogram.setTitle("Warning!");
                 cancelNonogram.setHeaderText("Nonogram afsluiten.");
-                cancelNonogram.setContentText("Weet u zeker dat u wilt afsluiten?");
+                cancelNonogram.setContentText("Weet u zeker dat u wilt afsluiten? Uw vooruitgang zal niet worden opgeslagen.");
 
                 cancelNonogram.getButtonTypes().clear();
                 ButtonType neeButton = new ButtonType("Nee, ik speel door.");
@@ -69,7 +75,7 @@ public class NonogramPresenter {
                 Alert cancelNonogram = new Alert(Alert.AlertType.WARNING);
                 cancelNonogram.setTitle("Warning!");
                 cancelNonogram.setHeaderText("Nonogram afsluiten.");
-                cancelNonogram.setContentText("Weet u zeker dat u wilt afsluiten?");
+                cancelNonogram.setContentText("Weet u zeker dat u wilt afsluiten? Uw vooruitgang zal niet worden opgeslagen.");
 
                 cancelNonogram.getButtonTypes().clear();
                 ButtonType neeButton = new ButtonType("Nee, ik speel door.");
@@ -112,7 +118,24 @@ public class NonogramPresenter {
         view.getScene().getWindow().setOnShowing(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent windowEvent) {
-                view.getLblTitel().setText("Nonogram lvl "+model.getGebruiker(gebruikersnaam));
+                view.getLblTitel().setText("Nonogram lvl "+speler.getLevel());
+
+                int grote = speler.getOpgeslagenSpel().startSpel(speler);
+
+                initialiseGrid(grote);
+                layoutGrid(grote);
+
+                /*boolean isKlaar = false;
+
+                while(!isKlaar){
+                    for(int rij = 1; rij<= grote; rij++){
+                        for(int kolom = 1; kolom<= grote; kolom++){
+                            int r = rij;
+                            int k = kolom;
+                            view.getGrid().getChildren().get(r-1);
+                        }
+                    }
+                }*/
             }
         });
         view.getScene().getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
@@ -122,7 +145,7 @@ public class NonogramPresenter {
                 Alert cancelNonogram = new Alert(Alert.AlertType.WARNING);
                 cancelNonogram.setTitle("Warning!");
                 cancelNonogram.setHeaderText("Nonogram afsluiten.");
-                cancelNonogram.setContentText("Weet u zeker dat u wilt afsluiten?");
+                cancelNonogram.setContentText("Weet u zeker dat u wilt afsluiten? Uw vooruitgang zal niet worden opgeslagen.");
 
                 cancelNonogram.getButtonTypes().clear();
                 ButtonType neeButton = new ButtonType("Nee, ik speel door.");
@@ -137,7 +160,7 @@ public class NonogramPresenter {
                 }
                 else{
                     FelicitatieView felicitatieView = new FelicitatieView();
-                    FelicitatiePresenter felicitatiePresenter = new FelicitatiePresenter(model,felicitatieView,gebruikersnaam);
+                    FelicitatiePresenter felicitatiePresenter = new FelicitatiePresenter(model,felicitatieView,speler.getGebruikersnaam());
 
                     Stage stage = new Stage();
                     stage.setTitle("Felicitatiescherm");
@@ -150,5 +173,47 @@ public class NonogramPresenter {
                     stage.showAndWait();                }
             }
         });
+    }
+
+    private void initialiseGrid(int grote){
+        for(int rij = 1; rij<= grote; rij++){
+            ArrayList<Label> kolomLijst = new ArrayList<>();
+            for(int kolom = 1; kolom<= grote; kolom++){
+                kolomLijst.add(new Label("x"));
+                int r = rij;
+                int k = kolom;
+                view.getNonogramGrid().add(new Label("x"),k-1,r-1);
+            }
+            view.getNonogram().add(kolomLijst);
+        }
+
+        for(int rij =1; rij<=grote; rij++){
+            int r = rij;
+            view.getRijGrid().add(new Label("rij"),0,r-1);
+        }
+
+        for(int kolom =1; kolom<=grote; kolom++){
+            int k = kolom;
+            view.getKolomGrid().add(new Label("kolom"),k-1,0);
+        }
+    }
+
+    private void layoutGrid(int grote){
+        for(int kolom = 1; kolom<= grote; kolom++){
+            view.getNonogramGrid().getColumnConstraints().add(new ColumnConstraints(100));
+        }
+        for(int rij = 1; rij<= grote; rij++){
+            view.getNonogramGrid().getRowConstraints().add(new RowConstraints(100));
+        }
+
+        for(int kolom = 1; kolom<= grote; kolom++){
+            view.getKolomGrid().getColumnConstraints().add(new ColumnConstraints(100));
+        }
+        view.getKolomGrid().getRowConstraints().add(new RowConstraints(100));
+
+        view.getRijGrid().getColumnConstraints().add(new ColumnConstraints(100));
+        for(int rij = 1; rij<= grote; rij++){
+            view.getRijGrid().getRowConstraints().add(new RowConstraints(100));
+        }
     }
 }
