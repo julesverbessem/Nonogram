@@ -14,6 +14,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Modality;
@@ -39,7 +41,7 @@ public class NonogramPresenter {
         view.getBtnBack().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println("Gebruiker wilt scorenboard openen tijdens spel, waarschuwing");
+                System.out.println("Gebruiker wilt terug naar startscherm gaan, waarschuwing");
                 Alert cancelNonogram = new Alert(Alert.AlertType.WARNING);
                 cancelNonogram.setTitle("Warning!");
                 cancelNonogram.setHeaderText("Nonogram afsluiten.");
@@ -110,8 +112,21 @@ public class NonogramPresenter {
                 spelregelsAlert.setTitle("Spelregels");
                 spelregelsAlert.setHeaderText("Hieronder worden de spregels van het nonogram uitgelegd:");
                 spelregelsAlert.showAndWait();
+                //!! ipv van een alert een niew scherm?
             }
         });
+
+        for(ArrayList<Label> labelLijst: view.getNonogram()){//WERKT NOG NIET
+            for(Label huidigeLabel: labelLijst) {
+                huidigeLabel.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent mouseEvent) {
+                        System.out.println(mouseEvent.getX());
+                        System.out.println(mouseEvent.getY());
+                    }
+                });
+            }
+        }
     }
 
     public void addWindowEventHandlers(){

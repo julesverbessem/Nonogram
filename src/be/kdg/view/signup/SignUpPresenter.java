@@ -2,6 +2,8 @@ package be.kdg.view.signup;
 
 import be.kdg.model.Gebruiker;
 import be.kdg.model.GebruikersLijst;
+import be.kdg.view.nonogram.NonogramPresenter;
+import be.kdg.view.nonogram.NonogramView;
 import be.kdg.view.start.StartPresenter;
 import be.kdg.view.start.StartView;
 import javafx.event.ActionEvent;
@@ -56,6 +58,19 @@ public class SignUpPresenter {
 
                 Gebruiker nieuweSpeler = new Gebruiker(view.getTxtUsername().getText(),view.getPwfConfirmPassword().getText());
                 model.setGebruiker(nieuweSpeler);
+
+                NonogramView nonogramView = new NonogramView();
+                NonogramPresenter nonogramPresenter = new NonogramPresenter(model,nonogramView,view.getTxtUsername().getText());
+
+                Stage stage = new Stage();
+                stage.setTitle("Nonogram speelscherm");
+                stage.initOwner(view.getScene().getWindow());
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setScene(new Scene(nonogramView));
+                nonogramPresenter.addWindowEventHandlers();
+                stage.setWidth(900);
+                stage.setHeight(800);
+                stage.showAndWait();
             }
         });
         view.getBtnBack().setOnAction(new EventHandler<ActionEvent>() {
