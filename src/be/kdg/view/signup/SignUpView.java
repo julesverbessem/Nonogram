@@ -1,5 +1,6 @@
 package be.kdg.view.signup;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -14,6 +15,7 @@ public class SignUpView extends BorderPane {
     private HBox passwordBox;
     private HBox confirmPasswordBox;
     private VBox spelerLogInBox;
+    private VBox buttonBox;
 
     private Label lblUsername;
     private TextField txtUsername;
@@ -34,9 +36,6 @@ public class SignUpView extends BorderPane {
 
     private void initialiseNodes() {
         this.lblTitel = new Label("Sign up");
-        //lblTitel.setStyle("-fx-border-style: solid");
-        //Het label moet gecentreerd worden, een solid border hebben en groot genoeg zijn
-        //moet ook normaal oke zijn zo
 
         this.usernameBox = new HBox();
         usernameBox.setSpacing(10);
@@ -46,6 +45,8 @@ public class SignUpView extends BorderPane {
         confirmPasswordBox.setSpacing(10);
         this.spelerLogInBox = new VBox();
         spelerLogInBox.setSpacing(15);
+        this.buttonBox = new VBox();
+        buttonBox.setSpacing(15);
 
         this.lblUsername = new Label("Username:");
         this.txtUsername = new TextField();
@@ -76,7 +77,6 @@ public class SignUpView extends BorderPane {
 
     private void layoutNodes() {
         this.setTop(lblTitel);
-        this.setRight(btnLogIn);
         this.setLeft(btnBack);
 
         usernameBox.getChildren().add(lblUsername);
@@ -91,13 +91,32 @@ public class SignUpView extends BorderPane {
         spelerLogInBox.getChildren().add(usernameBox);
         spelerLogInBox.getChildren().add(passwordBox);
         spelerLogInBox.getChildren().add(confirmPasswordBox);
-
         this.setCenter(spelerLogInBox);
+
+        buttonBox.getChildren().add(btnLogIn);
+        this.setRight(buttonBox);
 
         lblTitel.setStyle("-fx-font-size: 36");
         BorderPane.setAlignment(lblTitel, Pos.CENTER);
         lblTitel.setContentDisplay(ContentDisplay.CENTER);
         lblTitel.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,BorderWidths.DEFAULT)));
+
+        //btnBack.setStyle("-fx-font-size: 20");
+        //BorderPane.setAlignment(btnBack, Pos.TOP_LEFT);
+
+        lblUsername.setStyle("-fx-font-size: 24");
+        lblPassword.setStyle("-fx-font-size: 24");
+        lblConfirmPassword.setStyle("-fx-font-size: 24");
+
+        txtUsername.setStyle("-fx-font-size: 14");
+        pwfPasswoord.setStyle("-fx-font-size: 14");
+        pwfConfirmPassword.setStyle("-fx-font-size: 14");
+
+        btnLogIn.setStyle("-fx-font-size: 24");
+
+        spelerLogInBox.setPadding(new Insets(180,0,50,20));
+        buttonBox.setPadding(new Insets(230,100,50,50));
+
     }
 
     public TextField getTxtUsername() {

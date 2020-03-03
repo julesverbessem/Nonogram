@@ -49,7 +49,6 @@ public class StartView extends BorderPane {
         this.spelerLogInBox = new VBox();
         spelerLogInBox.setSpacing(15);
         this.buttonBox = new VBox();
-        spelerLogInBox.setSpacing(15);
 
         this.lblUsernaam = new Label("Username:");
         this.txtUsernaam = new TextField();

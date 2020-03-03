@@ -6,7 +6,8 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 public class ScorenboardView extends BorderPane {
     private Label lblTitel;
@@ -49,6 +50,7 @@ public class ScorenboardView extends BorderPane {
         lblScorenboard.setStyle("-fx-font-size: 36");
         BorderPane.setAlignment(lblScorenboard, Pos.CENTER);
         lblScorenboard.setContentDisplay(ContentDisplay.CENTER);
+        lblTitel.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,BorderWidths.DEFAULT)));
     }
 
     public Button getBtnBack() {

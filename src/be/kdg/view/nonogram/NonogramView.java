@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -126,6 +127,14 @@ public class NonogramView extends BorderPane {
         for(int rij = 1; rij<= grote; rij++){
             rijGrid.getRowConstraints().add(new RowConstraints(100));
         }
+
+        lblTitel.setStyle("-fx-font-size: 36");
+        BorderPane.setAlignment(lblTitel, Pos.CENTER);
+        lblTitel.setContentDisplay(ContentDisplay.CENTER);
+        lblTitel.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,BorderWidths.DEFAULT)));
+
+        btnScorenboard.setStyle("-fx-font-size: 24");
+        btnSpelregels.setStyle("-fx-font-size: 24");
     }
 
     public Label getLblTitel() {
