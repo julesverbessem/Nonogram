@@ -62,14 +62,10 @@ public class StartPresenter {
                         SignUpView signUpView = new SignUpView();
                         SignUpPresenter signUpPresenter = new SignUpPresenter(model,signUpView);
 
-                        Stage stage = new Stage();
-                        stage.setTitle("Sign-up scherm");
-                        stage.initOwner(view.getScene().getWindow());
-                        stage.initModality(Modality.APPLICATION_MODAL);
-                        stage.setScene(new Scene(signUpView));
-                        stage.setWidth(900);
-                        stage.setHeight(800);
-                        stage.showAndWait();
+                        view.getScene().setRoot(signUpView);
+                        signUpView.getScene().getWindow().sizeToScene();
+                        signUpView.getScene().getWindow().setHeight(800);
+                        signUpView.getScene().getWindow().setWidth(900);
                     }
                 }else {
                     NonogramView nonogramView = new NonogramView(model.getGebruiker(view.getTxtUsernaam().getText()).getOpgeslagenSpel().startSpel(model.getGebruiker(view.getTxtUsernaam().getText())));
@@ -89,14 +85,10 @@ public class StartPresenter {
                 SignUpView signUpView = new SignUpView();
                 SignUpPresenter signUpPresenter = new SignUpPresenter(model,signUpView);
 
-                Stage stage = new Stage();
-                stage.setTitle("Sign-up scherm");
-                stage.initOwner(view.getScene().getWindow());
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.setScene(new Scene(signUpView));
-                stage.setWidth(900);
-                stage.setHeight(800);
-                stage.showAndWait();
+                view.getScene().setRoot(signUpView);
+                signUpView.getScene().getWindow().sizeToScene();
+                signUpView.getScene().getWindow().setHeight(800);
+                signUpView.getScene().getWindow().setWidth(900);
             }
         });
     }

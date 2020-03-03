@@ -26,6 +26,8 @@ public class ScorenboardView extends BorderPane {
 
         Image backButton = new Image("./backbutton.png");
         ImageView imageView = new ImageView(backButton);
+        //imageView.setFitHeight(10);
+        //imageView.setFitWidth(10);
         this.btnBack = new Button("", imageView);
         btnBack.setStyle("-fx-font-size: 36");
         btnBack.setAlignment(Pos.TOP_LEFT);

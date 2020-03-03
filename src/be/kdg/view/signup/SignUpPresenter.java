@@ -62,15 +62,10 @@ public class SignUpPresenter {
                 NonogramView nonogramView = new NonogramView(model.getGebruiker(view.getTxtUsername().getText()).getOpgeslagenSpel().startSpel(model.getGebruiker(view.getTxtUsername().getText())));
                 NonogramPresenter nonogramPresenter = new NonogramPresenter(model,nonogramView,view.getTxtUsername().getText());
 
-                Stage stage = new Stage();
-                stage.setTitle("Nonogram speelscherm");
-                stage.initOwner(view.getScene().getWindow());
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.setScene(new Scene(nonogramView));
-                nonogramPresenter.addWindowEventHandlers();
-                stage.setWidth(900);
-                stage.setHeight(800);
-                stage.showAndWait();
+                view.getScene().setRoot(nonogramView);
+                nonogramView.getScene().getWindow().sizeToScene();
+                nonogramView.getScene().getWindow().setHeight(800);
+                nonogramView.getScene().getWindow().setWidth(900);
             }
         });
         view.getBtnBack().setOnAction(new EventHandler<ActionEvent>() {
@@ -79,14 +74,10 @@ public class SignUpPresenter {
                 StartView startView = new StartView();
                 StartPresenter startPresenter = new StartPresenter(model,startView);
 
-                Stage stage = new Stage();
-                stage.setTitle("Nonogram startscherm");
-                stage.initOwner(view.getScene().getWindow());
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.setScene(new Scene(startView));
-                stage.setWidth(900);
-                stage.setHeight(800);
-                stage.showAndWait();
+                view.getScene().setRoot(startView);
+                startView.getScene().getWindow().sizeToScene();
+                startView.getScene().getWindow().setHeight(800);
+                startView.getScene().getWindow().setWidth(900);
             }
         });
     }

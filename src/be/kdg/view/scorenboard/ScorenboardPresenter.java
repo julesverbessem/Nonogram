@@ -29,14 +29,10 @@ public class ScorenboardPresenter {
                 StartView startView = new StartView();
                 StartPresenter startPresenter = new StartPresenter(model,startView);
 
-                Stage stage = new Stage();
-                stage.setTitle("Nonogram startscherm");
-                stage.initOwner(view.getScene().getWindow());
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.setScene(new Scene(startView));
-                stage.setWidth(900);
-                stage.setHeight(800);
-                stage.showAndWait();
+                view.getScene().setRoot(startView);
+                startView.getScene().getWindow().sizeToScene();
+                startView.getScene().getWindow().setHeight(800);
+                startView.getScene().getWindow().setWidth(900);
             }
         });
     }

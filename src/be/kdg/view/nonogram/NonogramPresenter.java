@@ -34,9 +34,7 @@ public class NonogramPresenter {
         this.view = view;
         this.speler = model.getGebruiker(gebruikersnaam);
 
-        view.getLblTitel().setText("Nonogram lvl "+speler.getLevel());
-
-
+        this.view.getLblTitel().setText("Nonogram lvl "+speler.getLevel());
 
         this.addEventHandlers();
     }
@@ -63,14 +61,10 @@ public class NonogramPresenter {
                     StartView startView = new StartView();
                     StartPresenter startPresenter = new StartPresenter(model,startView);
 
-                    Stage stage = new Stage();
-                    stage.setTitle("Nonogram startscherm");
-                    stage.initOwner(view.getScene().getWindow());
-                    stage.initModality(Modality.APPLICATION_MODAL);
-                    stage.setScene(new Scene(startView));
-                    stage.setWidth(900);
-                    stage.setHeight(800);
-                    stage.showAndWait();
+                    view.getScene().setRoot(startView);
+                    startView.getScene().getWindow().sizeToScene();
+                    startView.getScene().getWindow().setHeight(800);
+                    startView.getScene().getWindow().setWidth(900);
                 }
             }
         });
@@ -95,15 +89,10 @@ public class NonogramPresenter {
                     ScorenboardView scorenboardView = new ScorenboardView();
                     ScorenboardPresenter scorenboardPresenter = new ScorenboardPresenter(model,scorenboardView);
 
-                    Stage stage = new Stage();
-                    stage.setTitle("Nonogram scorenboard");
-                    stage.initOwner(view.getScene().getWindow());
-                    stage.initModality(Modality.APPLICATION_MODAL);
-                    stage.setScene(new Scene(scorenboardView));
-
-                    stage.setWidth(900);
-                    stage.setHeight(800);
-                    stage.showAndWait();
+                    view.getScene().setRoot(scorenboardView);
+                    scorenboardView.getScene().getWindow().sizeToScene();
+                    scorenboardView.getScene().getWindow().setHeight(800);
+                    scorenboardView.getScene().getWindow().setWidth(900);
                 }
             }
         });
@@ -158,15 +147,11 @@ public class NonogramPresenter {
                     FelicitatieView felicitatieView = new FelicitatieView();
                     FelicitatiePresenter felicitatiePresenter = new FelicitatiePresenter(model,felicitatieView,speler.getGebruikersnaam());
 
-                    Stage stage = new Stage();
-                    stage.setTitle("Felicitatiescherm");
-                    stage.initOwner(view.getScene().getWindow());
-                    stage.initModality(Modality.APPLICATION_MODAL);
-                    stage.setScene(new Scene(felicitatieView));
-                    felicitatiePresenter.addWindowEventHandlers();
-                    stage.setWidth(900);
-                    stage.setHeight(800);
-                    stage.showAndWait();                }
+                    view.getScene().setRoot(felicitatieView);
+                    felicitatieView.getScene().getWindow().sizeToScene();
+                    felicitatieView.getScene().getWindow().setHeight(800);
+                    felicitatieView.getScene().getWindow().setWidth(900);
+                }
             }
         });
     }
