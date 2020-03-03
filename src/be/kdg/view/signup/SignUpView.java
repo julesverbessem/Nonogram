@@ -4,9 +4,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 public class SignUpView extends BorderPane {
     private Label lblTitel;
@@ -35,10 +34,6 @@ public class SignUpView extends BorderPane {
 
     private void initialiseNodes() {
         this.lblTitel = new Label("Sign up");
-        lblTitel.setStyle("-fx-font-size: 36");
-        lblTitel.setAlignment(Pos.CENTER);
-        lblTitel.setContentDisplay(ContentDisplay.CENTER);
-        lblTitel.getStyleClass().add("outline");
         //lblTitel.setStyle("-fx-border-style: solid");
         //Het label moet gecentreerd worden, een solid border hebben en groot genoeg zijn
         //moet ook normaal oke zijn zo
@@ -98,6 +93,11 @@ public class SignUpView extends BorderPane {
         spelerLogInBox.getChildren().add(confirmPasswordBox);
 
         this.setCenter(spelerLogInBox);
+
+        lblTitel.setStyle("-fx-font-size: 36");
+        BorderPane.setAlignment(lblTitel, Pos.CENTER);
+        lblTitel.setContentDisplay(ContentDisplay.CENTER);
+        lblTitel.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,BorderWidths.DEFAULT)));
     }
 
     public TextField getTxtUsername() {

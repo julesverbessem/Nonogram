@@ -36,10 +36,7 @@ public class NonogramView extends BorderPane {
 
     private void initialiseNodes() {
         this.lblTitel = new Label();
-        lblTitel.setStyle("-fx-font-size: 36");
-        lblTitel.setAlignment(Pos.CENTER);
-        lblTitel.setContentDisplay(ContentDisplay.CENTER);
-        lblTitel.getStyleClass().add("outline");//waarde geven via de model in de presenter
+        //waarde geven via de model in de presenter
         //Het label moet gecentreerd worden, een solid border hebben en groot genoeg zijn
 
         Image backButton = new Image("./backbutton.png");
@@ -83,6 +80,10 @@ public class NonogramView extends BorderPane {
         buttonBox.getChildren().add(btnSpelregels);
         buttonBox.getChildren().add(btnScorenboard);
         this.setBottom(buttonBox);
+
+        lblTitel.setStyle("-fx-font-size: 36");
+        BorderPane.setAlignment(lblTitel, Pos.CENTER);
+        lblTitel.setContentDisplay(ContentDisplay.CENTER);
     }
 
     public Label getLblTitel() {

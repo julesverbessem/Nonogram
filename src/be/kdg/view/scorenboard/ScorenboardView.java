@@ -13,23 +13,19 @@ public class ScorenboardView extends BorderPane {
     private Button btnBack;
     private Label lblScorenboard;
 
-    public ScorenboardView(){
+    public ScorenboardView() {
         this.initialiseNodes();
         this.layoutNodes();
     }
 
     private void initialiseNodes() {
         this.lblTitel = new Label("Scorenboard");
-        lblTitel.setStyle("-fx-font-size: 36");
-        lblTitel.setAlignment(Pos.CENTER);
-        lblTitel.setContentDisplay(ContentDisplay.CENTER);
-        lblTitel.getStyleClass().add("outline");
         //Het label moet gecentreerd worden, een solid border hebben en groot genoeg zijn
         //normaal oke
 
         Image backButton = new Image("./backbutton.png");
         ImageView imageView = new ImageView(backButton);
-        this.btnBack = new Button("",imageView);
+        this.btnBack = new Button("", imageView);
         btnBack.setStyle("-fx-font-size: 36");
         btnBack.setAlignment(Pos.TOP_LEFT);
         btnBack.setContentDisplay(ContentDisplay.CENTER);
@@ -37,10 +33,6 @@ public class ScorenboardView extends BorderPane {
         //normaal oke
 
         this.lblScorenboard = new Label("test");
-        lblScorenboard.setStyle("-fx-font-size: 36");
-        lblScorenboard.setAlignment(Pos.CENTER);
-        lblScorenboard.setContentDisplay(ContentDisplay.CENTER);
-        lblScorenboard.getStyleClass().add("outline");
         //label moet groot genoeg en gecnetreerd zijn met een solid border
         //normaal oke
     }
@@ -49,6 +41,14 @@ public class ScorenboardView extends BorderPane {
         this.setTop(lblTitel);
         this.setLeft(btnBack);
         this.setCenter(lblScorenboard);
+
+        lblTitel.setStyle("-fx-font-size: 36");
+        BorderPane.setAlignment(lblTitel, Pos.CENTER);
+        lblTitel.setContentDisplay(ContentDisplay.CENTER);
+
+        lblScorenboard.setStyle("-fx-font-size: 36");
+        BorderPane.setAlignment(lblScorenboard, Pos.CENTER);
+        lblScorenboard.setContentDisplay(ContentDisplay.CENTER);
     }
 
     public Button getBtnBack() {

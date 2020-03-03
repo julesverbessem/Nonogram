@@ -1,10 +1,10 @@
 package be.kdg.view.start;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class StartView extends BorderPane {
@@ -32,10 +32,6 @@ public class StartView extends BorderPane {
 
     private void initialiseNodes() {
         this.lblTitel = new Label("Nonogram");
-        lblTitel.setStyle("-fx-font-size: 36");
-        lblTitel.setAlignment(Pos.CENTER);
-        lblTitel.setContentDisplay(ContentDisplay.CENTER);
-        lblTitel.getStyleClass().add("outline");
         //lblTitel.setStyle("-fx-border-style: solid");
         //Het label moet gecentreerd worden, een solid border hebben en groot genoeg zijn
         //Is volgens mij oke zo, kan het niet testen want krijg de applicatie ni gestart en snap de foutmelding ni direct
@@ -45,7 +41,6 @@ public class StartView extends BorderPane {
         btnScorenboard.setContentDisplay(ContentDisplay.CENTER);
         Font font = new Font(30);
         btnScorenboard.setFont(font);
-        //De button moet gecentreerd worden en groot genoeg zijn
 
         this.usernameBox = new HBox();
         usernameBox.setSpacing(10);
@@ -89,6 +84,28 @@ public class StartView extends BorderPane {
         buttonBox.getChildren().add(btnLogIn);
         buttonBox.getChildren().add(btnSignUp);
         this.setRight(buttonBox);
+
+        lblTitel.setStyle("-fx-font-size: 36");
+        BorderPane.setAlignment(lblTitel, Pos.CENTER);
+        lblTitel.setContentDisplay(ContentDisplay.CENTER);
+        lblTitel.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,BorderWidths.DEFAULT)));
+
+        btnScorenboard.setStyle("-fx-font-size: 28");
+        BorderPane.setAlignment(btnScorenboard, Pos.CENTER);
+
+        lblUsernaam.setStyle("-fx-font-size: 24");
+        lblPassword.setStyle("-fx-font-size: 24");
+
+        txtUsernaam.setStyle("-fx-font-size: 18");
+        pwfPassword.setStyle("-fx-font-size: 18");
+
+        btnLogIn.setStyle("-fx-font-size: 24");
+        btnSignUp.setStyle("-fx-font-size: 24");
+
+        spelerLogInBox.setPadding(new Insets(200,100,50,50));
+        buttonBox.setPadding(new Insets(180,100,50,50));
+
+        buttonBox.setSpacing(15);
     }
 
     public Button getBtnScorenboard() {
