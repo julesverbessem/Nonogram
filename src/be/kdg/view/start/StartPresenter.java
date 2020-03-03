@@ -34,15 +34,10 @@ public class StartPresenter {
                 ScorenboardView scorenboardView = new ScorenboardView();
                 ScorenboardPresenter scorenboardPresenter = new ScorenboardPresenter(model,scorenboardView);
 
-                Stage stage = new Stage();
-                stage.setTitle("Nonogram scorenboard");
-                stage.initOwner(view.getScene().getWindow());
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.setScene(new Scene(scorenboardView));
-                scorenboardPresenter.addWindowEventHandlers();
-                stage.setWidth(900);
-                stage.setHeight(800);
-                stage.showAndWait();
+                view.getScene().setRoot(scorenboardView);
+                scorenboardView.getScene().getWindow().sizeToScene();
+                scorenboardView.getScene().getWindow().setHeight(800);
+                scorenboardView.getScene().getWindow().setWidth(900);
             }
         });
 
@@ -77,18 +72,13 @@ public class StartPresenter {
                         stage.showAndWait();
                     }
                 }else {
-                    NonogramView nonogramView = new NonogramView();
+                    NonogramView nonogramView = new NonogramView(model.getGebruiker(view.getTxtUsernaam().getText()).getOpgeslagenSpel().startSpel(model.getGebruiker(view.getTxtUsernaam().getText())));
                     NonogramPresenter nonogramPresenter = new NonogramPresenter(model,nonogramView,view.getTxtUsernaam().getText());
 
-                    Stage stage = new Stage();
-                    stage.setTitle("Nonogram speelscherm");
-                    stage.initOwner(view.getScene().getWindow());
-                    stage.initModality(Modality.APPLICATION_MODAL);
-                    stage.setScene(new Scene(nonogramView));
-                    nonogramPresenter.addWindowEventHandlers();
-                    stage.setWidth(900);
-                    stage.setHeight(800);
-                    stage.showAndWait();
+                    view.getScene().setRoot(nonogramView);
+                    nonogramView.getScene().getWindow().sizeToScene();
+                    nonogramView.getScene().getWindow().setHeight(800);
+                    nonogramView.getScene().getWindow().setWidth(900);
                 }
             }
         });

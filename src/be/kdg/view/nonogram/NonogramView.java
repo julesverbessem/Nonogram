@@ -7,10 +7,7 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
 
 import java.util.ArrayList;
 
@@ -29,9 +26,11 @@ public class NonogramView extends BorderPane {
     private GridPane kolomGrid;
     private GridPane centerGrid;
 
-    public NonogramView(){
+    public NonogramView(int grote){
         this.initialiseNodes();
         this.layoutNodes();
+        this.initialiseGrid(grote);
+        this.layoutGrid(grote);
     }
 
     private void initialiseNodes() {
@@ -86,6 +85,49 @@ public class NonogramView extends BorderPane {
         lblTitel.setContentDisplay(ContentDisplay.CENTER);
     }
 
+    private void initialiseGrid(int grote){
+        for(int rij = 1; rij<= grote; rij++){
+            ArrayList<Label> kolomLijst = new ArrayList<>();
+            for(int kolom = 1; kolom<= grote; kolom++){
+                kolomLijst.add(new Label("x"));
+                int r = rij;
+                int k = kolom;
+                nonogramGrid.add(new Label("x"),k-1,r-1);
+            }
+            nonogram.add(kolomLijst);
+
+        }
+
+        for(int rij =1; rij<=grote; rij++){
+            int r = rij;
+            rijGrid.add(new Label("rij"),0,r-1);
+        }
+
+        for(int kolom =1; kolom<=grote; kolom++){
+            int k = kolom;
+            kolomGrid.add(new Label("kolom"),k-1,0);
+        }
+    }
+
+    private void layoutGrid(int grote){
+        for(int kolom = 1; kolom<= grote; kolom++){
+            nonogramGrid.getColumnConstraints().add(new ColumnConstraints(100));
+        }
+        for(int rij = 1; rij<= grote; rij++){
+            nonogramGrid.getRowConstraints().add(new RowConstraints(100));
+        }
+
+        for(int kolom = 1; kolom<= grote; kolom++){
+            kolomGrid.getColumnConstraints().add(new ColumnConstraints(100));
+        }
+        kolomGrid.getRowConstraints().add(new RowConstraints(100));
+
+        rijGrid.getColumnConstraints().add(new ColumnConstraints(100));
+        for(int rij = 1; rij<= grote; rij++){
+            rijGrid.getRowConstraints().add(new RowConstraints(100));
+        }
+    }
+
     public Label getLblTitel() {
         return lblTitel;
     }
@@ -104,17 +146,5 @@ public class NonogramView extends BorderPane {
 
     public ArrayList<ArrayList<Label>> getNonogram() {
         return nonogram;
-    }
-
-    public GridPane getNonogramGrid() {
-        return nonogramGrid;
-    }
-
-    public GridPane getRijGrid() {
-        return rijGrid;
-    }
-
-    public GridPane getKolomGrid() {
-        return kolomGrid;
     }
 }

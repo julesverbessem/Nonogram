@@ -59,7 +59,7 @@ public class SignUpPresenter {
                 Gebruiker nieuweSpeler = new Gebruiker(view.getTxtUsername().getText(),view.getPwfConfirmPassword().getText());
                 model.setGebruiker(nieuweSpeler);
 
-                NonogramView nonogramView = new NonogramView();
+                NonogramView nonogramView = new NonogramView(model.getGebruiker(view.getTxtUsername().getText()).getOpgeslagenSpel().startSpel(model.getGebruiker(view.getTxtUsername().getText())));
                 NonogramPresenter nonogramPresenter = new NonogramPresenter(model,nonogramView,view.getTxtUsername().getText());
 
                 Stage stage = new Stage();

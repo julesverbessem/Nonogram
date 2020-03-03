@@ -31,7 +31,7 @@ public class FelicitatiePresenter {
         view.getBtnNieuwLevel().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                NonogramView nonogramView = new NonogramView();
+                NonogramView nonogramView = new NonogramView(model.getGebruiker(gebruikersnaam).getOpgeslagenSpel().startSpel(model.getGebruiker(gebruikersnaam)));
                 NonogramPresenter nonogramPresenter = new NonogramPresenter(model,nonogramView,gebruikersnaam);
 
                 Stage stage = new Stage();
@@ -56,7 +56,6 @@ public class FelicitatiePresenter {
                 stage.initOwner(view.getScene().getWindow());
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(new Scene(scorenboardView));
-                scorenboardPresenter.addWindowEventHandlers();
                 stage.setWidth(900);
                 stage.setHeight(800);
                 stage.showAndWait();

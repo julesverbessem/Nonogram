@@ -18,6 +18,7 @@ public class ScorenboardPresenter {
         this.model = model;
         this.view = view;
 
+        toonScorenboard();
         this.addEventHandlers();
     }
 
@@ -40,12 +41,7 @@ public class ScorenboardPresenter {
         });
     }
 
-    public void addWindowEventHandlers(){
-        view.getScene().getWindow().setOnShowing(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent windowEvent) {
-                view.getLblScorenboard().setText(model.overzichtSpelers());
-            }
-        });
+    public void toonScorenboard(){
+        view.getLblScorenboard().setText(model.overzichtSpelers());
     }
 }

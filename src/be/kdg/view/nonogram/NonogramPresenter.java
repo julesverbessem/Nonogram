@@ -34,6 +34,10 @@ public class NonogramPresenter {
         this.view = view;
         this.speler = model.getGebruiker(gebruikersnaam);
 
+        view.getLblTitel().setText("Nonogram lvl "+speler.getLevel());
+
+
+
         this.addEventHandlers();
     }
 
@@ -96,7 +100,7 @@ public class NonogramPresenter {
                     stage.initOwner(view.getScene().getWindow());
                     stage.initModality(Modality.APPLICATION_MODAL);
                     stage.setScene(new Scene(scorenboardView));
-                    scorenboardPresenter.addWindowEventHandlers();
+
                     stage.setWidth(900);
                     stage.setHeight(800);
                     stage.showAndWait();
@@ -130,29 +134,6 @@ public class NonogramPresenter {
     }
 
     public void addWindowEventHandlers(){
-        view.getScene().getWindow().setOnShowing(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent windowEvent) {
-                view.getLblTitel().setText("Nonogram lvl "+speler.getLevel());
-
-                int grote = speler.getOpgeslagenSpel().startSpel(speler);
-
-                initialiseGrid(grote);
-                layoutGrid(grote);
-
-                /*boolean isKlaar = false;
-
-                while(!isKlaar){
-                    for(int rij = 1; rij<= grote; rij++){
-                        for(int kolom = 1; kolom<= grote; kolom++){
-                            int r = rij;
-                            int k = kolom;
-                            view.getGrid().getChildren().get(r-1);
-                        }
-                    }
-                }*/
-            }
-        });
         view.getScene().getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent windowEvent) {
@@ -188,47 +169,5 @@ public class NonogramPresenter {
                     stage.showAndWait();                }
             }
         });
-    }
-
-    private void initialiseGrid(int grote){
-        for(int rij = 1; rij<= grote; rij++){
-            ArrayList<Label> kolomLijst = new ArrayList<>();
-            for(int kolom = 1; kolom<= grote; kolom++){
-                kolomLijst.add(new Label("x"));
-                int r = rij;
-                int k = kolom;
-                view.getNonogramGrid().add(new Label("x"),k-1,r-1);
-            }
-            view.getNonogram().add(kolomLijst);
-        }
-
-        for(int rij =1; rij<=grote; rij++){
-            int r = rij;
-            view.getRijGrid().add(new Label("rij"),0,r-1);
-        }
-
-        for(int kolom =1; kolom<=grote; kolom++){
-            int k = kolom;
-            view.getKolomGrid().add(new Label("kolom"),k-1,0);
-        }
-    }
-
-    private void layoutGrid(int grote){
-        for(int kolom = 1; kolom<= grote; kolom++){
-            view.getNonogramGrid().getColumnConstraints().add(new ColumnConstraints(100));
-        }
-        for(int rij = 1; rij<= grote; rij++){
-            view.getNonogramGrid().getRowConstraints().add(new RowConstraints(100));
-        }
-
-        for(int kolom = 1; kolom<= grote; kolom++){
-            view.getKolomGrid().getColumnConstraints().add(new ColumnConstraints(100));
-        }
-        view.getKolomGrid().getRowConstraints().add(new RowConstraints(100));
-
-        view.getRijGrid().getColumnConstraints().add(new ColumnConstraints(100));
-        for(int rij = 1; rij<= grote; rij++){
-            view.getRijGrid().getRowConstraints().add(new RowConstraints(100));
-        }
     }
 }
