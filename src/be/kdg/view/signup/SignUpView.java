@@ -38,9 +38,9 @@ public class SignUpView extends BorderPane {
         this.lblTitel = new Label("Sign up");
 
         this.usernameBox = new HBox();
-        usernameBox.setSpacing(10);
+        usernameBox.setSpacing(95);
         this.passwordBox = new HBox();
-        passwordBox.setSpacing(10);
+        passwordBox.setSpacing(102);
         this.confirmPasswordBox = new HBox();
         confirmPasswordBox.setSpacing(10);
         this.spelerLogInBox = new VBox();
@@ -64,8 +64,6 @@ public class SignUpView extends BorderPane {
         Image backButton = new Image("./backbutton.png");
         ImageView imageView = new ImageView(backButton);
         this.btnBack = new Button("",imageView);
-        //btnBack.setPrefWidth(10); =>werkt nog niet
-        //btnBack.setPrefHeight(10);
         //kleiner en links vanboven gecentreerd
 
         //Er moet genoeg ruimte tussen die lables en textfields en buttons komen
@@ -100,9 +98,6 @@ public class SignUpView extends BorderPane {
         BorderPane.setAlignment(lblTitel, Pos.CENTER);
         lblTitel.setContentDisplay(ContentDisplay.CENTER);
         lblTitel.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,BorderWidths.DEFAULT)));
-
-        //btnBack.setStyle("-fx-font-size: 20");
-        //BorderPane.setAlignment(btnBack, Pos.TOP_LEFT);
 
         lblUsername.setStyle("-fx-font-size: 24");
         lblPassword.setStyle("-fx-font-size: 24");

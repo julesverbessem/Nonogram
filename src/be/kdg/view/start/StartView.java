@@ -32,7 +32,6 @@ public class StartView extends BorderPane {
 
     private void initialiseNodes() {
         this.lblTitel = new Label("Nonogram");
-        //lblTitel.setStyle("-fx-border-style: solid");
         //Het label moet gecentreerd worden, een solid border hebben en groot genoeg zijn
         //Is volgens mij oke zo, kan het niet testen want krijg de applicatie ni gestart en snap de foutmelding ni direct
 
@@ -45,7 +44,7 @@ public class StartView extends BorderPane {
         this.usernameBox = new HBox();
         usernameBox.setSpacing(10);
         this.passwordBox = new HBox();
-        passwordBox.setSpacing(10);
+        passwordBox.setSpacing(16);
         this.spelerLogInBox = new VBox();
         spelerLogInBox.setSpacing(15);
         this.buttonBox = new VBox();
