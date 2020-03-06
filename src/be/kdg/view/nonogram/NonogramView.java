@@ -90,14 +90,18 @@ public class NonogramView extends BorderPane {
         for(int rij = 1; rij<= grote; rij++){
             ArrayList<Label> kolomLijst = new ArrayList<>();
             for(int kolom = 1; kolom<= grote; kolom++){
-                kolomLijst.add(new Label("x"));
+                Label lbl = new Label("");
+                lbl.setMinWidth(100);
+                lbl.setMinHeight(100);
+                kolomLijst.add(lbl);
                 int r = rij;
                 int k = kolom;
-                nonogramGrid.add(new Label("x"),k-1,r-1);
+                nonogramGrid.add(lbl,k-1,r-1);
             }
             nonogram.add(kolomLijst);
 
         }
+        System.out.println(nonogramGrid.getColumnCount());
 
         for(int rij =1; rij<=grote; rij++){
             int r = rij;
@@ -155,5 +159,9 @@ public class NonogramView extends BorderPane {
 
     public ArrayList<ArrayList<Label>> getNonogram() {
         return nonogram;
+    }
+
+    public GridPane getNonogramGrid() {
+        return nonogramGrid;
     }
 }

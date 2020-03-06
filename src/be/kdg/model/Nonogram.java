@@ -1,5 +1,6 @@
 package be.kdg.model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Nonogram {
@@ -57,7 +58,7 @@ public class Nonogram {
                 userPatroon = this.achterLiggendPatroon[r - 1][k - 1].getWaarde();
                 spelPatroon = this.patroon[r - 1][k - 1].getWaarde();
 
-                if (userPatroon.equals(spelPatroon)) {//vast
+                if (userPatroon.equals(spelPatroon)) {
                     rtrn = true;
                 } else {
                     rtrn = false;
@@ -106,36 +107,21 @@ public class Nonogram {
         System.out.println(builder.append("\n").toString());
     }
 
-    public String kleurIn(int rij, int kolom) {
-        String message;
+    public boolean kleurIn(int rij, int kolom) {
+        boolean rtrn = false;
         if (rij <= grootte && kolom <= grootte) {
-            if (achterLiggendPatroon[rij - 1][kolom - 1].getWaarde().equals("O")) {
-                message = "juist";
-                patroon[rij - 1][kolom - 1].kleurIn();
-                toonGrid();
-            } else {
-                message = "fout";
-                patroon[rij - 1][kolom - 1].kleurIn();
-                toonGrid();
-
+            if(!patroon[rij][kolom].isIngekleurd()){
+                patroon[rij][kolom].kleurIn();
+                rtrn = true;
+            }else{
+                patroon[rij][kolom].cancelKleurIn();
             }
-        } else {
-            message = "Ingevoerd getal is te groot!";
-        }
-
-        return message;
-    }
-
-    public void duidAan(int rij, int kolom) {
-        if (!patroon[rij - 1][kolom - 1].getWaarde().equals("O")) {
-            patroon[rij - 1][kolom - 1].duidAan();
-            toonGrid();
-        } else {
-            System.out.println("U heeft dit al ingekleurd");
             toonGrid();
         }
-
+        return rtrn;
     }
+
+
 
 
     //Voorgemaakte nonogramen

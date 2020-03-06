@@ -24,9 +24,11 @@ public class Vakje {
         this.waarde = "O";
         this.ingekleurd = true;
     }
-    public void duidAan(){
-        this.waarde="*";
+
+    public void cancelKleurIn(){
+        this.waarde = "X";
         this.ingekleurd = false;
     }
+
 
 }

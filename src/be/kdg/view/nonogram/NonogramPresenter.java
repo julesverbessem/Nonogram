@@ -109,16 +109,26 @@ public class NonogramPresenter {
             }
         });
 
-        for(ArrayList<Label> labelLijst: view.getNonogram()){//WERKT NOG NIET
-            for(Label huidigeLabel: labelLijst) {
-                huidigeLabel.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        for (int rij = 0; rij < view.getNonogram().size(); rij++) {
+            ArrayList<Label> lbllijst = view.getNonogram().get(rij);
+            for (int kolom = 0; kolom < lbllijst.size(); kolom++) {
+                final int frij = rij;
+                final int fkolom = kolom;
+                lbllijst.get(kolom).setOnMouseReleased(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
-                        System.out.println(mouseEvent.getX());
-                        System.out.println(mouseEvent.getY());
+                        if(speler.getOpgeslagenSpel().getMijnNonogram().kleurIn(frij, fkolom)){
+                            view.getNonogram().get(frij).get(fkolom).setStyle("-fx-background-color: black");
+                        }else{
+                            view.getNonogram().get(frij).get(fkolom).setStyle("-fx-background-color: none");
+                        }
+                       if(speler.getOpgeslagenSpel().getMijnNonogram().controlleren()){
+                           System.out.println("klaar");
+                       }
                     }
                 });
             }
+
         }
     }
 

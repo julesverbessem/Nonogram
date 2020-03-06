@@ -66,8 +66,8 @@ public class GebruikersLijst extends Gebruiker {
             counter++;
             DateTimeFormatter format =  DateTimeFormatter.ofPattern("dd/MM/yyyy");
             String date = format.format(huidigeGebruiker.getDatum());
-            System.out.println(String.format("%d. %s ( %s) --------------------- %d",counter, huidigeGebruiker.getGebruikersnaam(),date, huidigeGebruiker.getLevel()));
-            stringBuilder.append(String.format("%d. %s ( %s) --------------------- %d",counter, huidigeGebruiker.getGebruikersnaam(),date, huidigeGebruiker.getLevel()));
+            System.out.println(String.format("%d. %s ( %s) --------------------- %-10s",counter, huidigeGebruiker.getGebruikersnaam(),date, Integer.toString(huidigeGebruiker.getLevel())));
+            stringBuilder.append(String.format("%d. %s ( %s) --------------------- %-10s \n",counter, huidigeGebruiker.getGebruikersnaam(),date, Integer.toString(huidigeGebruiker.getLevel())));
         }
         return stringBuilder.toString();
     }

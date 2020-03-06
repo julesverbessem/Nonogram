@@ -26,4 +26,5 @@ public class Spel {
         speler.setLevel(lvlUp);
     }
 
+    public Nonogram getMijnNonogram(){return mijnNonogram;}
 }
