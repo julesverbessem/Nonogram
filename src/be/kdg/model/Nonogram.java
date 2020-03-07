@@ -11,6 +11,7 @@ public class Nonogram {
     private Vakje[][] achterLiggendPatroon;
     private String[] rij;
     private String[] kolom;
+    private int aantalIngekleurdeVakjes;
 
     public Nonogram(int grootte) {
         this.patroon = new Vakje[grootte][grootte];
@@ -18,6 +19,7 @@ public class Nonogram {
         this.rij = new String[grootte];
         this.kolom = new String[grootte];
         this.grootte = grootte;
+        this.aantalIngekleurdeVakjes = 0;
 
         for (int rij = 1; rij <= grootte; rij++) {//aan te passe patroon waarde geven
             for (int kolom = 1; kolom <= grootte; kolom++) {
@@ -50,19 +52,29 @@ public class Nonogram {
         boolean rtrn = false;
         String userPatroon = "";
         String spelPatroon = "";
+        int aantalspeVakjes = this.aantalIngekleurdeVakjes;
+        int aantaluserVakjses = 0;
+        System.out.println("ingekleurd patroon:"+aantalspeVakjes);
 
         for (int rij = 1; rij <= grootte; rij++) {
             for (int kolom = 1; kolom <= grootte; kolom++) {
                 int r = rij;
                 int k = kolom;
-                userPatroon = this.achterLiggendPatroon[r - 1][k - 1].getWaarde();
-                spelPatroon = this.patroon[r - 1][k - 1].getWaarde();
+                spelPatroon = this.achterLiggendPatroon[r - 1][k - 1].getWaarde();
+                userPatroon = this.patroon[r - 1][k - 1].getWaarde();
 
-                if (userPatroon.equals(spelPatroon)) {
-                    rtrn = true;
-                } else {
+
+                if(this.patroon[r - 1][k - 1].isIngekleurd()){
+                    aantaluserVakjses++;
+                    System.out.println(aantaluserVakjses);
+                    if(aantaluserVakjses==aantalspeVakjes){
+                        System.out.println("x");
+                        rtrn = true;
+                    }
+                }else{
                     rtrn = false;
                 }
+
             }
         }
 
@@ -129,6 +141,7 @@ public class Nonogram {
         //attributen
         this.naam = "Horizontale lijn";
         this.moeilijkheidsgraad = 1;
+        this.aantalIngekleurdeVakjes=5;
 
         //waarde rij
         Arrays.fill(this.kolom, "");//ieder element heeft waarde ""
@@ -157,6 +170,7 @@ public class Nonogram {
         //attributen
         this.naam = "Verticale lijn";
         this.moeilijkheidsgraad = 2;
+        this.aantalIngekleurdeVakjes=5;
 
         //waarde rij
         Arrays.fill(this.rij, "1");
