@@ -65,13 +65,4 @@ public class FelicitatiePresenter {
             }
         });
     }
-
-    public  void addWindowEventHandlers(){
-        view.getScene().getWindow().setOnShowing(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent windowEvent) {
-                //view.getLblFoto() de juiste foto toevoegen aan de label aan de hand van de level van de user
-            }
-        });
-    }
 }

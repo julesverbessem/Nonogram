@@ -123,7 +123,15 @@ public class NonogramPresenter {
                             view.getNonogram().get(frij).get(fkolom).setStyle("-fx-background-color: none");
                         }
                         if(speler.getOpgeslagenSpel().getMijnNonogram().controlleren()){
-                           System.out.println("klaar");
+                           System.out.println("Gewonnen!");
+                           speler.getOpgeslagenSpel().startVolgendSpel(speler);
+                            FelicitatieView felicitatieView = new FelicitatieView(speler);
+                            FelicitatiePresenter felicitatiePresenter = new FelicitatiePresenter(model,felicitatieView,speler.getGebruikersnaam());
+
+                            view.getScene().setRoot(felicitatieView);
+                            felicitatieView.getScene().getWindow().sizeToScene();
+                            felicitatieView.getScene().getWindow().setHeight(800);
+                            felicitatieView.getScene().getWindow().setWidth(900);
                        }
                     }
                 });
@@ -152,15 +160,6 @@ public class NonogramPresenter {
 
                 if(cancelNonogram.getResult().equals(neeButton)){
                     windowEvent.consume();
-                }
-                else{
-                    FelicitatieView felicitatieView = new FelicitatieView();
-                    FelicitatiePresenter felicitatiePresenter = new FelicitatiePresenter(model,felicitatieView,speler.getGebruikersnaam());
-
-                    view.getScene().setRoot(felicitatieView);
-                    felicitatieView.getScene().getWindow().sizeToScene();
-                    felicitatieView.getScene().getWindow().setHeight(800);
-                    felicitatieView.getScene().getWindow().setWidth(900);
                 }
             }
         });

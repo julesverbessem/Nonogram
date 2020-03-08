@@ -1,7 +1,9 @@
 package be.kdg.view.felicitatie;
 
+import be.kdg.model.Gebruiker;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
@@ -9,20 +11,24 @@ import javafx.scene.layout.HBox;
 public class FelicitatieView extends BorderPane {
     private Label lblTitel;
     private Label lblFoto;
+    private ImageView imageView;
 
     private Button btnNieuwLevel;
     private Button btnScorenboard;
     private Button btnBeginScherm;
     private HBox buttonBox;
 
-    public FelicitatieView(){
-        this.initialiseNodes();
+    public FelicitatieView(Gebruiker speler){
+        this.initialiseNodes(speler);
         this.layoutNodes();
     }
 
-    private void initialiseNodes() {
-        this.lblTitel = new Label("Proficiat!");
-        this.lblFoto = new Label();// in de presenter foto toewijzen aan label
+    private void initialiseNodes(Gebruiker speler){
+        this.lblTitel = new Label(speler.getOpgeslagenSpel().getMijnNonogram().feliciteren());
+
+
+        this.imageView = new ImageView(speler.getOpgeslagenSpel().toonNonogramFoto(speler));
+        this.lblFoto = new Label("",imageView);// in de presenter foto toewijzen aan label
 
         this.btnNieuwLevel = new Button("Nieuw Level");
         this.btnScorenboard = new Button("Scorenboard");
@@ -40,9 +46,7 @@ public class FelicitatieView extends BorderPane {
         this.setBottom(buttonBox);
     }
 
-    public Label getLblFoto() {
-        return lblFoto;
-    }
+
 
     public Button getBtnNieuwLevel() {
         return btnNieuwLevel;

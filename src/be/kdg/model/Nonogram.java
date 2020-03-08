@@ -50,25 +50,17 @@ public class Nonogram {
     //functionele methodes
     public boolean controlleren() {//verder afwerken met peerTutor
         boolean rtrn = false;
-        String userPatroon = "";
-        String spelPatroon = "";
         int aantalspeVakjes = this.aantalIngekleurdeVakjes;
         int aantaluserVakjses = 0;
-        System.out.println("ingekleurd patroon:"+aantalspeVakjes);
 
         for (int rij = 1; rij <= grootte; rij++) {
             for (int kolom = 1; kolom <= grootte; kolom++) {
                 int r = rij;
                 int k = kolom;
-                spelPatroon = this.achterLiggendPatroon[r - 1][k - 1].getWaarde();
-                userPatroon = this.patroon[r - 1][k - 1].getWaarde();
-
-
                 if(this.patroon[r - 1][k - 1].isIngekleurd()){
                     aantaluserVakjses++;
-                    System.out.println(aantaluserVakjses);
+
                     if(aantaluserVakjses==aantalspeVakjes){
-                        System.out.println("x");
                         rtrn = true;
                     }
                 }else{
