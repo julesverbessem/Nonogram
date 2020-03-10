@@ -68,7 +68,8 @@ public class StartPresenter {
                         signUpView.getScene().getWindow().setWidth(900);
                     }
                 }else {
-                    NonogramView nonogramView = new NonogramView(model.getGebruiker(view.getTxtUsernaam().getText()).getOpgeslagenSpel().startSpel(model.getGebruiker(view.getTxtUsernaam().getText())));
+                    model.getGebruiker(view.getTxtUsernaam().getText()).getOpgeslagenSpel().startSpel(model.getGebruiker(view.getTxtUsernaam().getText()));
+                    NonogramView nonogramView = new NonogramView(model.getGebruiker(view.getTxtUsernaam().getText()).getOpgeslagenSpel().getMijnNonogram());
                     NonogramPresenter nonogramPresenter = new NonogramPresenter(model,nonogramView,view.getTxtUsernaam().getText());
 
                     view.getScene().setRoot(nonogramView);

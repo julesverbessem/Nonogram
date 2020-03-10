@@ -31,7 +31,8 @@ public class FelicitatiePresenter {
         view.getBtnNieuwLevel().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                NonogramView nonogramView = new NonogramView(model.getGebruiker(gebruikersnaam).getOpgeslagenSpel().startSpel(model.getGebruiker(gebruikersnaam)));
+                model.getGebruiker(gebruikersnaam).getOpgeslagenSpel().startSpel(model.getGebruiker(gebruikersnaam));
+                NonogramView nonogramView = new NonogramView(model.getGebruiker(gebruikersnaam).getOpgeslagenSpel().getMijnNonogram());
                 NonogramPresenter nonogramPresenter = new NonogramPresenter(model,nonogramView,gebruikersnaam);
 
                 view.getScene().setRoot(nonogramView);

@@ -1,6 +1,7 @@
 package be.kdg.view.nonogram;
 
 import be.kdg.model.GebruikersLijst;
+import be.kdg.model.Nonogram;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
@@ -27,11 +28,11 @@ public class NonogramView extends BorderPane {
     private GridPane kolomGrid;
     private GridPane centerGrid;
 
-    public NonogramView(int grote){
+    public NonogramView(Nonogram nonogram){
         this.initialiseNodes();
         this.layoutNodes();
-        this.initialiseGrid(grote);
-        this.layoutGrid(grote);
+        this.initialiseGrid(nonogram);
+        this.layoutGrid(nonogram.getGrootte());
     }
 
     private void initialiseNodes() {
@@ -86,7 +87,8 @@ public class NonogramView extends BorderPane {
         lblTitel.setContentDisplay(ContentDisplay.CENTER);
     }
 
-    private void initialiseGrid(int grote){
+    private void initialiseGrid(Nonogram viewNon){
+        int grote = viewNon.getGrootte();
         for(int rij = 1; rij<= grote; rij++){
             ArrayList<Label> kolomLijst = new ArrayList<>();
             for(int kolom = 1; kolom<= grote; kolom++){
@@ -105,12 +107,12 @@ public class NonogramView extends BorderPane {
 
         for(int rij =1; rij<=grote; rij++){
             int r = rij;
-            rijGrid.add(new Label("rij"),0,r-1);
+            rijGrid.add(new Label(viewNon.getRij()[r-1]),0,r-1);
         }
 
         for(int kolom =1; kolom<=grote; kolom++){
             int k = kolom;
-            kolomGrid.add(new Label("kolom"),k-1,0);
+            kolomGrid.add(new Label(viewNon.getKolom()[k-1]),k-1,0);
         }
     }
 

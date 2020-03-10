@@ -1,7 +1,11 @@
 package be.kdg.model;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Nonogram {
     private int moeilijkheidsgraad;
@@ -59,10 +63,10 @@ public class Nonogram {
                 int k = kolom;
                 if(this.patroon[r - 1][k - 1].isIngekleurd()){
                     aantaluserVakjses++;
+                    rtrn = true;
+                   /* if(aantaluserVakjses==aantalspeVakjes){
 
-                    if(aantaluserVakjses==aantalspeVakjes){
-                        rtrn = true;
-                    }
+                    }*/
                 }else{
                     rtrn = false;
                 }
@@ -125,8 +129,43 @@ public class Nonogram {
         return rtrn;
     }
 
+    public String[] getRij() {
+        return rij;
+    }
+
+    public String[] getKolom() {
+        return kolom;
+    }
+
+    private void leesNonogramIn(File csvnonogram){
+        try {
+            //inlzen bestand
+            String[] lijstVakken = new String[0];
+            List<String> vakjes = Files.readAllLines(csvnonogram.toPath());
+            for (String vak : vakjes) {
+                lijstVakken = vak.split(";");
+            }
+
+            for (String vak : lijstVakken) {
+                //omvormen
+                for (int rij = 1; rij <= grootte; rij++) {
+                    for (int kolom = 1; kolom <= grootte; kolom++) {
+                        int r = rij;
+                        int k = kolom;
+                        if(vak.equals("X")){
+                            this.achterLiggendPatroon[r - 1][k - 1].setDefaultWaarde();
+                        }else{
+                            this.achterLiggendPatroon[r - 1][k - 1].kleurIn();
+                        }
+                    }
+                }
+            }
 
 
+        } catch (IOException e) {
+            System.out.println("Fout bij het inlezen van bestand " + csvnonogram.getName());
+        }
+    }
 
     //Voorgemaakte nonogramen
     public void nonogram1_lijn() {
@@ -137,23 +176,13 @@ public class Nonogram {
 
         //waarde rij
         Arrays.fill(this.kolom, "");//ieder element heeft waarde ""
-        this.rij[grootte - 1] = String.valueOf(this.kolom.length);
+        this.kolom[grootte - 1] = String.valueOf(this.kolom.length);
         //waarde kolom
         Arrays.fill(this.rij, "1");
 
-
         //patroon
-        for (int rij = 1; rij <= grootte; rij++) {
-            for (int kolom = 1; kolom <= grootte; kolom++) {
-                int r = rij;
-                int k = kolom;
-                this.achterLiggendPatroon[r - 1][k - 1].setDefaultWaarde();
-                if (k % grootte == 0) {
-                    this.achterLiggendPatroon[r - 1][k - 1].kleurIn();
-                }
-
-            }
-        }
+        File csvNonogram = new File("..\\..\\..\\resources\\Nonogram1.csv");
+        leesNonogramIn(csvNonogram);
 
         toonAchterLiggendPatroon();
     }
@@ -165,10 +194,10 @@ public class Nonogram {
         this.aantalIngekleurdeVakjes=5;
 
         //waarde rij
-        Arrays.fill(this.rij, "1");
+        Arrays.fill(this.kolom, "1");
         //waarde kolom
-        Arrays.fill(this.kolom, "");
-        this.rij[3] = String.valueOf(this.rij.length);//derde rij
+        Arrays.fill(this.rij, "");
+        this.rij[2] = String.valueOf(this.rij.length);//derde rij
 
         //patroon
         for (int rij = 1; rij <= grootte; rij++) {
