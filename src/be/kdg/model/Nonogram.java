@@ -175,13 +175,11 @@ public class Nonogram {
         this.aantalIngekleurdeVakjes=5;
 
         //waarde rij
-        Arrays.fill(this.kolom, "");//ieder element heeft waarde ""
-        this.kolom[grootte - 1] = String.valueOf(this.kolom.length);
-        //waarde kolom
-        Arrays.fill(this.rij, "1");
+        File csvGetallenNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\GetallenNonogram1.csv");
+        leesNonogramIn(csvGetallenNonogram);
 
         //patroon
-        File csvNonogram = new File("..\\..\\..\\resources\\Nonogram1.csv");
+        File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram1.csv");
         leesNonogramIn(csvNonogram);
 
         toonAchterLiggendPatroon();
