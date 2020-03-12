@@ -167,6 +167,31 @@ public class Nonogram {
         }
     }
 
+    private void leesGetallenNonogramIn(File csvGetallenNonogram) {
+        try {
+            //inlzen bestand
+            String[] lijstVakken = new String[0];
+            List<String> vakjes = Files.readAllLines(csvGetallenNonogram.toPath());
+            for (String vak : vakjes) {
+                lijstVakken = vak.split(";");
+            }
+
+            for (int i = 0; i < lijstVakken.length; i++) {
+                if(i<=grootte-1){
+                    kolom[i]=lijstVakken[i];
+                }
+                else{
+                    rij[i-grootte]=lijstVakken[i];
+                }
+
+            }
+
+
+        } catch (IOException e) {
+            System.out.println("Fout bij het inlezen van bestand " + csvGetallenNonogram.getName());
+        }
+    }
+
     //Voorgemaakte nonogramen
     public void nonogram1_lijn() {
         //attributen
@@ -176,7 +201,7 @@ public class Nonogram {
 
         //waarde rij
         File csvGetallenNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\GetallenNonogram1.csv");
-        leesNonogramIn(csvGetallenNonogram);
+        leesGetallenNonogramIn(csvGetallenNonogram);
 
         //patroon
         File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram1.csv");
