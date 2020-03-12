@@ -1,7 +1,15 @@
 package be.kdg.model;
 
+import com.sun.nio.file.ExtendedOpenOption;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Gebruiker implements Comparable<Gebruiker>{
     private String gebruikersnaam;
@@ -16,7 +24,23 @@ public class Gebruiker implements Comparable<Gebruiker>{
         this.opgeslagenSpel = new Spel();
         this.level = 2;//aanpassen !!!!!!
         this.datum = LocalDateTime.now();
+
+        schrijfGebruikerWeg(gebruikersnaam,passwoord,opgeslagenSpel,level,datum);
     }
+
+    private void schrijfGebruikerWeg(String gebruikersnaam, String passwoord, Spel opgeslagenSpel, int level, LocalDateTime datum) {
+        File gbrfile = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Gebruikers.csv");
+        String data = gebruikersnaam+";"+passwoord+";"+opgeslagenSpel+";"+level+";"+datum+";";
+        List<String> datalist = new ArrayList<>();
+        datalist.add(data);
+        System.out.println(data);
+        try {
+            Files.write(gbrfile.toPath(),datalist, StandardOpenOption.APPEND);
+        } catch (IOException e) {
+            System.out.println("Een fout bij het wegschrijven van gebruiker "+gebruikersnaam);
+        }
+    }
+
     public Gebruiker(){};
 
     public String getGebruikersnaam() {
