@@ -14,7 +14,7 @@ public class Gebruiker implements Comparable<Gebruiker>{
         this.gebruikersnaam = gebruikersnaam;
         this.passwoord = passwoord;
         this.opgeslagenSpel = new Spel();
-        this.level = 1;//aanpassen !!!!!!
+        this.level = 2;//aanpassen !!!!!!
         this.datum = LocalDateTime.now();
     }
     public Gebruiker(){};

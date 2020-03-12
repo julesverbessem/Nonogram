@@ -52,28 +52,41 @@ public class Nonogram {
     public int getGrootte(){ return this.grootte;}
 
     //functionele methodes
-    public boolean controlleren() {//verder afwerken met peerTutor
+    public boolean controlleren(int frij, int fkolom) {//verder afwerken met peerTutor
         boolean rtrn = false;
-        int aantalspeVakjes = this.aantalIngekleurdeVakjes;
         int aantaluserVakjses = 0;
+        int aantalspelvkajes = 0;
 
         for (int rij = 1; rij <= grootte; rij++) {
             for (int kolom = 1; kolom <= grootte; kolom++) {
                 int r = rij;
                 int k = kolom;
-                if(this.patroon[r - 1][k - 1].isIngekleurd()){
-                    aantaluserVakjses++;
-                    rtrn = true;
-                   /* if(aantaluserVakjses==aantalspeVakjes){
 
-                    }*/
+
+
+
+                if(this.patroon[r - 1][k - 1].getWaarde().equals(this.achterLiggendPatroon[r - 1][k - 1].getWaarde())&&this.achterLiggendPatroon[r - 1][k - 1].getWaarde().equals("O")){
+                    System.out.println("Juist vakje");
+
+                    if(this.patroon[r - 1][k - 1].isIngekleurd()){
+                        aantaluserVakjses++;
+                        System.out.println(aantaluserVakjses);
+                    }
+                    if(aantaluserVakjses==this.aantalIngekleurdeVakjes){
+                        System.out.println(aantaluserVakjses+"ej");
+                        rtrn = true;
+                        return rtrn;
+                    }
                 }else{
+                    if(this.patroon[r - 1][k - 1].isIngekleurd()){
+                        aantaluserVakjses++;
+                        System.out.println(aantaluserVakjses);
+                    }
                     rtrn = false;
                 }
 
             }
         }
-
         return rtrn;
     }
 

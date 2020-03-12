@@ -122,7 +122,7 @@ public class NonogramPresenter {
                         }else{
                             view.getNonogram().get(frij).get(fkolom).setStyle("-fx-background-color: none");
                         }
-                        if(speler.getOpgeslagenSpel().getMijnNonogram().controlleren()){
+                        if(speler.getOpgeslagenSpel().getMijnNonogram().controlleren(frij,fkolom)){
                            System.out.println("Gewonnen!");
                            speler.getOpgeslagenSpel().startVolgendSpel(speler);
                             FelicitatieView felicitatieView = new FelicitatieView(speler);
