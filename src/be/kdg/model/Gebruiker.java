@@ -14,23 +14,33 @@ import java.util.List;
 public class Gebruiker implements Comparable<Gebruiker>{
     private String gebruikersnaam;
     private String passwoord;
-    public Spel opgeslagenSpel;
+    public Spel opgeslagenSpel=new Spel();
     private int level;
     private LocalDateTime datum;
 
     public Gebruiker(String gebruikersnaam, String passwoord) {
         this.gebruikersnaam = gebruikersnaam;
         this.passwoord = passwoord;
-        this.opgeslagenSpel = new Spel();
         this.level = 2;//aanpassen !!!!!!
         this.datum = LocalDateTime.now();
 
-        schrijfGebruikerWeg(gebruikersnaam,passwoord,opgeslagenSpel,level,datum);
+        schrijfGebruikerWeg(gebruikersnaam,passwoord,level,datum);
+    }
+/*
+    public Gebruiker(String gebruikersnaam,String passwoord,int level, LocalDateTime datum){
+        this.gebruikersnaam = gebruikersnaam;
+        this.passwoord = passwoord;
+        this.level = level;
+        this.datum = datum;
+    }*/
+
+    public Gebruiker(String gebruikersnaam){
+        this.gebruikersnaam = gebruikersnaam;
     }
 
-    private void schrijfGebruikerWeg(String gebruikersnaam, String passwoord, Spel opgeslagenSpel, int level, LocalDateTime datum) {
+    private void schrijfGebruikerWeg(String gebruikersnaam, String passwoord, int level, LocalDateTime datum) {
         File gbrfile = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Gebruikers.csv");
-        String data = gebruikersnaam+";"+passwoord+";"+opgeslagenSpel+";"+level+";"+datum+";";
+        String data = gebruikersnaam+";"+passwoord+";"+level+";"+datum+";";
         List<String> datalist = new ArrayList<>();
         datalist.add(data);
         System.out.println(data);

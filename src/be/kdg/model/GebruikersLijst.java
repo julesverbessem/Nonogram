@@ -1,18 +1,45 @@
 package be.kdg.model;
 
 import javax.swing.text.DateFormatter;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class GebruikersLijst extends Gebruiker {
     private ArrayList<Gebruiker> lijst;
 
     public GebruikersLijst() {
         this.lijst = new ArrayList<>();
-        setGebruiker(new Gebruiker("Jules","Test"));
+        initialiseGebruikersLijst();
+    }
+
+    private void initialiseGebruikersLijst() {
+        File gbrcsv = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Gebruikers.csv");
+        try {
+            //inlzen bestand
+            String[] gebruikers = new String[0];
+            List<String> gebruikersdata = Files.readAllLines(gbrcsv.toPath());
+            for (String gebruiker : gebruikersdata) {
+                gebruikers = gebruiker.split(";");
+            }
+
+            for (int i = 0; i < gebruikers.length; i++) {
+                if(i%4==0){
+                    lijst.add(new Gebruiker(gebruikers[i]));
+                }else {
+                    System.out.println(gebruikers[i]);
+                }
+            }
+
+        } catch (IOException e) {
+            System.out.println("Fout bij het inlezen van bestand " + gbrcsv.getName());
+        }
     }
 
     public ArrayList<Gebruiker> getLijst() {
