@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class GebruikersLijst extends Gebruiker {
     private ArrayList<Gebruiker> lijst;
@@ -21,25 +22,40 @@ public class GebruikersLijst extends Gebruiker {
 
     private void initialiseGebruikersLijst() {
         File gbrcsv = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Gebruikers.csv");
-        try {
-            //inlzen bestand
-            String[] gebruikers = new String[0];
-            List<String> gebruikersdata = Files.readAllLines(gbrcsv.toPath());
-            for (String gebruiker : gebruikersdata) {
-                gebruikers = gebruiker.split(";");
-            }
+        try (Scanner fileScanner = new Scanner(gbrcsv)) {
+            while (fileScanner.hasNext()) {
+               // List<String> gebruikers  = new ArrayList<>();
+//                gebruikers.add( fileScanner.nextLine());
+                String gebruiker = fileScanner.nextLine();
+                String[] data = new String[4];
+                data = gebruiker.split(";");
+                for (int i = 0; i < data.length; i++) {
 
-            for (int i = 0; i < gebruikers.length; i++) {
-                if(i%4==0){
-                    lijst.add(new Gebruiker(gebruikers[i]));
-                }else {
-                    System.out.println(gebruikers[i]);
+                    switch (i){
+                        case 0:
+                            lijst.add(new Gebruiker(data[i]));
+                           System.out.println(data[i]);
+                            break;
+                        case 1:
+                            lijst.get(0).setPasswoord(data[i]);//aanpassen
+                           // System.out.println(data[i]+" 1");
+                            break;
+                        case 2:
+                            lijst.get(0).setLevel(Integer.parseInt(data[i]));
+                          //  System.out.println(data[i]+" 2");
+                            break;
+                        case 3:
+                            lijst.get(0).setDatum(LocalDateTime.parse(data[i]));
+                         //   System.out.println(data[i]+" 3");
+                            break;
+                    }
                 }
             }
 
-        } catch (IOException e) {
+        } catch (IOException ioe) {
             System.out.println("Fout bij het inlezen van bestand " + gbrcsv.getName());
         }
+
     }
 
     public ArrayList<Gebruiker> getLijst() {
@@ -67,9 +83,12 @@ public class GebruikersLijst extends Gebruiker {
     public boolean login(String gebruikersnaam, String passwoord) {
         //later lijst overlopen om user te vinden
         for (Gebruiker huidigeGebruiker : lijst) {
+            System.out.println(huidigeGebruiker.getGebruikersnaam().equals(gebruikersnaam));
+            System.out.println(".."+huidigeGebruiker.getGebruikersnaam()+"..");
+            System.out.println(".."+gebruikersnaam+"..");
+            System.out.println(passwoord.equals(huidigeGebruiker.getPasswoord()));
             if (huidigeGebruiker.getGebruikersnaam().equals(gebruikersnaam) && huidigeGebruiker.getPasswoord().equals(passwoord)) {
                 if (huidigeGebruiker.getOpgeslagenSpel() == null) {
-                    huidigeGebruiker.setOpgeslagenSpel(new Spel());
                     huidigeGebruiker.setLevel(1);
                     System.out.println("Gebruiker heeft nog geen spel, hij start bij 1");
                     return true;

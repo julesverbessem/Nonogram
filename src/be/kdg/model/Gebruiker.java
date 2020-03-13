@@ -21,7 +21,7 @@ public class Gebruiker implements Comparable<Gebruiker>{
     public Gebruiker(String gebruikersnaam, String passwoord) {
         this.gebruikersnaam = gebruikersnaam;
         this.passwoord = passwoord;
-        this.level = 2;//aanpassen !!!!!!
+        this.level = 1;//aanpassen !!!!!!
         this.datum = LocalDateTime.now();
 
         schrijfGebruikerWeg(gebruikersnaam,passwoord,level,datum);
@@ -40,12 +40,10 @@ public class Gebruiker implements Comparable<Gebruiker>{
 
     private void schrijfGebruikerWeg(String gebruikersnaam, String passwoord, int level, LocalDateTime datum) {
         File gbrfile = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Gebruikers.csv");
-        String data = gebruikersnaam+";"+passwoord+";"+level+";"+datum+";";
-        List<String> datalist = new ArrayList<>();
-        datalist.add(data);
+        String data = "\n"+gebruikersnaam+";"+passwoord+";"+level+";"+datum+";";
         System.out.println(data);
         try {
-            Files.write(gbrfile.toPath(),datalist, StandardOpenOption.APPEND);
+            Files.writeString(gbrfile.toPath(),data, StandardOpenOption.APPEND);
         } catch (IOException e) {
             System.out.println("Een fout bij het wegschrijven van gebruiker "+gebruikersnaam);
         }
