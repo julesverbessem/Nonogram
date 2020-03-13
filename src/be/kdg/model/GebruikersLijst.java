@@ -83,7 +83,7 @@ public class GebruikersLijst extends Gebruiker {
     public boolean login(String gebruikersnaam, String passwoord) {
         //later lijst overlopen om user te vinden
         for (Gebruiker huidigeGebruiker : lijst) {
-            System.out.println(huidigeGebruiker.getGebruikersnaam().equals(gebruikersnaam));
+            System.out.println(gebruikersnaam.equalsIgnoreCase(huidigeGebruiker.getGebruikersnaam()));
             System.out.println(".."+huidigeGebruiker.getGebruikersnaam()+"..");
             System.out.println(".."+gebruikersnaam+"..");
             System.out.println(passwoord.equals(huidigeGebruiker.getPasswoord()));

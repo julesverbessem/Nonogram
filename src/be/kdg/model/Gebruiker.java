@@ -26,14 +26,8 @@ public class Gebruiker implements Comparable<Gebruiker>{
 
         schrijfGebruikerWeg(gebruikersnaam,passwoord,level,datum);
     }
-/*
-    public Gebruiker(String gebruikersnaam,String passwoord,int level, LocalDateTime datum){
-        this.gebruikersnaam = gebruikersnaam;
-        this.passwoord = passwoord;
-        this.level = level;
-        this.datum = datum;
-    }*/
 
+    public Gebruiker(){};
     public Gebruiker(String gebruikersnaam){
         this.gebruikersnaam = gebruikersnaam;
     }
@@ -48,8 +42,6 @@ public class Gebruiker implements Comparable<Gebruiker>{
             System.out.println("Een fout bij het wegschrijven van gebruiker "+gebruikersnaam);
         }
     }
-
-    public Gebruiker(){};
 
     public String getGebruikersnaam() {
         return gebruikersnaam;

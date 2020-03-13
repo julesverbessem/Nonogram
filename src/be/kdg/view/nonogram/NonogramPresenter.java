@@ -117,22 +117,28 @@ public class NonogramPresenter {
                 lbllijst.get(kolom).setOnMouseReleased(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
-                        if(speler.getOpgeslagenSpel().getMijnNonogram().kleurIn(frij, fkolom)){
-                            view.getNonogram().get(frij).get(fkolom).setStyle("-fx-background-color: black");
-                        }else{
-                            view.getNonogram().get(frij).get(fkolom).setStyle("-fx-background-color: none");
-                        }
-                        if(speler.getOpgeslagenSpel().getMijnNonogram().controlleren(frij,fkolom)){
-                           System.out.println("Gewonnen!");
-                           speler.getOpgeslagenSpel().startVolgendSpel(speler);
-                            FelicitatieView felicitatieView = new FelicitatieView(speler);
-                            FelicitatiePresenter felicitatiePresenter = new FelicitatiePresenter(model,felicitatieView,speler.getGebruikersnaam());
+                        if(mouseEvent.getClickCount()==1){
+                            if(speler.getOpgeslagenSpel().getMijnNonogram().kleurIn(frij, fkolom)){
+                                view.getNonogram().get(frij).get(fkolom).setStyle("-fx-background-color: black");
+                            }else{
+                                view.getNonogram().get(frij).get(fkolom).setStyle("-fx-background-color: none");
+                            }
+                            if(speler.getOpgeslagenSpel().getMijnNonogram().controlleren(frij,fkolom)){
+                                System.out.println("Gewonnen!");
+                                speler.getOpgeslagenSpel().startVolgendSpel(speler);
+                                FelicitatieView felicitatieView = new FelicitatieView(speler);
+                                FelicitatiePresenter felicitatiePresenter = new FelicitatiePresenter(model,felicitatieView,speler.getGebruikersnaam());
 
-                            view.getScene().setRoot(felicitatieView);
-                            felicitatieView.getScene().getWindow().sizeToScene();
-                            felicitatieView.getScene().getWindow().setHeight(800);
-                            felicitatieView.getScene().getWindow().setWidth(900);
-                       }
+                                view.getScene().setRoot(felicitatieView);
+                                felicitatieView.getScene().getWindow().sizeToScene();
+                                felicitatieView.getScene().getWindow().setHeight(800);
+                                felicitatieView.getScene().getWindow().setWidth(900);
+                            }
+                        }else {
+                            view.getNonogram().get(frij).get(fkolom).setStyle("-fx-background-color: grey");
+                        }
+
+
                     }
                 });
             }

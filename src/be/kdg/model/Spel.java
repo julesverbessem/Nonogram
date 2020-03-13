@@ -24,6 +24,7 @@ public class Spel {
     public void startVolgendSpel(Gebruiker speler){
         int lvl = speler.getLevel();
         int lvlUp = lvl+1;
+
         speler.setLevel(lvlUp);
     }
 
