@@ -1,0 +1,16 @@
+﻿Een nonogram is een beeldpuzzel.
+De oplossing is een tekening van gekleurde blokjes of pixels.
+De lengte en breedte kunnen variëren van 5 tot 200 en meer. 
+Er zijn 3 verschillende kleuren: zwart, wit en grijs.
+De opgave is een leeg diagram.
+Getallen boven en links van het diagram geven
+aan hoe lang de blokken zijn en welke kleur ze hebben.
+De witte blokken worden niet aangegeven. 
+Elk getal staat voor één of meer aaneengesloten
+blokken van een bepaalde kleur in de betreffende kolom of op de betreffende regel.
+Door deze blokken in te kleuren,
+vormt zich een afbeelding in het diagram: de oplossing van de puzzel.
+Door één keer op een vakje te clicken kleurt de speler het vakje in (zwart),
+zoals de getallen beven en links weergeven.
+Door twee keer op een vakje te clicken duid de speler het vakje aan (grijs),
+hier bij duid de speler aan dat dit vakje niet ingekleurd moet worden.

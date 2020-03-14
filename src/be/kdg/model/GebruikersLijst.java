@@ -23,6 +23,7 @@ public class GebruikersLijst extends Gebruiker {
     private void initialiseGebruikersLijst() {
         File gbrcsv = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Gebruikers.csv");
         try (Scanner fileScanner = new Scanner(gbrcsv)) {
+            int usercounter =0;
             while (fileScanner.hasNext()) {
                // List<String> gebruikers  = new ArrayList<>();
 //                gebruikers.add( fileScanner.nextLine());
@@ -32,24 +33,22 @@ public class GebruikersLijst extends Gebruiker {
                 for (int i = 0; i < data.length; i++) {
 
                     switch (i){
-                        case 0:
+                        case 1:
                             lijst.add(new Gebruiker(data[i]));
                            System.out.println(data[i]);
                             break;
-                        case 1:
-                            lijst.get(0).setPasswoord(data[i]);//aanpassen
-                           // System.out.println(data[i]+" 1");
-                            break;
                         case 2:
-                            lijst.get(0).setLevel(Integer.parseInt(data[i]));
-                          //  System.out.println(data[i]+" 2");
+                            lijst.get(usercounter).setPasswoord(data[i]);
                             break;
                         case 3:
-                            lijst.get(0).setDatum(LocalDateTime.parse(data[i]));
-                         //   System.out.println(data[i]+" 3");
+                            lijst.get(usercounter).setLevel(Integer.parseInt(data[i]));
+                            break;
+                        case 4:
+                            lijst.get(usercounter).setDatum(LocalDateTime.parse(data[i]));
                             break;
                     }
                 }
+                usercounter++;
             }
 
         } catch (IOException ioe) {
@@ -77,31 +76,26 @@ public class GebruikersLijst extends Gebruiker {
 
     public void setGebruiker(Gebruiker nieweSpeler) {
         this.lijst.add(nieweSpeler);
-        //nieweSpeler.opgeslagenSpel.startSpel(nieweSpeler);
     }
 
     public boolean login(String gebruikersnaam, String passwoord) {
         //later lijst overlopen om user te vinden
+        boolean rtn = false;
         for (Gebruiker huidigeGebruiker : lijst) {
             System.out.println(gebruikersnaam.equalsIgnoreCase(huidigeGebruiker.getGebruikersnaam()));
             System.out.println(".."+huidigeGebruiker.getGebruikersnaam()+"..");
             System.out.println(".."+gebruikersnaam+"..");
             System.out.println(passwoord.equals(huidigeGebruiker.getPasswoord()));
             if (huidigeGebruiker.getGebruikersnaam().equals(gebruikersnaam) && huidigeGebruiker.getPasswoord().equals(passwoord)) {
-                if (huidigeGebruiker.getOpgeslagenSpel() == null) {
-                    huidigeGebruiker.setLevel(1);
-                    System.out.println("Gebruiker heeft nog geen spel, hij start bij 1");
-                    return true;
-                }
-                //huidigeGebruiker.opgeslagenSpel.startSpel(huidigeGebruiker);
                 System.out.println("Gebruiker is ingeloged");
                 return true;
             } else {
                 System.out.println("Foute gebruikersnaam of wachtwoord");
+                rtn = false;
             }
-            return false;
+
         }
-        return false;
+        return rtn;
     }
 
     public String overzichtSpelers() {
