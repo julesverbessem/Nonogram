@@ -57,6 +57,20 @@ public class GebruikersLijst extends Gebruiker {
 
     }
 
+    public String inlezenSpelrgels(){
+        File csvSpelregels = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Spelregels.csv");
+        try(Scanner fileScanner = new Scanner(csvSpelregels)){
+            StringBuilder builder = new StringBuilder();
+            while(fileScanner.hasNext()){
+                builder.append(fileScanner.nextLine()).append("\n");
+            }
+            return builder.toString();
+        }catch (IOException ex){
+            System.out.println("Fout bij het inlezen van bestand " + csvSpelregels.getName());
+        }
+        return null;
+    }
+
     public ArrayList<Gebruiker> getLijst() {
         return lijst;
     }
@@ -82,10 +96,6 @@ public class GebruikersLijst extends Gebruiker {
         //later lijst overlopen om user te vinden
         boolean rtn = false;
         for (Gebruiker huidigeGebruiker : lijst) {
-            System.out.println(gebruikersnaam.equalsIgnoreCase(huidigeGebruiker.getGebruikersnaam()));
-            System.out.println(".."+huidigeGebruiker.getGebruikersnaam()+"..");
-            System.out.println(".."+gebruikersnaam+"..");
-            System.out.println(passwoord.equals(huidigeGebruiker.getPasswoord()));
             if (huidigeGebruiker.getGebruikersnaam().equals(gebruikersnaam) && huidigeGebruiker.getPasswoord().equals(passwoord)) {
                 System.out.println("Gebruiker is ingeloged");
                 return true;

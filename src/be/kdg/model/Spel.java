@@ -32,7 +32,7 @@ public class Spel {
         Image foto = null;
         switch (speler.getLevel()-1){
             case 1:
-                foto = new Image("./VerticaleLijn (Copy).jpg");
+                foto = new Image("./VerticaleLijn.jpg");
                 break;
             case 2:
                 foto = new Image("./horizontaleLijn.png");

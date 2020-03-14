@@ -101,11 +101,10 @@ public class NonogramPresenter {
             @Override
             public void handle(ActionEvent actionEvent) {
                 Alert spelregelsAlert = new Alert(Alert.AlertType.INFORMATION);
-                spelregelsAlert.setContentText("alle spelregels komen hier");
+                spelregelsAlert.setContentText(model.inlezenSpelrgels());
                 spelregelsAlert.setTitle("Spelregels");
                 spelregelsAlert.setHeaderText("Hieronder worden de spregels van het nonogram uitgelegd:");
                 spelregelsAlert.showAndWait();
-                //!! ipv van een alert een niew scherm?
             }
         });
 
@@ -118,6 +117,8 @@ public class NonogramPresenter {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
                         if(mouseEvent.getClickCount()==1){
+                            view.getNonogram().get(frij).get(fkolom).setStyle("-fx-background-color: grey");
+                        }else {
                             if(speler.getOpgeslagenSpel().getMijnNonogram().kleurIn(frij, fkolom)){
                                 view.getNonogram().get(frij).get(fkolom).setStyle("-fx-background-color: black");
                             }else{
@@ -134,8 +135,6 @@ public class NonogramPresenter {
                                 felicitatieView.getScene().getWindow().setHeight(800);
                                 felicitatieView.getScene().getWindow().setWidth(900);
                             }
-                        }else {
-                            view.getNonogram().get(frij).get(fkolom).setStyle("-fx-background-color: grey");
                         }
 
 
