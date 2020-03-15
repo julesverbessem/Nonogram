@@ -18,8 +18,38 @@ public class Spel {
             case 2:
                 mijnNonogram = new Nonogram(5);
                 mijnNonogram.nonogram2_lijnVerticaal();
+                break;case 3:
+                mijnNonogram = new Nonogram(5);
+                mijnNonogram.nonogram3();
                 break;
-                //aanvullen tot 10
+            case 4:
+                mijnNonogram = new Nonogram(10);
+                mijnNonogram.nonogram4();
+                break;
+            case 5:
+                mijnNonogram = new Nonogram(6);
+                mijnNonogram.nonogram5();
+                break;
+            case 6:
+                mijnNonogram = new Nonogram(10);
+                mijnNonogram.nonogram6();
+                break;
+            case 7:
+                mijnNonogram = new Nonogram(10);
+                mijnNonogram.nonogram7();
+                break;
+            case 8:
+                mijnNonogram = new Nonogram(10);
+                mijnNonogram.nonogram8();
+                break;
+            case 9:
+                mijnNonogram = new Nonogram(10);
+                mijnNonogram.nonogram9();
+                break;
+            case 10:
+                mijnNonogram = new Nonogram(10);
+                mijnNonogram.nonogram10();
+                break;
         }
         return  mijnNonogram.getGrootte();
     }

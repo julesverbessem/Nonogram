@@ -270,6 +270,115 @@ public class Nonogram {
         toonAchterLiggendPatroon();
     }
 
-    //aanvullen tot 10 nonogrammen
+    public void nonogram3() {
+        this.naam = "Kruis";
+        this.moeilijkheidsgraad = 3;
+        this.aantalIngekleurdeVakjes = 9;
 
+        File csvGetallenNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\GetallenNonogram3.csv");
+        leesGetallenNonogramIn(csvGetallenNonogram);
+
+        File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram3.csv");
+        leesNonogramIn(csvNonogram);
+
+        toonAchterLiggendPatroon();
+    }
+
+    public void nonogram4() {
+        this.naam = "Cirkel";
+        this.moeilijkheidsgraad = 4;
+        this.aantalIngekleurdeVakjes = 24;
+
+        File csvGetallenNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\GetallenNonogram4.csv");
+        leesGetallenNonogramIn(csvGetallenNonogram);
+
+        File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram4.csv");
+        leesNonogramIn(csvNonogram);
+
+        toonAchterLiggendPatroon();
+    }
+
+    public void nonogram5() {
+        this.naam = "Zwaan";
+        this.moeilijkheidsgraad = 5;
+        this.aantalIngekleurdeVakjes = 18;
+
+        File csvGetallenNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\GetallenNonogram5.csv");
+        leesGetallenNonogramIn(csvGetallenNonogram);
+
+        File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram5.csv");
+        leesNonogramIn(csvNonogram);
+
+        toonAchterLiggendPatroon();
+    }
+
+    public void nonogram6() {
+        this.naam = "Hartje";
+        this.moeilijkheidsgraad = 6;
+        this.aantalIngekleurdeVakjes = 25;
+
+        File csvGetallenNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\GetallenNonogram6.csv");
+        leesGetallenNonogramIn(csvGetallenNonogram);
+
+        File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram6.csv");
+        leesNonogramIn(csvNonogram);
+
+        toonAchterLiggendPatroon();
+    }
+
+    public void nonogram7() {
+        this.naam = "Lopendmannetje";
+        this.moeilijkheidsgraad = 7;
+        this.aantalIngekleurdeVakjes = 37;
+
+        File csvGetallenNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\GetallenNonogram7.csv");
+        leesGetallenNonogramIn(csvGetallenNonogram);
+
+        File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram7.csv");
+        leesNonogramIn(csvNonogram);
+
+        toonAchterLiggendPatroon();
+    }
+
+    public void nonogram8() {
+        this.naam = "Schildpad";
+        this.moeilijkheidsgraad = 8;
+        this.aantalIngekleurdeVakjes = 37;
+
+        File csvGetallenNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\GetallenNonogram8.csv");
+        leesGetallenNonogramIn(csvGetallenNonogram);
+
+        File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram8.csv");
+        leesNonogramIn(csvNonogram);
+
+        toonAchterLiggendPatroon();
+    }
+
+    public void nonogram9() {
+        this.naam = "Poes";
+        this.moeilijkheidsgraad = 9;
+        this.aantalIngekleurdeVakjes = 57;
+
+        File csvGetallenNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\GetallenNonogram9.csv");
+        leesGetallenNonogramIn(csvGetallenNonogram);
+
+        File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram9.csv");
+        leesNonogramIn(csvNonogram);
+
+        toonAchterLiggendPatroon();
+    }
+
+    public void nonogram10() {
+        this.naam = "Appel";
+        this.moeilijkheidsgraad = 10;
+        this.aantalIngekleurdeVakjes = 59;
+
+        File csvGetallenNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\GetallenNonogram10.csv");
+        leesGetallenNonogramIn(csvGetallenNonogram);
+
+        File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram10.csv");
+        leesNonogramIn(csvNonogram);
+
+        toonAchterLiggendPatroon();
+    }
 }
