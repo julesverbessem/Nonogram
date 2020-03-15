@@ -29,37 +29,30 @@ public class SignUpPresenter {
         view.getBtnLogIn().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                Alert cancelLogInAlert = new Alert(Alert.AlertType.ERROR);
+                cancelLogInAlert.setTitle("Login error.");
+                cancelLogInAlert.setHeaderText("Er is een fout bij het inloggen.");
+                cancelLogInAlert.getButtonTypes().clear();
+                ButtonType opniewButton = new ButtonType("Probeer opniew");
+                cancelLogInAlert.getButtonTypes().add(opniewButton);
+
                 for (Gebruiker huidigeGebruiker:model.getLijst()) {
                     if(huidigeGebruiker.getGebruikersnaam().equals(view.getTxtUsername().getText())){
-                        Alert cancelLogInAlert = new Alert(Alert.AlertType.ERROR);
                         cancelLogInAlert.setContentText("Uw gebruikersnaam: "+ view.getTxtUsername().getText()+" is al ingebruik!");
-                        cancelLogInAlert.setTitle("Login error.");
-                        cancelLogInAlert.setHeaderText("Er is een fout bij het inloggen.");
-
-                        cancelLogInAlert.getButtonTypes().clear();
-                        ButtonType opniewButton = new ButtonType("Probeer opniew");
-                        cancelLogInAlert.getButtonTypes().add(opniewButton);
                         cancelLogInAlert.showAndWait();
                     }
                 }
 
                 if(!view.getPwfPasswoord().getText().equals(view.getPwfConfirmPassword().getText())){
-                    Alert cancelLogInAlert = new Alert(Alert.AlertType.ERROR);
                     cancelLogInAlert.setContentText("Uw passwoord is foutief voor de gebruiker: "+ view.getTxtUsername().getText()+"!");
-                    cancelLogInAlert.setTitle("Login error.");
-                    cancelLogInAlert.setHeaderText("Er is een fout bij het inloggen.");
-
-                    cancelLogInAlert.getButtonTypes().clear();
-                    ButtonType opniewButton = new ButtonType("Probeer opniew");
-                    cancelLogInAlert.getButtonTypes().add(opniewButton);
-
                     cancelLogInAlert.showAndWait();
                 }
 
                 Gebruiker nieuweSpeler = new Gebruiker(view.getTxtUsername().getText(),view.getPwfConfirmPassword().getText());
                 model.setGebruiker(nieuweSpeler);
-
+               // model.getOpgeslagenSpel().getMijnNonogram().schrijfGebruikerNonogramWeg(view.getTxtUsername().getText());
                 model.getGebruiker(view.getTxtUsername().getText()).getOpgeslagenSpel().startSpel(model.getGebruiker(view.getTxtUsername().getText()));
+
                 NonogramView nonogramView = new NonogramView(model.getGebruiker(view.getTxtUsername().getText()).getOpgeslagenSpel().getMijnNonogram());
                 NonogramPresenter nonogramPresenter = new NonogramPresenter(model,nonogramView,view.getTxtUsername().getText());
 

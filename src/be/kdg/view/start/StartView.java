@@ -53,10 +53,12 @@ public class StartView extends BorderPane {
         this.txtUsernaam = new TextField();
         txtUsernaam.setText("Jules");//delete
 
+
         this.lblPassword = new Label("Password:");
         this.pwfPassword = new PasswordField();
-        pwfPassword.setPromptText("Your password");
         pwfPassword.setText("Test");//delete
+
+        pwfPassword.setPromptText("Your password");
 
         this.btnLogIn = new Button("Log in");
         this.btnSignUp = new Button("Sign up");

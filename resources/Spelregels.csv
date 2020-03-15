@@ -10,7 +10,9 @@ Elk getal staat voor één of meer aaneengesloten
 blokken van een bepaalde kleur in de betreffende kolom of op de betreffende regel.
 Door deze blokken in te kleuren,
 vormt zich een afbeelding in het diagram: de oplossing van de puzzel.
-Door twee keer op een vakje te clicken kleurt de speler het vakje in (zwart),
+Door op een vakje te clicken kleurt de speler het vakje in (zwart),
 zoals de getallen boven en links weergeven.
-Door één keer op een vakje te clicken duid de speler het vakje aan (grijs),
+Door nog eens op een reeds ingkleurd vakje te clicken kleurt de speler het vakje terug wit.
+Door met de rechtermuis knop op een vakje te clicken duid de speler het vakje aan (grijs),
 hier bij duid de speler aan dat dit vakje niet ingekleurd moet worden.
+Dit is om de speler te helpen.

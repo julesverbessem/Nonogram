@@ -15,6 +15,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.RowConstraints;
@@ -116,8 +117,12 @@ public class NonogramPresenter {
                 lbllijst.get(kolom).setOnMouseReleased(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
-                        if(mouseEvent.getClickCount()==1){
-                            view.getNonogram().get(frij).get(fkolom).setStyle("-fx-background-color: grey");
+                        if(mouseEvent.getButton()== MouseButton.SECONDARY){
+                            if(speler.getOpgeslagenSpel().getMijnNonogram().duidAan(frij, fkolom)){
+                                view.getNonogram().get(frij).get(fkolom).setStyle("-fx-background-color: grey");
+                            }else{
+                                view.getNonogram().get(frij).get(fkolom).setStyle("-fx-background-color: none");
+                            }
                         }else {
                             if(speler.getOpgeslagenSpel().getMijnNonogram().kleurIn(frij, fkolom)){
                                 view.getNonogram().get(frij).get(fkolom).setStyle("-fx-background-color: black");

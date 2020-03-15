@@ -25,6 +25,11 @@ public class Vakje {
         this.ingekleurd = true;
     }
 
+    public void duidVakAan(){
+        this.waarde="+";
+        this.ingekleurd = false;
+    }
+
     public void cancelKleurIn(){
         this.waarde = "X";
         this.ingekleurd = false;
