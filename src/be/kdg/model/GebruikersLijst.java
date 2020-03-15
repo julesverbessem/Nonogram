@@ -121,5 +121,21 @@ public class GebruikersLijst extends Gebruiker {
         }
         return stringBuilder.toString();
     }
+
+    public void updateGebruikers(){
+        File gbrfile = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Gebruikers.csv");
+
+        List<String> gebruikers = new ArrayList<>();
+
+        for (Gebruiker gebruiker : lijst) {
+            gebruikers.add(";"+gebruiker.getGebruikersnaam()+";"+gebruiker.getPasswoord()+";"+gebruiker.getLevel()+";"+gebruiker.getDatum());
+        }
+
+        try{
+            Files.write(gbrfile.toPath(),gebruikers);
+        }catch (IOException ex){
+            System.out.println("Er is een fout gebeurd bij het updaten van de gebruikers");
+        }
+    }
 }
 

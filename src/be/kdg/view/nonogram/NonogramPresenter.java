@@ -127,6 +127,8 @@ public class NonogramPresenter {
                             if(speler.getOpgeslagenSpel().getMijnNonogram().controlleren(frij,fkolom)){
                                 System.out.println("Gewonnen!");
                                 speler.getOpgeslagenSpel().startVolgendSpel(speler);
+                                model.updateGebruikers();
+
                                 FelicitatieView felicitatieView = new FelicitatieView(speler);
                                 FelicitatiePresenter felicitatiePresenter = new FelicitatiePresenter(model,felicitatieView,speler.getGebruikersnaam());
 

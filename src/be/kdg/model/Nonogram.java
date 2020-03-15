@@ -43,14 +43,6 @@ public class Nonogram {
         }
     }
 
-    public int getMoeilijkheidsgraad() {
-        return moeilijkheidsgraad;
-    }
-
-    public String getNaam() {
-        return naam;
-    }
-
     public int getGrootte(){ return this.grootte;}
 
     //functionele methodes
@@ -58,37 +50,22 @@ public class Nonogram {
         boolean rtrn = false;
         int aantaluserVakjses = 0;
 
-        for (int rij = 1; rij <= grootte; rij++) {
-            for (int kolom = 1; kolom <= grootte; kolom++) {
-                int r = rij;
-                int k = kolom;
-                if(this.patroon[r - 1][k - 1].getWaarde().equals(this.achterLiggendPatroon[r - 1][k - 1].getWaarde())){
+        for (int rij = 0; rij < grootte; rij++) {
+            for (int kolom = 0; kolom < grootte; kolom++) {
 
-                    if(!this.achterLiggendPatroon[r - 1][k - 1].getWaarde().equals("X")){
-                        System.out.println("Juist vakje");
-                        rtrn = true;
-                    }
-                                        /*
-                    if(this.patroon[r - 1][k - 1].isIngekleurd()){
+                if(patroon[frij][fkolom].getWaarde().equals(this.achterLiggendPatroon[rij][kolom].getWaarde())){
+                    if(!patroon[frij][fkolom].getWaarde().equals("X")){
+                        System.out.println("Juist");
                         aantaluserVakjses++;
-                        System.out.println(aantaluserVakjses);
-                    }
-                    if(aantaluserVakjses==this.aantalIngekleurdeVakjes){
-                        System.out.println(aantaluserVakjses+"ej");
                         rtrn = true;
-                        return rtrn;
-                    }*/
-                }else{
-                    if(this.patroon[r - 1][k - 1].isIngekleurd()){
-
-                        System.out.println(aantaluserVakjses);
                     }
+                }else{
+
                     rtrn = false;
                 }
-
             }
         }
-        return rtrn;
+        return rtrn;//&&aantaluserVakjses==aantalIngekleurdeVakjes
     }
 
     public String feliciteren() {

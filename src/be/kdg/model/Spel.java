@@ -4,6 +4,8 @@ import be.kdg.model.Gebruiker;
 import be.kdg.model.Nonogram;
 import javafx.scene.image.Image;
 
+import java.time.LocalDateTime;
+
 public class Spel {
     Nonogram mijnNonogram;
 
@@ -26,6 +28,7 @@ public class Spel {
         int lvlUp = lvl+1;
 
         speler.setLevel(lvlUp);
+        speler.setDatum(LocalDateTime.now());
     }
 
     public Image toonNonogramFoto(Gebruiker speler){
