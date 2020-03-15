@@ -7,6 +7,7 @@ import be.kdg.view.start.StartPresenter;
 import be.kdg.view.start.StartView;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.util.Scanner;
@@ -68,6 +69,7 @@ public class Main extends Application {
         StartPresenter presenter = new StartPresenter(model,view);
 
         stage.setTitle("Nonogram");
+        stage.getIcons().add(new Image("favicon-32x32.png"));
         stage.setWidth(900);
         stage.setHeight(800);
         stage.setScene(new Scene(view));
