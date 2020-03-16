@@ -6,10 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Nonogram {
     private int moeilijkheidsgraad;
@@ -47,6 +44,10 @@ public class Nonogram {
 
     public int getGrootte(){ return this.grootte;}
 
+    public Vakje[][] getPatroon() {
+        return patroon;
+    }
+
     //functionele methodes
     public boolean controlleren(int frij, int fkolom) {//verder afwerken met peerTutor
         boolean rtrn = false;
@@ -59,15 +60,15 @@ public class Nonogram {
                     if(!patroon[frij][fkolom].getWaarde().equals("X")){
                         System.out.println("Juist");
                         aantaluserVakjses++;
-                        rtrn = true;
                     }
-                }else{
-
-                    rtrn = false;
                 }
             }
         }
-        return rtrn;//&&aantaluserVakjses==aantalIngekleurdeVakjes
+        if(aantaluserVakjses==aantalIngekleurdeVakjes){
+            rtrn = true;
+
+        }
+        return rtrn;
     }
 
     public String feliciteren() {
@@ -163,7 +164,7 @@ public class Nonogram {
         }*/
     }
 
-    public void leesGebruikerNonogramIn(File csvGebruikernonogram){
+    private void leesGebruikerNonogramIn(File csvGebruikernonogram){
         try(Scanner fileScanner = new Scanner(csvGebruikernonogram)){
             int rowcounter=0;
             while(fileScanner.hasNext()){
@@ -234,8 +235,41 @@ public class Nonogram {
         }
     }
 
+    public void resetGebruikerNonogram(String gebruikersnaam){
+        String filenaam = gebruikersnaam+"Nonogram.csv";
+        File csvGebruikernonogram= new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\"+filenaam);
+        try(Scanner fileScanner = new Scanner(csvGebruikernonogram)){
+            int rowcounter=0;
+            while(fileScanner.hasNext()){
+                String row = fileScanner.nextLine();
+                String[] vakken = new String[grootte];
+                vakken = row.split(";");
+                for (int i = 0; i < vakken.length; i++) {
+                    this.patroon[rowcounter][i].setDefaultWaarde();
+                }
+                rowcounter++;
+            }
+        }catch (IOException ex){
+            System.out.println("Fout bij het inlezen van bestand " + csvGebruikernonogram.getName());
+        }
+        List<String> gebruikersnonogram = new ArrayList<>();
+        for (Vakje[] vakjes : patroon) {
+            StringBuilder rij = new StringBuilder();
+            for (Vakje vakje : vakjes) {
+                rij.append(vakje.getWaarde()).append(";");
+            }
+            rij.deleteCharAt(grootte+grootte-1);
+            gebruikersnonogram.add(rij.toString());
+        }
+        try {
+            Files.write(csvGebruikernonogram.toPath(),gebruikersnonogram);
+        } catch (IOException e) {
+            System.out.println("Er is een fout bij het resetten van "+csvGebruikernonogram);
+        }
+    }
+
     //Voorgemaakte nonogramen
-    public void nonogram1_lijn() {
+    public void nonogram1_lijn(String gebruikersnaam) {
         //attributen
         this.naam = "Horizontale lijn";
         this.moeilijkheidsgraad = 1;
@@ -246,14 +280,19 @@ public class Nonogram {
         File csvGetallenNonogram = new File("GetallenNonogram1.csv"); //https://www.stevebreese.com/Relative-Path-Calculator    ..\..\..\..\resources\GetallenNonogram1.csv
         leesGetallenNonogramIn(csvGetallenNonogram);
 
-        //patroon
+        //Achterliggend nonogram
         File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram1.csv");
         leesNonogramIn(csvNonogram);
-
         toonAchterLiggendPatroon();
+
+        //Gebruikers reeds opgelsagen nonogram
+        String filenaam = gebruikersnaam+"Nonogram.csv";
+        File csvGebruikersNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\"+filenaam);
+        leesGebruikerNonogramIn(csvGebruikersNonogram);
+        toonGrid();
     }
 
-    public void nonogram2_lijnVerticaal() {
+    public void nonogram2_lijnVerticaal(String gebruikersnaam) {
         //attributen
         this.naam = "Verticale lijn";
         this.moeilijkheidsgraad = 2;
@@ -266,8 +305,13 @@ public class Nonogram {
         //patroon
         File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram2.csv");
         leesNonogramIn(csvNonogram);
-
         toonAchterLiggendPatroon();
+
+        //Gebruikers reeds opgelsagen nonogram
+        String filenaam = gebruikersnaam+"Nonogram.csv";
+        File csvGebruikersNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\"+filenaam);
+        leesGebruikerNonogramIn(csvGebruikersNonogram);
+        toonGrid();
     }
 
     public void nonogram3() {
@@ -282,7 +326,7 @@ public class Nonogram {
         leesNonogramIn(csvNonogram);
 
         toonAchterLiggendPatroon();
-    }
+    } //afwerke
 
     public void nonogram4() {
         this.naam = "Cirkel";

@@ -27,10 +27,12 @@ public class NonogramView extends BorderPane {
     private GridPane rijGrid;
     private GridPane kolomGrid;
     private GridPane centerGrid;
+    private Nonogram model;
 
     public NonogramView(Nonogram nonogram){
         this.initialiseNodes();
         this.layoutNodes();
+        this.model = nonogram;
         this.initialiseGrid(nonogram);
         this.layoutGrid(nonogram.getGrootte());
     }
@@ -103,7 +105,6 @@ public class NonogramView extends BorderPane {
             nonogram.add(kolomLijst);
 
         }
-        System.out.println(nonogramGrid.getColumnCount());
 
         for(int rij =1; rij<=grote; rij++){
             int r = rij;
@@ -117,6 +118,7 @@ public class NonogramView extends BorderPane {
     }
 
     private void layoutGrid(int grote){
+        //liquide maken => grootte 5 = 100, 7=75, 10 =50, ...
         for(int kolom = 1; kolom<= grote; kolom++){
             nonogramGrid.getColumnConstraints().add(new ColumnConstraints(100));
         }
@@ -143,6 +145,24 @@ public class NonogramView extends BorderPane {
         btnSpelregels.setStyle("-fx-font-size: 24");
     }
 
+    public void initialiseUserGrid(){
+        for(int rij = 0; rij< model.getGrootte(); rij++){
+            ArrayList<Label> kolomlijst = new ArrayList<>();
+            kolomlijst = nonogram.get(rij);
+            for(int kolom = 0; kolom< model.getGrootte(); kolom++){
+
+                if(model.getPatroon()[rij][kolom].getWaarde().equals("O")){
+                    kolomlijst.get(kolom).setStyle("-fx-background-color: black");
+                }else if(model.getPatroon()[rij][kolom].getWaarde().equals("+")){
+                    kolomlijst.get(kolom).setStyle("-fx-background-color: grey");
+                }else {
+                    kolomlijst.get(kolom).setStyle("-fx-background-color: none");
+                }
+            }
+
+        }
+    }
+
     public Label getLblTitel() {
         return lblTitel;
     }
@@ -161,9 +181,5 @@ public class NonogramView extends BorderPane {
 
     public ArrayList<ArrayList<Label>> getNonogram() {
         return nonogram;
-    }
-
-    public GridPane getNonogramGrid() {
-        return nonogramGrid;
     }
 }

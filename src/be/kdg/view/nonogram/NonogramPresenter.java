@@ -36,6 +36,7 @@ public class NonogramPresenter {
         this.speler = model.getGebruiker(gebruikersnaam);
 
         this.view.getLblTitel().setText("Nonogram lvl "+speler.getLevel());
+        this.view.initialiseUserGrid();
 
         this.addEventHandlers();
     }

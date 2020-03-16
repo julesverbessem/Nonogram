@@ -1,15 +1,10 @@
 package be.kdg.model;
 
-import com.sun.nio.file.ExtendedOpenOption;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Gebruiker implements Comparable<Gebruiker>{
     private String gebruikersnaam;

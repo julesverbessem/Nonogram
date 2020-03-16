@@ -13,14 +13,14 @@ public class Spel {
         switch (speler.getLevel()){
             case 1:
                 mijnNonogram = new Nonogram(5);
-                mijnNonogram.nonogram1_lijn();
+                mijnNonogram.nonogram1_lijn(speler.getGebruikersnaam());
                 break;
             case 2:
                 mijnNonogram = new Nonogram(5);
-                mijnNonogram.nonogram2_lijnVerticaal();
+                mijnNonogram.nonogram2_lijnVerticaal(speler.getGebruikersnaam());
                 break;case 3:
                 mijnNonogram = new Nonogram(5);
-                mijnNonogram.nonogram3();
+                mijnNonogram.nonogram3();//verder afwerke
                 break;
             case 4:
                 mijnNonogram = new Nonogram(10);
@@ -59,6 +59,7 @@ public class Spel {
 
         speler.setLevel(lvlUp);
         speler.setDatum(LocalDateTime.now());
+        mijnNonogram.resetGebruikerNonogram(speler.getGebruikersnaam());
     }
 
     public Image toonNonogramFoto(Gebruiker speler){
