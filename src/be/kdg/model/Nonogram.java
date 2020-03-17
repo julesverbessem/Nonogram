@@ -1,11 +1,12 @@
 package be.kdg.model;
 
-import javafx.scene.shape.Path;
+
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class Nonogram {
@@ -52,23 +53,30 @@ public class Nonogram {
     public boolean controlleren(int frij, int fkolom) {//verder afwerken met peerTutor
         boolean rtrn = false;
         int aantaluserVakjses = 0;
+        int nietInTeklkeureVakjes=0;
 
         for (int rij = 0; rij < grootte; rij++) {
             for (int kolom = 0; kolom < grootte; kolom++) {
 
-                if(patroon[frij][fkolom].getWaarde().equals(this.achterLiggendPatroon[rij][kolom].getWaarde())){
-                    if(!patroon[frij][fkolom].getWaarde().equals("X")){
+                if(patroon[rij][kolom].getWaarde().equals(this.achterLiggendPatroon[frij][fkolom].getWaarde())){
+                    if(this.achterLiggendPatroon[rij][kolom].getWaarde().equals("O")){
                         System.out.println("Juist");
                         aantaluserVakjses++;
+                        if(nietInTeklkeureVakjes==0){
+                            rtrn = aantaluserVakjses == aantalIngekleurdeVakjes;
+                        }
+                    }else{
+                        nietInTeklkeureVakjes++;
+                        if(nietInTeklkeureVakjes==0){
+                            return aantaluserVakjses == aantalIngekleurdeVakjes;
+                        }
                     }
                 }
             }
         }
-        if(aantaluserVakjses==aantalIngekleurdeVakjes){
-            rtrn = true;
 
-        }
         return rtrn;
+
     }
 
     public String feliciteren() {
@@ -146,8 +154,17 @@ public class Nonogram {
     }
 
     public void schrijfGebruikerNonogramWeg(String gebruikersnaam){
-        String filenaam = "C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\"+gebruikersnaam+"Nonogram.csv";
-        File file = new File(filenaam);
+        String filenaam = "resources/"+gebruikersnaam+"Nonogram.csv";
+
+
+        Path myFile = Paths.get(filenaam);
+        if (!Files.exists(myFile)){
+            try {
+                Files.createFile(myFile);
+            } catch (IOException ioe){
+                System.out.println("Er is een fout bij het creeëren van "+filenaam);
+            }
+        }
 
 /*
         List<String> gebruikersnonogram = new ArrayList<>();
@@ -276,12 +293,13 @@ public class Nonogram {
         this.aantalIngekleurdeVakjes=5;
 
         //waarde rij
-
-        File csvGetallenNonogram = new File("GetallenNonogram1.csv"); //https://www.stevebreese.com/Relative-Path-Calculator    ..\..\..\..\resources\GetallenNonogram1.csv
+        Path path = Paths.get("resources/GetallenNonogram1.csv");
+        File csvGetallenNonogram = new File(path.toString());
         leesGetallenNonogramIn(csvGetallenNonogram);
 
         //Achterliggend nonogram
-        File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram1.csv");
+        path = Paths.get("resources/Nonogram1.csv");
+        File csvNonogram = new File(path.toString());
         leesNonogramIn(csvNonogram);
         toonAchterLiggendPatroon();
 
