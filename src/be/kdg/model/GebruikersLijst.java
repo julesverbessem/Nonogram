@@ -21,12 +21,10 @@ public class GebruikersLijst extends Gebruiker {
     }
 
     private void initialiseGebruikersLijst() {
-        File gbrcsv = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Gebruikers.csv");
+        File gbrcsv = new File("resources/Gebruikers.csv");
         try (Scanner fileScanner = new Scanner(gbrcsv)) {
             int usercounter =0;
             while (fileScanner.hasNext()) {
-               // List<String> gebruikers  = new ArrayList<>();
-//                gebruikers.add( fileScanner.nextLine());
                 String gebruiker = fileScanner.nextLine();
                 String[] data = new String[4];
                 data = gebruiker.split(";");
@@ -35,7 +33,6 @@ public class GebruikersLijst extends Gebruiker {
                     switch (i){
                         case 1:
                             lijst.add(new Gebruiker(data[i]));
-                           System.out.println(data[i]);
                             break;
                         case 2:
                             lijst.get(usercounter).setPasswoord(data[i]);
@@ -58,7 +55,7 @@ public class GebruikersLijst extends Gebruiker {
     }
 
     public String inlezenSpelrgels(){
-        File csvSpelregels = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Spelregels.csv");
+        File csvSpelregels = new File("resources/Spelregels.csv");
         try(Scanner fileScanner = new Scanner(csvSpelregels)){
             StringBuilder builder = new StringBuilder();
             while(fileScanner.hasNext()){
@@ -123,7 +120,7 @@ public class GebruikersLijst extends Gebruiker {
     }
 
     public void updateGebruikers(){
-        File gbrfile = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Gebruikers.csv");
+        File gbrfile = new File("resources/Gebruikers.csv");
 
         List<String> gebruikers = new ArrayList<>();
 

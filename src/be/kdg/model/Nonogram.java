@@ -254,7 +254,7 @@ public class Nonogram {
 
     public void resetGebruikerNonogram(String gebruikersnaam){
         String filenaam = gebruikersnaam+"Nonogram.csv";
-        File csvGebruikernonogram= new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\"+filenaam);
+        File csvGebruikernonogram= new File("resources/"+filenaam);
         try(Scanner fileScanner = new Scanner(csvGebruikernonogram)){
             int rowcounter=0;
             while(fileScanner.hasNext()){
@@ -305,7 +305,7 @@ public class Nonogram {
 
         //Gebruikers reeds opgelsagen nonogram
         String filenaam = gebruikersnaam+"Nonogram.csv";
-        File csvGebruikersNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\"+filenaam);
+        File csvGebruikersNonogram = new File("resources/"+filenaam);
         leesGebruikerNonogramIn(csvGebruikersNonogram);
         toonGrid();
     }
@@ -317,130 +317,170 @@ public class Nonogram {
         this.aantalIngekleurdeVakjes=5;
 
         //waarde rij
-        File csvGetallenNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\GetallenNonogram2.csv");
+        File csvGetallenNonogram = new File("resources/GetallenNonogram2.csv");
         leesGetallenNonogramIn(csvGetallenNonogram);
 
         //patroon
-        File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram2.csv");
+        File csvNonogram = new File("resources/Nonogram2.csv");
         leesNonogramIn(csvNonogram);
         toonAchterLiggendPatroon();
 
         //Gebruikers reeds opgelsagen nonogram
         String filenaam = gebruikersnaam+"Nonogram.csv";
-        File csvGebruikersNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\"+filenaam);
+        File csvGebruikersNonogram = new File("resources/"+filenaam);
         leesGebruikerNonogramIn(csvGebruikersNonogram);
         toonGrid();
     }
 
-    public void nonogram3() {
+    public void nonogram3(String gebruikersnaam) {
         this.naam = "Kruis";
         this.moeilijkheidsgraad = 3;
         this.aantalIngekleurdeVakjes = 9;
 
-        File csvGetallenNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\GetallenNonogram3.csv");
+        File csvGetallenNonogram = new File("resources/GetallenNonogram3.csv");
         leesGetallenNonogramIn(csvGetallenNonogram);
 
-        File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram3.csv");
+        File csvNonogram = new File("resources/Nonogram3.csv");
         leesNonogramIn(csvNonogram);
-
         toonAchterLiggendPatroon();
-    } //afwerke
 
-    public void nonogram4() {
+        //Gebruikers reeds opgelsagen nonogram
+        String filenaam = gebruikersnaam+"Nonogram.csv";
+        File csvGebruikersNonogram = new File("resources/"+filenaam);
+        leesGebruikerNonogramIn(csvGebruikersNonogram);
+        toonGrid();
+    }
+
+    public void nonogram4(String gebruikersnaam) {
         this.naam = "Cirkel";
         this.moeilijkheidsgraad = 4;
         this.aantalIngekleurdeVakjes = 24;
 
-        File csvGetallenNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\GetallenNonogram4.csv");
+        File csvGetallenNonogram = new File("resources/GetallenNonogram4.csv");
         leesGetallenNonogramIn(csvGetallenNonogram);
 
-        File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram4.csv");
+        File csvNonogram = new File("resources/Nonogram4.csv");
         leesNonogramIn(csvNonogram);
-
         toonAchterLiggendPatroon();
+
+        //Gebruikers reeds opgelsagen nonogram
+        String filenaam = gebruikersnaam+"Nonogram.csv";
+        File csvGebruikersNonogram = new File("resources/"+filenaam);
+        leesGebruikerNonogramIn(csvGebruikersNonogram);
+        toonGrid();
     }
 
-    public void nonogram5() {
+    public void nonogram5(String gebruikersnaam) {
         this.naam = "Zwaan";
         this.moeilijkheidsgraad = 5;
         this.aantalIngekleurdeVakjes = 18;
 
-        File csvGetallenNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\GetallenNonogram5.csv");
+        File csvGetallenNonogram = new File("resources/GetallenNonogram5.csv");
         leesGetallenNonogramIn(csvGetallenNonogram);
 
-        File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram5.csv");
+        File csvNonogram = new File("resources/Nonogram5.csv");
         leesNonogramIn(csvNonogram);
-
         toonAchterLiggendPatroon();
+
+        //Gebruikers reeds opgelsagen nonogram
+        String filenaam = gebruikersnaam+"Nonogram.csv";
+        File csvGebruikersNonogram = new File("resources/"+filenaam);
+        leesGebruikerNonogramIn(csvGebruikersNonogram);
+        toonGrid();
     }
 
-    public void nonogram6() {
+    public void nonogram6(String gebruikersnaam) {
         this.naam = "Hartje";
         this.moeilijkheidsgraad = 6;
         this.aantalIngekleurdeVakjes = 25;
 
-        File csvGetallenNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\GetallenNonogram6.csv");
+        File csvGetallenNonogram = new File("resources/GetallenNonogram6.csv");
         leesGetallenNonogramIn(csvGetallenNonogram);
 
-        File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram6.csv");
+        File csvNonogram = new File("resources/Nonogram6.csv");
         leesNonogramIn(csvNonogram);
-
         toonAchterLiggendPatroon();
+
+        //Gebruikers reeds opgelsagen nonogram
+        String filenaam = gebruikersnaam+"Nonogram.csv";
+        File csvGebruikersNonogram = new File("resources/"+filenaam);
+        leesGebruikerNonogramIn(csvGebruikersNonogram);
+        toonGrid();
     }
 
-    public void nonogram7() {
+    public void nonogram7(String gebruikersnaam) {
         this.naam = "Lopendmannetje";
         this.moeilijkheidsgraad = 7;
         this.aantalIngekleurdeVakjes = 37;
 
-        File csvGetallenNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\GetallenNonogram7.csv");
+        File csvGetallenNonogram = new File("resources/GetallenNonogram7.csv");
         leesGetallenNonogramIn(csvGetallenNonogram);
 
-        File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram7.csv");
+        File csvNonogram = new File("resources/Nonogram7.csv");
         leesNonogramIn(csvNonogram);
-
         toonAchterLiggendPatroon();
+
+        //Gebruikers reeds opgelsagen nonogram
+        String filenaam = gebruikersnaam+"Nonogram.csv";
+        File csvGebruikersNonogram = new File("resources/"+filenaam);
+        leesGebruikerNonogramIn(csvGebruikersNonogram);
+        toonGrid();
     }
 
-    public void nonogram8() {
+    public void nonogram8(String gebruikersnaam) {
         this.naam = "Schildpad";
         this.moeilijkheidsgraad = 8;
         this.aantalIngekleurdeVakjes = 37;
 
-        File csvGetallenNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\GetallenNonogram8.csv");
+        File csvGetallenNonogram = new File("resources/GetallenNonogram8.csv");
         leesGetallenNonogramIn(csvGetallenNonogram);
 
-        File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram8.csv");
+        File csvNonogram = new File("resources/Nonogram8.csv");
         leesNonogramIn(csvNonogram);
-
         toonAchterLiggendPatroon();
+
+        //Gebruikers reeds opgelsagen nonogram
+        String filenaam = gebruikersnaam+"Nonogram.csv";
+        File csvGebruikersNonogram = new File("resources/"+filenaam);
+        leesGebruikerNonogramIn(csvGebruikersNonogram);
+        toonGrid();
     }
 
-    public void nonogram9() {
+    public void nonogram9(String gebruikersnaam) {
         this.naam = "Poes";
         this.moeilijkheidsgraad = 9;
         this.aantalIngekleurdeVakjes = 57;
 
-        File csvGetallenNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\GetallenNonogram9.csv");
+        File csvGetallenNonogram = new File("resources/GetallenNonogram9.csv");
         leesGetallenNonogramIn(csvGetallenNonogram);
 
-        File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram9.csv");
+        File csvNonogram = new File("resources/Nonogram9.csv");
         leesNonogramIn(csvNonogram);
-
         toonAchterLiggendPatroon();
+
+        //Gebruikers reeds opgelsagen nonogram
+        String filenaam = gebruikersnaam+"Nonogram.csv";
+        File csvGebruikersNonogram = new File("resources/"+filenaam);
+        leesGebruikerNonogramIn(csvGebruikersNonogram);
+        toonGrid();
     }
 
-    public void nonogram10() {
+    public void nonogram10(String gebruikersnaam) {
         this.naam = "Appel";
         this.moeilijkheidsgraad = 10;
         this.aantalIngekleurdeVakjes = 59;
 
-        File csvGetallenNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\GetallenNonogram10.csv");
+        File csvGetallenNonogram = new File("resources/GetallenNonogram10.csv");
         leesGetallenNonogramIn(csvGetallenNonogram);
 
-        File csvNonogram = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Nonogram10.csv");
+        File csvNonogram = new File("resources/Nonogram10.csv");
         leesNonogramIn(csvNonogram);
-
         toonAchterLiggendPatroon();
+
+        //Gebruikers reeds opgelsagen nonogram
+        String filenaam = gebruikersnaam+"Nonogram.csv";
+        File csvGebruikersNonogram = new File("resources/"+filenaam);
+        leesGebruikerNonogramIn(csvGebruikersNonogram);
+        toonGrid();
     }
 }

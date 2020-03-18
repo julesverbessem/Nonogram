@@ -20,35 +20,35 @@ public class Spel {
                 mijnNonogram.nonogram2_lijnVerticaal(speler.getGebruikersnaam());
                 break;case 3:
                 mijnNonogram = new Nonogram(5);
-                mijnNonogram.nonogram3();//verder afwerke
+                mijnNonogram.nonogram3(speler.getGebruikersnaam());//verder afwerke
                 break;
             case 4:
                 mijnNonogram = new Nonogram(10);
-                mijnNonogram.nonogram4();
+                mijnNonogram.nonogram4(speler.getGebruikersnaam());
                 break;
             case 5:
                 mijnNonogram = new Nonogram(6);
-                mijnNonogram.nonogram5();
+                mijnNonogram.nonogram5(speler.getGebruikersnaam());
                 break;
             case 6:
                 mijnNonogram = new Nonogram(10);
-                mijnNonogram.nonogram6();
+                mijnNonogram.nonogram6(speler.getGebruikersnaam());
                 break;
             case 7:
                 mijnNonogram = new Nonogram(10);
-                mijnNonogram.nonogram7();
+                mijnNonogram.nonogram7(speler.getGebruikersnaam());
                 break;
             case 8:
                 mijnNonogram = new Nonogram(10);
-                mijnNonogram.nonogram8();
+                mijnNonogram.nonogram8(speler.getGebruikersnaam());
                 break;
             case 9:
                 mijnNonogram = new Nonogram(10);
-                mijnNonogram.nonogram9();
+                mijnNonogram.nonogram9(speler.getGebruikersnaam());
                 break;
             case 10:
                 mijnNonogram = new Nonogram(10);
-                mijnNonogram.nonogram10();
+                mijnNonogram.nonogram10(speler.getGebruikersnaam());
                 break;
         }
         return  mijnNonogram.getGrootte();

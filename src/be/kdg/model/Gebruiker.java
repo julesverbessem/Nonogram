@@ -28,7 +28,7 @@ public class Gebruiker implements Comparable<Gebruiker>{
     }
 
     private void schrijfGebruikerWeg(String gebruikersnaam, String passwoord, int level, LocalDateTime datum) {
-        File gbrfile = new File("C:\\Users\\jules\\OneDrive\\Documenten\\KDG\\Java 1\\Gamesproject\\Nonogram\\resources\\Gebruikers.csv");
+        File gbrfile = new File("resources/Gebruikers.csv");
         String data = "\n;"+gebruikersnaam+";"+passwoord+";"+level+";"+datum;
         System.out.println(data);
         try {
