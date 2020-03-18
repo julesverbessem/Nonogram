@@ -32,44 +32,28 @@ public class StartView extends BorderPane {
 
     private void initialiseNodes() {
         this.lblTitel = new Label("Nonogram");
-        //Het label moet gecentreerd worden, een solid border hebben en groot genoeg zijn
-        //Is volgens mij oke zo, kan het niet testen want krijg de applicatie ni gestart en snap de foutmelding ni direct
-
         this.btnScorenboard = new Button("Scorenboard");
-        btnScorenboard.setAlignment(Pos.CENTER);
-        btnScorenboard.setContentDisplay(ContentDisplay.CENTER);
-        Font font = new Font(30);
-        btnScorenboard.setFont(font);
+
 
         this.usernameBox = new HBox();
-        usernameBox.setSpacing(10);
         this.passwordBox = new HBox();
-        passwordBox.setSpacing(16);
         this.spelerLogInBox = new VBox();
-        spelerLogInBox.setSpacing(15);
         this.buttonBox = new VBox();
 
         this.lblUsernaam = new Label("Username:");
         this.txtUsernaam = new TextField();
         txtUsernaam.setText("Jules");//delete
 
-
         this.lblPassword = new Label("Password:");
         this.pwfPassword = new PasswordField();
         pwfPassword.setText("Test");//delete
 
-        pwfPassword.setPromptText("Your password");
-
         this.btnLogIn = new Button("Log in");
         this.btnSignUp = new Button("Sign up");
-        //Er moet genoeg ruimte tussen die lables en textfields en buttons komen
-        //die labels moeten groter
-        //textfields moeten langer
-        //buttons moten groter
-        // alles moet meer gecentreerd zijn
     }
 
     private void layoutNodes() {
+        //Nodes plaatsen
         this.setTop(lblTitel);
         this.setBottom(btnScorenboard);
 
@@ -87,26 +71,34 @@ public class StartView extends BorderPane {
         buttonBox.getChildren().add(btnSignUp);
         this.setRight(buttonBox);
 
+        //Layout button scorenboard
+        btnScorenboard.setAlignment(Pos.CENTER);
+        btnScorenboard.setContentDisplay(ContentDisplay.CENTER);
+        btnScorenboard.setStyle("-fx-font-size: 28");
+        BorderPane.setAlignment(btnScorenboard, Pos.CENTER);
+
+        //Layout label Titel
         lblTitel.setStyle("-fx-font-size: 36");
         BorderPane.setAlignment(lblTitel, Pos.CENTER);
         lblTitel.setContentDisplay(ContentDisplay.CENTER);
         lblTitel.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,BorderWidths.DEFAULT)));
 
-        btnScorenboard.setStyle("-fx-font-size: 28");
-        BorderPane.setAlignment(btnScorenboard, Pos.CENTER);
 
+        //Layout inloggegevens
         lblUsernaam.setStyle("-fx-font-size: 24");
         lblPassword.setStyle("-fx-font-size: 24");
-
         txtUsernaam.setStyle("-fx-font-size: 18");
         pwfPassword.setStyle("-fx-font-size: 18");
-
+        pwfPassword.setPromptText("Your password");
         btnLogIn.setStyle("-fx-font-size: 24");
         btnSignUp.setStyle("-fx-font-size: 24");
 
+        //Box layout
+        spelerLogInBox.setSpacing(15);
+        passwordBox.setSpacing(16);
+        usernameBox.setSpacing(10);
         spelerLogInBox.setPadding(new Insets(200,100,50,50));
         buttonBox.setPadding(new Insets(180,100,50,50));
-
         buttonBox.setSpacing(15);
     }
 

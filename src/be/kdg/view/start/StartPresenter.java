@@ -44,7 +44,7 @@ public class StartPresenter {
         view.getBtnLogIn().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if(!model.login(view.getTxtUsernaam().getText(),view.getPwfPassword().getText())){
+                if(!model.login(view.getTxtUsernaam().getText(),view.getPwfPassword().getText())){//Als inloggegevens fout zijn => pop up: opnieuw of account aanmaken
                     Alert cancelLogInAlert = new Alert(Alert.AlertType.ERROR);
                     cancelLogInAlert.setContentText("Uw passwoord is foutief voor de gebruiker: "+ view.getTxtUsernaam().getText()+"!");
                     cancelLogInAlert.setTitle("Login error.");
@@ -58,7 +58,7 @@ public class StartPresenter {
 
                     cancelLogInAlert.showAndWait();
 
-                    if(cancelLogInAlert.getResult().equals(singUpButton)){
+                    if(cancelLogInAlert.getResult().equals(singUpButton)){//Maak een account aan
                         SignUpView signUpView = new SignUpView();
                         SignUpPresenter signUpPresenter = new SignUpPresenter(model,signUpView);
 
@@ -67,7 +67,7 @@ public class StartPresenter {
                         signUpView.getScene().getWindow().setHeight(800);
                         signUpView.getScene().getWindow().setWidth(900);
                     }
-                }else {
+                }else {//De inloggegevens zijn juist & het nonogram wordt opgestart
                     model.getGebruiker(view.getTxtUsernaam().getText()).getOpgeslagenSpel().startSpel(model.getGebruiker(view.getTxtUsernaam().getText()));
                     NonogramView nonogramView = new NonogramView(model.getGebruiker(view.getTxtUsernaam().getText()).getOpgeslagenSpel().getMijnNonogram());
                     NonogramPresenter nonogramPresenter = new NonogramPresenter(model,nonogramView,view.getTxtUsernaam().getText());

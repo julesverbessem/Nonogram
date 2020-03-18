@@ -33,29 +33,32 @@ public class NonogramPresenter {
     public NonogramPresenter(GebruikersLijst model, NonogramView view, String gebruikersnaam) {
         this.model = model;
         this.view = view;
-        this.speler = model.getGebruiker(gebruikersnaam);
 
-        this.view.getLblTitel().setText("Nonogram lvl "+speler.getLevel());
-        this.view.initialiseUserGrid();
+        this.speler = model.getGebruiker(gebruikersnaam);
+        this.view.getLblTitel().setText("Nonogram lvl "+speler.getLevel());//Tekst in de titel inladen
 
         this.addEventHandlers();
+    }
+
+    private Alert initialiseAlertPopUp(ButtonType jaButton) {//Pop up, wordt getoond bij het afsluiten van het nonogram
+        System.out.println("Gebruiker wilt terug naar startscherm gaan, waarschuwing");
+        Alert cancelNonogram = new Alert(Alert.AlertType.WARNING);
+        cancelNonogram.setTitle("Warning!");
+        cancelNonogram.setHeaderText("Nonogram afsluiten.");
+        cancelNonogram.setContentText("Weet u zeker dat u wilt afsluiten? Uw vooruitgang zal worden opgeslagen.");
+        cancelNonogram.getButtonTypes().clear();
+        ButtonType neeButton = new ButtonType("Nee, ik speel door.");
+        cancelNonogram.getButtonTypes().add(jaButton);
+        cancelNonogram.getButtonTypes().add(neeButton);
+        return cancelNonogram;
     }
 
     private void addEventHandlers() {
         view.getBtnBack().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println("Gebruiker wilt terug naar startscherm gaan, waarschuwing");
-                Alert cancelNonogram = new Alert(Alert.AlertType.WARNING);
-                cancelNonogram.setTitle("Warning!");
-                cancelNonogram.setHeaderText("Nonogram afsluiten.");
-                cancelNonogram.setContentText("Weet u zeker dat u wilt afsluiten? Uw vooruitgang zal worden opgeslagen.");
-                cancelNonogram.getButtonTypes().clear();
-                ButtonType neeButton = new ButtonType("Nee, ik speel door.");
                 ButtonType jaButton = new ButtonType("Ja, ik wil stoppen.");
-                cancelNonogram.getButtonTypes().add(jaButton);
-                cancelNonogram.getButtonTypes().add(neeButton);
-
+                Alert cancelNonogram = initialiseAlertPopUp(jaButton);
                 cancelNonogram.showAndWait();
 
                 if(cancelNonogram.getResult().equals(jaButton)){
@@ -73,18 +76,8 @@ public class NonogramPresenter {
         view.getBtnScorenboard().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println("Gebruiker wilt scorenboard openen tijdens spel, waarschuwing");
-                Alert cancelNonogram = new Alert(Alert.AlertType.WARNING);
-                cancelNonogram.setTitle("Warning!");
-                cancelNonogram.setHeaderText("Nonogram afsluiten.");
-                cancelNonogram.setContentText("Weet u zeker dat u wilt afsluiten? Uw vooruitgang zal worden opgeslagen.");
-
-                cancelNonogram.getButtonTypes().clear();
-                ButtonType neeButton = new ButtonType("Nee, ik speel door.");
                 ButtonType jaButton = new ButtonType("Ja, ik wil stoppen.");
-                cancelNonogram.getButtonTypes().add(jaButton);
-                cancelNonogram.getButtonTypes().add(neeButton);
-
+                Alert cancelNonogram = initialiseAlertPopUp(jaButton);
                 cancelNonogram.showAndWait();
 
                 if(cancelNonogram.getResult().equals(jaButton)){
@@ -111,6 +104,7 @@ public class NonogramPresenter {
             }
         });
 
+        //Lopen over elk label in de lijst
         for (int rij = 0; rij < view.getNonogram().size(); rij++) {
             ArrayList<Label> lbllijst = view.getNonogram().get(rij);
             for (int kolom = 0; kolom < lbllijst.size(); kolom++) {
@@ -119,19 +113,19 @@ public class NonogramPresenter {
                 lbllijst.get(kolom).setOnMouseReleased(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
-                        if(mouseEvent.getButton()== MouseButton.SECONDARY){
+                        if(mouseEvent.getButton()== MouseButton.SECONDARY){//bij een recht muisclick: grijze achtergrond + aanduiden
                             if(speler.getOpgeslagenSpel().getMijnNonogram().duidAan(frij, fkolom)){
                                 view.getNonogram().get(frij).get(fkolom).setStyle("-fx-background-color: grey");
                             }else{
                                 view.getNonogram().get(frij).get(fkolom).setStyle("-fx-background-color: none");
                             }
-                        }else {
+                        }else {//bij een links muisclick: zwart achtergrond + inkleuren
                             if(speler.getOpgeslagenSpel().getMijnNonogram().kleurIn(frij, fkolom)){
                                 view.getNonogram().get(frij).get(fkolom).setStyle("-fx-background-color: black");
                             }else{
                                 view.getNonogram().get(frij).get(fkolom).setStyle("-fx-background-color: none");
                             }
-                            if(speler.getOpgeslagenSpel().getMijnNonogram().controlleren(frij,fkolom)){
+                            if(speler.getOpgeslagenSpel().getMijnNonogram().controlleren(frij,fkolom)){//Controlleren of het nonogram juist is
                                 System.out.println("Gewonnen!");
                                 speler.getOpgeslagenSpel().startVolgendSpel(speler);
                                 model.updateGebruikers();
@@ -158,18 +152,8 @@ public class NonogramPresenter {
         view.getScene().getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent windowEvent) {
-                System.out.println(windowEvent.getEventType().getName());
-                Alert cancelNonogram = new Alert(Alert.AlertType.WARNING);
-                cancelNonogram.setTitle("Warning!");
-                cancelNonogram.setHeaderText("Nonogram afsluiten.");
-                cancelNonogram.setContentText("Weet u zeker dat u wilt afsluiten? Uw vooruitgang zal worden opgeslagen.");
-
-                cancelNonogram.getButtonTypes().clear();
-                ButtonType neeButton = new ButtonType("Nee, ik speel door.");
                 ButtonType jaButton = new ButtonType("Ja, ik wil stoppen.");
-                cancelNonogram.getButtonTypes().add(jaButton);
-                cancelNonogram.getButtonTypes().add(neeButton);
-
+                Alert cancelNonogram = initialiseAlertPopUp(jaButton);
                 cancelNonogram.showAndWait();
 
                 if(cancelNonogram.getResult().equals(jaButton)){

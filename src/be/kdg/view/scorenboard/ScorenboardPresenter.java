@@ -18,7 +18,7 @@ public class ScorenboardPresenter {
         this.model = model;
         this.view = view;
 
-        toonScorenboard();
+        toonScorenboard();//Gegevens van de gebruikers inladen
         this.addEventHandlers();
     }
 

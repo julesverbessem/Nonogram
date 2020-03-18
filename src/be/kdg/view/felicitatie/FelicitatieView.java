@@ -27,8 +27,8 @@ public class FelicitatieView extends BorderPane {
         this.lblTitel = new Label(speler.getOpgeslagenSpel().getMijnNonogram().feliciteren());
 
 
-        this.imageView = new ImageView(speler.getOpgeslagenSpel().toonNonogramFoto(speler));
-        this.lblFoto = new Label("",imageView);// in de presenter foto toewijzen aan label
+        this.imageView = new ImageView(speler.getOpgeslagenSpel().toonNonogramFoto(speler));//De foto is afhankelijk van de user level
+        this.lblFoto = new Label("",imageView);
 
         this.btnNieuwLevel = new Button("Nieuw Level");
         this.btnScorenboard = new Button("Scorenboard");

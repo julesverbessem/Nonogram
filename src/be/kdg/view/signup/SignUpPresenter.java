@@ -36,18 +36,19 @@ public class SignUpPresenter {
                 ButtonType opniewButton = new ButtonType("Probeer opniew");
                 cancelLogInAlert.getButtonTypes().add(opniewButton);
 
-                for (Gebruiker huidigeGebruiker:model.getLijst()) {
+                for (Gebruiker huidigeGebruiker:model.getLijst()) {//Controlleren of de gebruikersnaam al bestaad
                     if(huidigeGebruiker.getGebruikersnaam().equals(view.getTxtUsername().getText())){
                         cancelLogInAlert.setContentText("Uw gebruikersnaam: "+ view.getTxtUsername().getText()+" is al ingebruik!");
                         cancelLogInAlert.showAndWait();
                     }
                 }
 
-                if(!view.getPwfPasswoord().getText().equals(view.getPwfConfirmPassword().getText())){
+                if(!view.getPwfPasswoord().getText().equals(view.getPwfConfirmPassword().getText())){//Controlleren of de de ingegeven passwoorden overeenkomen
                     cancelLogInAlert.setContentText("Uw passwoord is foutief voor de gebruiker: "+ view.getTxtUsername().getText()+"!");
                     cancelLogInAlert.showAndWait();
                 }
 
+                //De nieuwe gebruiker aanmaken, toevoegen, nonogram maken & starten
                 Gebruiker nieuweSpeler = new Gebruiker(view.getTxtUsername().getText(),view.getPwfConfirmPassword().getText());
                 model.setGebruiker(nieuweSpeler);
                 model.getGebruiker(view.getTxtUsername().getText()).getOpgeslagenSpel().startSpel(model.getGebruiker(view.getTxtUsername().getText()));
@@ -56,7 +57,6 @@ public class SignUpPresenter {
 
                 NonogramView nonogramView = new NonogramView(model.getGebruiker(view.getTxtUsername().getText()).getOpgeslagenSpel().getMijnNonogram());
                 NonogramPresenter nonogramPresenter = new NonogramPresenter(model,nonogramView,view.getTxtUsername().getText());
-
                 view.getScene().setRoot(nonogramView);
                 nonogramView.getScene().getWindow().sizeToScene();
                 nonogramView.getScene().getWindow().setHeight(800);

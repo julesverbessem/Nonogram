@@ -21,18 +21,13 @@ public class ScorenboardView extends BorderPane {
 
     private void initialiseNodes() {
         this.lblTitel = new Label("Scorenboard");
-        //Het label moet gecentreerd worden, een solid border hebben en groot genoeg zijn
-        //normaal oke
 
         Image backButton = new Image("./backbutton.png");
         ImageView imageView = new ImageView(backButton);
         this.btnBack = new Button("", imageView);
-        //kleiner en links vanboven gecentreerd
-        //normaal oke
 
-        this.lblScorenboard = new Label("test");
-        //label moet groot genoeg en gecnetreerd zijn met een solid border
-        //normaal oke
+        this.lblScorenboard = new Label("");
+
     }
 
     private void layoutNodes() {
@@ -40,14 +35,16 @@ public class ScorenboardView extends BorderPane {
         this.setLeft(btnBack);
         this.setCenter(lblScorenboard);
 
+        //layout label Titel
         lblTitel.setStyle("-fx-font-size: 36");
         BorderPane.setAlignment(lblTitel, Pos.CENTER);
         lblTitel.setContentDisplay(ContentDisplay.CENTER);
+        lblTitel.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,BorderWidths.DEFAULT)));
 
+        //layout scorenboard
         lblScorenboard.setStyle("-fx-font-size: 36");
         BorderPane.setAlignment(lblScorenboard, Pos.CENTER);
         lblScorenboard.setContentDisplay(ContentDisplay.CENTER);
-        lblTitel.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,BorderWidths.DEFAULT)));
     }
 
     public Button getBtnBack() {

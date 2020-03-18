@@ -33,19 +33,18 @@ public class NonogramView extends BorderPane {
         this.initialiseNodes();
         this.layoutNodes();
         this.model = nonogram;
+
         this.initialiseGrid(nonogram);
         this.layoutGrid(nonogram.getGrootte());
+        this.initialiseUserGrid();
     }
 
     private void initialiseNodes() {
-        this.lblTitel = new Label();
-        //waarde geven via de model in de presenter
-        //Het label moet gecentreerd worden, een solid border hebben en groot genoeg zijn
+        this.lblTitel = new Label();//Tekst wordt ingeladen in de presenter
 
         Image backButton = new Image("./backbutton.png");
         ImageView imageView = new ImageView(backButton);
         this.btnBack = new Button("",imageView);
-        //kleiner en links vanboven gecentreerd
 
         this.btnScorenboard = new Button("Scorenboard");
         this.btnSpelregels = new Button("Spelregels");
@@ -53,20 +52,11 @@ public class NonogramView extends BorderPane {
         this.buttonBox = new HBox();
 
 
-        //!!!! AFWERKEN
         this.nonogramGrid = new GridPane();
-        nonogramGrid.setGridLinesVisible(true);
-
         this.rijGrid = new GridPane();
-        rijGrid.setGridLinesVisible(true);
-
         this.kolomGrid = new GridPane();
-        kolomGrid.setGridLinesVisible(true);
-
         this.centerGrid = new GridPane();
-
         this.nonogram = new ArrayList<ArrayList<Label>>();
-
     }
 
     private void layoutNodes() {
@@ -87,65 +77,70 @@ public class NonogramView extends BorderPane {
         lblTitel.setStyle("-fx-font-size: 36");
         BorderPane.setAlignment(lblTitel, Pos.CENTER);
         lblTitel.setContentDisplay(ContentDisplay.CENTER);
-    }
-
-    private void initialiseGrid(Nonogram viewNon){
-        int grote = viewNon.getGrootte();
-        for(int rij = 1; rij<= grote; rij++){
-            ArrayList<Label> kolomLijst = new ArrayList<>();
-            for(int kolom = 1; kolom<= grote; kolom++){
-                Label lbl = new Label("");
-                lbl.setMinWidth(100);
-                lbl.setMinHeight(100);
-                kolomLijst.add(lbl);
-                int r = rij;
-                int k = kolom;
-                nonogramGrid.add(lbl,k-1,r-1);
-            }
-            nonogram.add(kolomLijst);
-
-        }
-
-        for(int rij =1; rij<=grote; rij++){
-            int r = rij;
-            rijGrid.add(new Label(viewNon.getRij()[r-1]),0,r-1);
-        }
-
-        for(int kolom =1; kolom<=grote; kolom++){
-            int k = kolom;
-            kolomGrid.add(new Label(viewNon.getKolom()[k-1]),k-1,0);
-        }
-    }
-
-    private void layoutGrid(int grote){
-        //liquide maken => grootte 5 = 100, 7=75, 10 =50, ...
-        for(int kolom = 1; kolom<= grote; kolom++){
-            nonogramGrid.getColumnConstraints().add(new ColumnConstraints(100));
-        }
-        for(int rij = 1; rij<= grote; rij++){
-            nonogramGrid.getRowConstraints().add(new RowConstraints(100));
-        }
-
-        for(int kolom = 1; kolom<= grote; kolom++){
-            kolomGrid.getColumnConstraints().add(new ColumnConstraints(100));
-        }
-        kolomGrid.getRowConstraints().add(new RowConstraints(100));
-
-        rijGrid.getColumnConstraints().add(new ColumnConstraints(100));
-        for(int rij = 1; rij<= grote; rij++){
-            rijGrid.getRowConstraints().add(new RowConstraints(100));
-        }
-
-        lblTitel.setStyle("-fx-font-size: 36");
-        BorderPane.setAlignment(lblTitel, Pos.CENTER);
-        lblTitel.setContentDisplay(ContentDisplay.CENTER);
         lblTitel.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY,BorderWidths.DEFAULT)));
 
         btnScorenboard.setStyle("-fx-font-size: 24");
         btnSpelregels.setStyle("-fx-font-size: 24");
+
+        nonogramGrid.setGridLinesVisible(true);
+        rijGrid.setGridLinesVisible(true);
+        kolomGrid.setGridLinesVisible(true);
     }
 
-    public void initialiseUserGrid(){
+    private void initialiseGrid(Nonogram viewNon){
+        int grote = viewNon.getGrootte();
+        for(int rij = 0; rij<grote; rij++){
+            ArrayList<Label> kolomLijst = new ArrayList<>();
+            for(int kolom = 0; kolom<grote; kolom++){
+                Label lbl = new Label("");
+                lbl.setMinWidth(100);
+                lbl.setMinHeight(100);
+                kolomLijst.add(lbl);
+                nonogramGrid.add(lbl,kolom,rij);//Labels aan de grid toeveogen
+            }
+            nonogram.add(kolomLijst);//Labels in de lijst plaatsen
+
+        }
+
+        //Labels aan de grid toevoegen
+        for(int rij =0; rij<grote; rij++){
+            rijGrid.add(new Label(viewNon.getRij()[rij]),0,rij);
+        }
+
+        //Labels aan de grid toevoegen
+        for(int kolom =0; kolom<grote; kolom++){
+            kolomGrid.add(new Label(viewNon.getKolom()[kolom]),kolom,0);
+        }
+    }
+
+    private void layoutGrid(int grote){//De vakjes in de grid een hoogte en breedte geven
+        //liquide maken => grootte 5=100, 10=50px
+        int liquide = 0;
+        if(grote<10){
+            liquide=100;
+        }else {
+            liquide=50;
+        }
+
+        for(int kolom = 1; kolom<= grote; kolom++){
+            nonogramGrid.getColumnConstraints().add(new ColumnConstraints(liquide));
+        }
+        for(int rij = 1; rij<= grote; rij++){
+            nonogramGrid.getRowConstraints().add(new RowConstraints(liquide));
+        }
+
+        for(int kolom = 1; kolom<= grote; kolom++){
+            kolomGrid.getColumnConstraints().add(new ColumnConstraints(liquide));
+        }
+        kolomGrid.getRowConstraints().add(new RowConstraints(liquide));
+
+        rijGrid.getColumnConstraints().add(new ColumnConstraints(liquide));
+        for(int rij = 1; rij<= grote; rij++){
+            rijGrid.getRowConstraints().add(new RowConstraints(liquide));
+        }
+    }
+
+    private void initialiseUserGrid(){//De reeds ingekleurde vakjes van de gebruiker inladen
         for(int rij = 0; rij< model.getGrootte(); rij++){
             ArrayList<Label> kolomlijst = new ArrayList<>();
             kolomlijst = nonogram.get(rij);
