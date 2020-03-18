@@ -49,8 +49,7 @@ public class NonogramPresenter {
                 Alert cancelNonogram = new Alert(Alert.AlertType.WARNING);
                 cancelNonogram.setTitle("Warning!");
                 cancelNonogram.setHeaderText("Nonogram afsluiten.");
-                cancelNonogram.setContentText("Weet u zeker dat u wilt afsluiten? Uw vooruitgang zal niet worden opgeslagen.");
-
+                cancelNonogram.setContentText("Weet u zeker dat u wilt afsluiten? Uw vooruitgang zal worden opgeslagen.");
                 cancelNonogram.getButtonTypes().clear();
                 ButtonType neeButton = new ButtonType("Nee, ik speel door.");
                 ButtonType jaButton = new ButtonType("Ja, ik wil stoppen.");
@@ -60,6 +59,7 @@ public class NonogramPresenter {
                 cancelNonogram.showAndWait();
 
                 if(cancelNonogram.getResult().equals(jaButton)){
+                    speler.getOpgeslagenSpel().getMijnNonogram().pauzeerGebruikerNonogram(speler.getGebruikersnaam());
                     StartView startView = new StartView();
                     StartPresenter startPresenter = new StartPresenter(model,startView);
 
@@ -77,7 +77,7 @@ public class NonogramPresenter {
                 Alert cancelNonogram = new Alert(Alert.AlertType.WARNING);
                 cancelNonogram.setTitle("Warning!");
                 cancelNonogram.setHeaderText("Nonogram afsluiten.");
-                cancelNonogram.setContentText("Weet u zeker dat u wilt afsluiten? Uw vooruitgang zal niet worden opgeslagen.");
+                cancelNonogram.setContentText("Weet u zeker dat u wilt afsluiten? Uw vooruitgang zal worden opgeslagen.");
 
                 cancelNonogram.getButtonTypes().clear();
                 ButtonType neeButton = new ButtonType("Nee, ik speel door.");
@@ -88,6 +88,7 @@ public class NonogramPresenter {
                 cancelNonogram.showAndWait();
 
                 if(cancelNonogram.getResult().equals(jaButton)){
+                    speler.getOpgeslagenSpel().getMijnNonogram().pauzeerGebruikerNonogram(speler.getGebruikersnaam());
                     ScorenboardView scorenboardView = new ScorenboardView();
                     ScorenboardPresenter scorenboardPresenter = new ScorenboardPresenter(model,scorenboardView);
 
@@ -161,7 +162,7 @@ public class NonogramPresenter {
                 Alert cancelNonogram = new Alert(Alert.AlertType.WARNING);
                 cancelNonogram.setTitle("Warning!");
                 cancelNonogram.setHeaderText("Nonogram afsluiten.");
-                cancelNonogram.setContentText("Weet u zeker dat u wilt afsluiten? Uw vooruitgang zal niet worden opgeslagen.");
+                cancelNonogram.setContentText("Weet u zeker dat u wilt afsluiten? Uw vooruitgang zal worden opgeslagen.");
 
                 cancelNonogram.getButtonTypes().clear();
                 ButtonType neeButton = new ButtonType("Nee, ik speel door.");
@@ -171,7 +172,8 @@ public class NonogramPresenter {
 
                 cancelNonogram.showAndWait();
 
-                if(cancelNonogram.getResult().equals(neeButton)){
+                if(cancelNonogram.getResult().equals(jaButton)){
+                    speler.getOpgeslagenSpel().getMijnNonogram().pauzeerGebruikerNonogram(speler.getGebruikersnaam());
                     windowEvent.consume();
                 }
             }

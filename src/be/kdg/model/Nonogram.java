@@ -156,7 +156,6 @@ public class Nonogram {
     public void schrijfGebruikerNonogramWeg(String gebruikersnaam){
         String filenaam = "resources/"+gebruikersnaam+"Nonogram.csv";
 
-
         Path myFile = Paths.get(filenaam);
         if (!Files.exists(myFile)){
             try {
@@ -165,20 +164,16 @@ public class Nonogram {
                 System.out.println("Er is een fout bij het creeëren van "+filenaam);
             }
         }
-
-/*
         List<String> gebruikersnonogram = new ArrayList<>();
-        for (Vakje[] vakjes : patroon) {
-            for (Vakje vakje : vakjes) {
-                gebruikersnonogram.add(vakje.getWaarde());
-            }
+        for (int i = 0; i<5;i++) {
+            gebruikersnonogram.add("X;X;X;X;X");
+        }
+        try {
+            Files.write(myFile,gebruikersnonogram);
+        } catch (IOException e) {
+            System.out.println("Er is een fout bij het resetten van "+filenaam);
         }
 
-        try {
-            Files.write(file.toPath(),gebruikersnonogram);
-        } catch (IOException e) {
-            System.out.println("Er is een fout bij het creeëren van "+filenaam);
-        }*/
     }
 
     private void leesGebruikerNonogramIn(File csvGebruikernonogram){
@@ -270,7 +265,7 @@ public class Nonogram {
             System.out.println("Fout bij het inlezen van bestand " + csvGebruikernonogram.getName());
         }
         List<String> gebruikersnonogram = new ArrayList<>();
-        for (Vakje[] vakjes : patroon) {
+            for (Vakje[] vakjes : patroon) {
             StringBuilder rij = new StringBuilder();
             for (Vakje vakje : vakjes) {
                 rij.append(vakje.getWaarde()).append(";");
@@ -282,6 +277,26 @@ public class Nonogram {
             Files.write(csvGebruikernonogram.toPath(),gebruikersnonogram);
         } catch (IOException e) {
             System.out.println("Er is een fout bij het resetten van "+csvGebruikernonogram);
+        }
+    }
+
+    public void pauzeerGebruikerNonogram(String gebruikersnaam){
+        String filenaam = "resources/"+gebruikersnaam+"Nonogram.csv";
+        File csvGebruikernonogram= new File(filenaam);
+
+        List<String> gebruikersnonogram = new ArrayList<>();
+        for (Vakje[] vakjes : patroon) {
+            StringBuilder rij = new StringBuilder();
+            for (Vakje vakje : vakjes) {
+                rij.append(vakje.getWaarde()).append(";");
+            }
+            rij.deleteCharAt(grootte+grootte-1);
+            gebruikersnonogram.add(rij.toString());
+        }
+        try {
+            Files.write(csvGebruikernonogram.toPath(),gebruikersnonogram);
+        } catch (IOException e) {
+            System.out.println("Er is een fout bij het opslaan van "+csvGebruikernonogram);
         }
     }
 
