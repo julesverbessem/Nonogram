@@ -1,4 +1,4 @@
-package be.kdg.view.scorenboard;
+package be.kdg.view.scoreboard;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -9,20 +9,20 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
-public class ScorenboardView extends BorderPane {
+public class ScoreboardView extends BorderPane {
     private Label lblTitel;
     private Button btnBack;
     private Label lblScorenboard;
 
-    public ScorenboardView() {
+    public ScoreboardView() {
         this.initialiseNodes();
         this.layoutNodes();
     }
 
     private void initialiseNodes() {
-        this.lblTitel = new Label("Scorenboard");
+        this.lblTitel = new Label("Scoreboard");
 
-        Image backButton = new Image("./backbutton.png");
+        Image backButton = new Image("foto/backbutton.png");
         ImageView imageView = new ImageView(backButton);
         this.btnBack = new Button("", imageView);
 

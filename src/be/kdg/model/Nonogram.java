@@ -43,11 +43,6 @@ public class Nonogram {
         }
     }
 
-    public int getGrootte(){ return this.grootte;}
-
-    public Vakje[][] getPatroon() {
-        return patroon;
-    }
 
     //functionele methodes
     public boolean controlleren(int frij, int fkolom) {//verder afwerken met peerTutor
@@ -145,16 +140,9 @@ public class Nonogram {
         return rtrn;
     }
 
-    public String[] getRij() {
-        return rij;
-    }
-
-    public String[] getKolom() {
-        return kolom;
-    }
-
+    //Uitlezen+updaten + creeëren csv files
     public void schrijfGebruikerNonogramWeg(String gebruikersnaam){
-        String filenaam = "resources/"+gebruikersnaam+"Nonogram.csv";
+        String filenaam = "resources/nonograms/gebruikersnonogrammen/"+gebruikersnaam+"Nonogram.csv";
 
         Path myFile = Paths.get(filenaam);
         if (!Files.exists(myFile)){
@@ -208,7 +196,7 @@ public class Nonogram {
                 String[] vakken = new String[grootte];
                 vakken = row.split(";");
                 for (int i = 0; i < vakken.length; i++) {
-                    if(vakken[i].equals("O")){
+                    if(!vakken[i].equals("X")){
                         this.achterLiggendPatroon[rowcounter][i].kleurIn();
                     }else {
                         this.achterLiggendPatroon[rowcounter][i].setDefaultWaarde();
@@ -249,7 +237,7 @@ public class Nonogram {
 
     public void resetGebruikerNonogram(String gebruikersnaam){
         String filenaam = gebruikersnaam+"Nonogram.csv";
-        File csvGebruikernonogram= new File("resources/"+filenaam);
+        File csvGebruikernonogram= new File("resources/nonograms/gebruikersnonogrammen/"+filenaam);
         try(Scanner fileScanner = new Scanner(csvGebruikernonogram)){
             int rowcounter=0;
             while(fileScanner.hasNext()){
@@ -281,7 +269,7 @@ public class Nonogram {
     }
 
     public void pauzeerGebruikerNonogram(String gebruikersnaam){
-        String filenaam = "resources/"+gebruikersnaam+"Nonogram.csv";
+        String filenaam = "resources/nonograms/gebruikersnonogrammen/"+gebruikersnaam+"Nonogram.csv";
         File csvGebruikernonogram= new File(filenaam);
 
         List<String> gebruikersnonogram = new ArrayList<>();
@@ -300,7 +288,7 @@ public class Nonogram {
         }
     }
 
-    //Voorgemaakte nonogramen
+    //Nonogramen level
     public void nonogram1_lijn(String gebruikersnaam) {
         //attributen
         this.naam = "Horizontale lijn";
@@ -308,19 +296,19 @@ public class Nonogram {
         this.aantalIngekleurdeVakjes=5;
 
         //waarde rij
-        Path path = Paths.get("resources/GetallenNonogram1.csv");
+        Path path = Paths.get("resources/nonograms/GetallenNonogram1.csv");
         File csvGetallenNonogram = new File(path.toString());
         leesGetallenNonogramIn(csvGetallenNonogram);
 
         //Achterliggend nonogram
-        path = Paths.get("resources/Nonogram1.csv");
+        path = Paths.get("resources/nonograms/Nonogram1.csv");
         File csvNonogram = new File(path.toString());
         leesNonogramIn(csvNonogram);
         toonAchterLiggendPatroon();
 
         //Gebruikers reeds opgelsagen nonogram
         String filenaam = gebruikersnaam+"Nonogram.csv";
-        File csvGebruikersNonogram = new File("resources/"+filenaam);
+        File csvGebruikersNonogram = new File("resources/nonograms/gebruikersnonogrammen/"+filenaam);
         leesGebruikerNonogramIn(csvGebruikersNonogram);
         toonGrid();
     }
@@ -332,17 +320,17 @@ public class Nonogram {
         this.aantalIngekleurdeVakjes=5;
 
         //waarde rij
-        File csvGetallenNonogram = new File("resources/GetallenNonogram2.csv");
+        File csvGetallenNonogram = new File("resources/nonograms/GetallenNonogram2.csv");
         leesGetallenNonogramIn(csvGetallenNonogram);
 
         //patroon
-        File csvNonogram = new File("resources/Nonogram2.csv");
+        File csvNonogram = new File("resources/nonograms/Nonogram2.csv");
         leesNonogramIn(csvNonogram);
         toonAchterLiggendPatroon();
 
         //Gebruikers reeds opgelsagen nonogram
         String filenaam = gebruikersnaam+"Nonogram.csv";
-        File csvGebruikersNonogram = new File("resources/"+filenaam);
+        File csvGebruikersNonogram = new File("resources/nonograms/gebruikersnonogrammen/"+filenaam);
         leesGebruikerNonogramIn(csvGebruikersNonogram);
         toonGrid();
     }
@@ -352,54 +340,54 @@ public class Nonogram {
         this.moeilijkheidsgraad = 3;
         this.aantalIngekleurdeVakjes = 9;
 
-        File csvGetallenNonogram = new File("resources/GetallenNonogram3.csv");
+        File csvGetallenNonogram = new File("resources/nonograms/GetallenNonogram3.csv");
         leesGetallenNonogramIn(csvGetallenNonogram);
 
-        File csvNonogram = new File("resources/Nonogram3.csv");
+        File csvNonogram = new File("resources/nonograms/Nonogram3.csv");
         leesNonogramIn(csvNonogram);
         toonAchterLiggendPatroon();
 
         //Gebruikers reeds opgelsagen nonogram
         String filenaam = gebruikersnaam+"Nonogram.csv";
-        File csvGebruikersNonogram = new File("resources/"+filenaam);
+        File csvGebruikersNonogram = new File("resources/nonograms/gebruikersnonogrammen/"+filenaam);
         leesGebruikerNonogramIn(csvGebruikersNonogram);
         toonGrid();
     }
 
     public void nonogram4(String gebruikersnaam) {
-        this.naam = "Cirkel";
-        this.moeilijkheidsgraad = 4;
-        this.aantalIngekleurdeVakjes = 24;
+        this.naam = "Zwaan";
+        this.moeilijkheidsgraad = 5;
+        this.aantalIngekleurdeVakjes = 18;
 
-        File csvGetallenNonogram = new File("resources/GetallenNonogram4.csv");
+        File csvGetallenNonogram = new File("resources/nonograms/GetallenNonogram5.csv");
         leesGetallenNonogramIn(csvGetallenNonogram);
 
-        File csvNonogram = new File("resources/Nonogram4.csv");
+        File csvNonogram = new File("resources/nonograms/Nonogram5.csv");
         leesNonogramIn(csvNonogram);
         toonAchterLiggendPatroon();
 
         //Gebruikers reeds opgelsagen nonogram
         String filenaam = gebruikersnaam+"Nonogram.csv";
-        File csvGebruikersNonogram = new File("resources/"+filenaam);
+        File csvGebruikersNonogram = new File("resources/nonograms/gebruikersnonogrammen/"+filenaam);
         leesGebruikerNonogramIn(csvGebruikersNonogram);
         toonGrid();
     }
 
     public void nonogram5(String gebruikersnaam) {
-        this.naam = "Zwaan";
-        this.moeilijkheidsgraad = 5;
-        this.aantalIngekleurdeVakjes = 18;
+        this.naam = "Cirkel";
+        this.moeilijkheidsgraad = 4;
+        this.aantalIngekleurdeVakjes = 24;
 
-        File csvGetallenNonogram = new File("resources/GetallenNonogram5.csv");
+        File csvGetallenNonogram = new File("resources/nonograms/GetallenNonogram4.csv");
         leesGetallenNonogramIn(csvGetallenNonogram);
 
-        File csvNonogram = new File("resources/Nonogram5.csv");
+        File csvNonogram = new File("resources/nonograms/Nonogram4.csv");
         leesNonogramIn(csvNonogram);
         toonAchterLiggendPatroon();
 
         //Gebruikers reeds opgelsagen nonogram
         String filenaam = gebruikersnaam+"Nonogram.csv";
-        File csvGebruikersNonogram = new File("resources/"+filenaam);
+        File csvGebruikersNonogram = new File("resources/nonograms/gebruikersnonogrammen/"+filenaam);
         leesGebruikerNonogramIn(csvGebruikersNonogram);
         toonGrid();
     }
@@ -409,16 +397,16 @@ public class Nonogram {
         this.moeilijkheidsgraad = 6;
         this.aantalIngekleurdeVakjes = 25;
 
-        File csvGetallenNonogram = new File("resources/GetallenNonogram6.csv");
+        File csvGetallenNonogram = new File("resources/nonograms/GetallenNonogram6.csv");
         leesGetallenNonogramIn(csvGetallenNonogram);
 
-        File csvNonogram = new File("resources/Nonogram6.csv");
+        File csvNonogram = new File("resources/nonograms/Nonogram6.csv");
         leesNonogramIn(csvNonogram);
         toonAchterLiggendPatroon();
 
         //Gebruikers reeds opgelsagen nonogram
         String filenaam = gebruikersnaam+"Nonogram.csv";
-        File csvGebruikersNonogram = new File("resources/"+filenaam);
+        File csvGebruikersNonogram = new File("resources/nonograms/gebruikersnonogrammen/"+filenaam);
         leesGebruikerNonogramIn(csvGebruikersNonogram);
         toonGrid();
     }
@@ -428,16 +416,16 @@ public class Nonogram {
         this.moeilijkheidsgraad = 7;
         this.aantalIngekleurdeVakjes = 37;
 
-        File csvGetallenNonogram = new File("resources/GetallenNonogram7.csv");
+        File csvGetallenNonogram = new File("resources/nonograms/GetallenNonogram7.csv");
         leesGetallenNonogramIn(csvGetallenNonogram);
 
-        File csvNonogram = new File("resources/Nonogram7.csv");
+        File csvNonogram = new File("resources/nonograms/Nonogram7.csv");
         leesNonogramIn(csvNonogram);
         toonAchterLiggendPatroon();
 
         //Gebruikers reeds opgelsagen nonogram
         String filenaam = gebruikersnaam+"Nonogram.csv";
-        File csvGebruikersNonogram = new File("resources/"+filenaam);
+        File csvGebruikersNonogram = new File("resources/nonograms/gebruikersnonogrammen/"+filenaam);
         leesGebruikerNonogramIn(csvGebruikersNonogram);
         toonGrid();
     }
@@ -447,16 +435,16 @@ public class Nonogram {
         this.moeilijkheidsgraad = 8;
         this.aantalIngekleurdeVakjes = 37;
 
-        File csvGetallenNonogram = new File("resources/GetallenNonogram8.csv");
+        File csvGetallenNonogram = new File("resources/nonograms/GetallenNonogram8.csv");
         leesGetallenNonogramIn(csvGetallenNonogram);
 
-        File csvNonogram = new File("resources/Nonogram8.csv");
+        File csvNonogram = new File("resources/nonograms/Nonogram8.csv");
         leesNonogramIn(csvNonogram);
         toonAchterLiggendPatroon();
 
         //Gebruikers reeds opgelsagen nonogram
         String filenaam = gebruikersnaam+"Nonogram.csv";
-        File csvGebruikersNonogram = new File("resources/"+filenaam);
+        File csvGebruikersNonogram = new File("resources/nonograms/gebruikersnonogrammen/"+filenaam);
         leesGebruikerNonogramIn(csvGebruikersNonogram);
         toonGrid();
     }
@@ -466,16 +454,16 @@ public class Nonogram {
         this.moeilijkheidsgraad = 9;
         this.aantalIngekleurdeVakjes = 57;
 
-        File csvGetallenNonogram = new File("resources/GetallenNonogram9.csv");
+        File csvGetallenNonogram = new File("resources/nonograms/GetallenNonogram9.csv");
         leesGetallenNonogramIn(csvGetallenNonogram);
 
-        File csvNonogram = new File("resources/Nonogram9.csv");
+        File csvNonogram = new File("resources/nonograms/Nonogram9.csv");
         leesNonogramIn(csvNonogram);
         toonAchterLiggendPatroon();
 
         //Gebruikers reeds opgelsagen nonogram
         String filenaam = gebruikersnaam+"Nonogram.csv";
-        File csvGebruikersNonogram = new File("resources/"+filenaam);
+        File csvGebruikersNonogram = new File("resources/nonograms/gebruikersnonogrammen/"+filenaam);
         leesGebruikerNonogramIn(csvGebruikersNonogram);
         toonGrid();
     }
@@ -485,17 +473,32 @@ public class Nonogram {
         this.moeilijkheidsgraad = 10;
         this.aantalIngekleurdeVakjes = 59;
 
-        File csvGetallenNonogram = new File("resources/GetallenNonogram10.csv");
+        File csvGetallenNonogram = new File("resources/nonograms/GetallenNonogram10.csv");
         leesGetallenNonogramIn(csvGetallenNonogram);
 
-        File csvNonogram = new File("resources/Nonogram10.csv");
+        File csvNonogram = new File("resources/nonograms/Nonogram10.csv");
         leesNonogramIn(csvNonogram);
         toonAchterLiggendPatroon();
 
         //Gebruikers reeds opgelsagen nonogram
         String filenaam = gebruikersnaam+"Nonogram.csv";
-        File csvGebruikersNonogram = new File("resources/"+filenaam);
+        File csvGebruikersNonogram = new File("resources/nonograms/gebruikersnonogrammen/"+filenaam);
         leesGebruikerNonogramIn(csvGebruikersNonogram);
         toonGrid();
+    }
+
+    //Getters
+    public int getGrootte(){ return this.grootte;}
+
+    public Vakje[][] getPatroon() {
+        return patroon;
+    }
+
+    public String[] getRij() {
+        return rij;
+    }
+
+    public String[] getKolom() {
+        return kolom;
     }
 }

@@ -1,7 +1,5 @@
 package be.kdg.model;
 
-import be.kdg.model.Gebruiker;
-import be.kdg.model.Nonogram;
 import javafx.scene.image.Image;
 
 import java.time.LocalDateTime;
@@ -18,16 +16,17 @@ public class Spel {
             case 2:
                 mijnNonogram = new Nonogram(5);
                 mijnNonogram.nonogram2_lijnVerticaal(speler.getGebruikersnaam());
-                break;case 3:
+                break;
+            case 3:
                 mijnNonogram = new Nonogram(5);
-                mijnNonogram.nonogram3(speler.getGebruikersnaam());//verder afwerke
+                mijnNonogram.nonogram3(speler.getGebruikersnaam());
                 break;
             case 4:
-                mijnNonogram = new Nonogram(10);
+                mijnNonogram = new Nonogram(6);
                 mijnNonogram.nonogram4(speler.getGebruikersnaam());
                 break;
             case 5:
-                mijnNonogram = new Nonogram(6);
+                mijnNonogram = new Nonogram(10);
                 mijnNonogram.nonogram5(speler.getGebruikersnaam());
                 break;
             case 6:
@@ -66,12 +65,35 @@ public class Spel {
         Image foto = null;
         switch (speler.getLevel()-1){
             case 1:
-                foto = new Image("./VerticaleLijn.jpg");
+                foto = new Image("foto/VerticaleLijn.jpg");
                 break;
             case 2:
-                foto = new Image("./horizontaleLijn.png");
+                foto = new Image("foto/horizontaleLijn.png");
                 break;
-            //aanvullen tot 10
+            case 3:
+                foto = new Image("foto/Kruis.png");
+                break;
+            case 4:
+                foto = new Image("foto/Zwaan.jpg");
+                break;
+            case 5:
+                foto = new Image("foto/Cirkel.png");
+                break;
+            case 6:
+                foto = new Image("foto/Hartje.jpg");
+                break;
+            case 7:
+                foto = new Image("Hardloper.jpg");
+                break;
+            case 8:
+                foto = new Image("foto/Schildpad.jpg");
+                break;
+            case 9:
+                foto = new Image("foto/Kat.jpg");
+                break;
+            case 10:
+                foto = new Image("foto/Appel.jpg");
+                break;
         }
         return  foto;
 

@@ -31,7 +31,7 @@ public class FelicitatieView extends BorderPane {
         this.lblFoto = new Label("",imageView);
 
         this.btnNieuwLevel = new Button("Nieuw Level");
-        this.btnScorenboard = new Button("Scorenboard");
+        this.btnScorenboard = new Button("Scoreboard");
         this.btnBeginScherm = new Button("Begin scherm");
         this.buttonBox = new HBox();
     }

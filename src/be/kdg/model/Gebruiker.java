@@ -13,6 +13,7 @@ public class Gebruiker implements Comparable<Gebruiker>{
     private int level;
     private LocalDateTime datum;
 
+    //constructors
     public Gebruiker(String gebruikersnaam, String passwoord) {
         this.gebruikersnaam = gebruikersnaam;
         this.passwoord = passwoord;
@@ -21,12 +22,12 @@ public class Gebruiker implements Comparable<Gebruiker>{
 
         schrijfGebruikerWeg(gebruikersnaam,passwoord,level,datum);
     }
-
     public Gebruiker(){};
     public Gebruiker(String gebruikersnaam){
         this.gebruikersnaam = gebruikersnaam;
     }
 
+    //Gebruiker in csv zetten
     private void schrijfGebruikerWeg(String gebruikersnaam, String passwoord, int level, LocalDateTime datum) {
         File gbrfile = new File("resources/Gebruikers.csv");
         String data = "\n;"+gebruikersnaam+";"+passwoord+";"+level+";"+datum;
@@ -38,12 +39,9 @@ public class Gebruiker implements Comparable<Gebruiker>{
         }
     }
 
+    //Getters en setters
     public String getGebruikersnaam() {
         return gebruikersnaam;
-    }
-
-    public void setGebruikersnaam(String gebruikersnaam) {
-        this.gebruikersnaam = gebruikersnaam;
     }
 
     public String getPasswoord() {
@@ -56,10 +54,6 @@ public class Gebruiker implements Comparable<Gebruiker>{
 
     public Spel getOpgeslagenSpel() {
         return opgeslagenSpel;
-    }
-
-    public void setOpgeslagenSpel(Spel opgeslagenSpel) {
-        this.opgeslagenSpel = opgeslagenSpel;
     }
 
     public int getLevel() {
@@ -78,6 +72,7 @@ public class Gebruiker implements Comparable<Gebruiker>{
         this.datum = datum;
     }
 
+    //Methodes om gebruikers te vergelijken
     public int compareTo(Gebruiker gbrkr1){
         if(this.getLevel()<gbrkr1.getLevel()){
             return 1;
@@ -85,7 +80,6 @@ public class Gebruiker implements Comparable<Gebruiker>{
             return -1;
         }
     }
-
     @Override
     public int hashCode() {
         return super.hashCode();

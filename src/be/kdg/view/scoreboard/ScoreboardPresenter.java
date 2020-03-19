@@ -1,20 +1,16 @@
-package be.kdg.view.scorenboard;
+package be.kdg.view.scoreboard;
 
 import be.kdg.model.GebruikersLijst;
 import be.kdg.view.start.StartPresenter;
 import be.kdg.view.start.StartView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
-public class ScorenboardPresenter {
+public class ScoreboardPresenter {
     private GebruikersLijst model;
-    private ScorenboardView view;
+    private ScoreboardView view;
 
-    public ScorenboardPresenter(GebruikersLijst model, ScorenboardView view){
+    public ScoreboardPresenter(GebruikersLijst model, ScoreboardView view){
         this.model = model;
         this.view = view;
 

@@ -3,16 +3,12 @@ package be.kdg.view.felicitatie;
 import be.kdg.model.GebruikersLijst;
 import be.kdg.view.nonogram.NonogramPresenter;
 import be.kdg.view.nonogram.NonogramView;
-import be.kdg.view.scorenboard.ScorenboardPresenter;
-import be.kdg.view.scorenboard.ScorenboardView;
+import be.kdg.view.scoreboard.ScoreboardPresenter;
+import be.kdg.view.scoreboard.ScoreboardView;
 import be.kdg.view.start.StartPresenter;
 import be.kdg.view.start.StartView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 public class FelicitatiePresenter {
     private GebruikersLijst model;
@@ -44,8 +40,8 @@ public class FelicitatiePresenter {
         view.getBtnScorenboard().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                ScorenboardView scorenboardView = new ScorenboardView();
-                ScorenboardPresenter scorenboardPresenter = new ScorenboardPresenter(model,scorenboardView);
+                ScoreboardView scorenboardView = new ScoreboardView();
+                ScoreboardPresenter scorenboardPresenter = new ScoreboardPresenter(model,scorenboardView);
 
                 view.getScene().setRoot(scorenboardView);
                 scorenboardView.getScene().getWindow().sizeToScene();

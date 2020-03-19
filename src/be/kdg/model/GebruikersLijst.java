@@ -20,6 +20,38 @@ public class GebruikersLijst extends Gebruiker {
         initialiseGebruikersLijst();
     }
 
+    //functionele methodes
+    public boolean login(String gebruikersnaam, String passwoord) {
+        //later lijst overlopen om user te vinden
+        boolean rtn = false;
+        for (Gebruiker huidigeGebruiker : lijst) {
+            if (huidigeGebruiker.getGebruikersnaam().equals(gebruikersnaam) && huidigeGebruiker.getPasswoord().equals(passwoord)) {
+                System.out.println("Gebruiker is ingeloged");
+                return true;
+            } else {
+                System.out.println("Foute gebruikersnaam of wachtwoord");
+                rtn = false;
+            }
+
+        }
+        return rtn;
+    }
+
+    public String overzichtSpelers() {
+        Collections.sort(lijst);
+        StringBuilder stringBuilder = new StringBuilder();
+        int counter = 0;
+        for (Gebruiker huidigeGebruiker : lijst) {
+            counter++;
+            DateTimeFormatter format =  DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            String date = format.format(huidigeGebruiker.getDatum());
+            System.out.println(String.format("%d. %s ( %s) --------------------- %-10s",counter, huidigeGebruiker.getGebruikersnaam(),date, Integer.toString(huidigeGebruiker.getLevel())));
+            stringBuilder.append(String.format("%d. %s ( %s) --------------------- %-10s \n",counter, huidigeGebruiker.getGebruikersnaam(),date, Integer.toString(huidigeGebruiker.getLevel())));
+        }
+        return stringBuilder.toString();
+    }
+
+    //inlezn + updaten csvGebruikers
     private void initialiseGebruikersLijst() {
         File gbrcsv = new File("resources/Gebruikers.csv");
         try (Scanner fileScanner = new Scanner(gbrcsv)) {
@@ -68,57 +100,6 @@ public class GebruikersLijst extends Gebruiker {
         return null;
     }
 
-    public ArrayList<Gebruiker> getLijst() {
-        return lijst;
-    }
-
-    public Gebruiker getGebruiker(String gebruikersnaam){
-        for (Gebruiker huidigeGebruiker: lijst) {
-            if(gebruikersnaam.equals(huidigeGebruiker.getGebruikersnaam())){
-                return huidigeGebruiker;
-            }
-        }
-        return null;
-    }
-
-    public void setLijst(ArrayList<Gebruiker> lijst) {
-        this.lijst = lijst;
-    }
-
-    public void setGebruiker(Gebruiker nieweSpeler) {
-        this.lijst.add(nieweSpeler);
-    }
-
-    public boolean login(String gebruikersnaam, String passwoord) {
-        //later lijst overlopen om user te vinden
-        boolean rtn = false;
-        for (Gebruiker huidigeGebruiker : lijst) {
-            if (huidigeGebruiker.getGebruikersnaam().equals(gebruikersnaam) && huidigeGebruiker.getPasswoord().equals(passwoord)) {
-                System.out.println("Gebruiker is ingeloged");
-                return true;
-            } else {
-                System.out.println("Foute gebruikersnaam of wachtwoord");
-                rtn = false;
-            }
-
-        }
-        return rtn;
-    }
-
-    public String overzichtSpelers() {
-        Collections.sort(lijst);
-        StringBuilder stringBuilder = new StringBuilder();
-        int counter = 0;
-        for (Gebruiker huidigeGebruiker : lijst) {
-            counter++;
-            DateTimeFormatter format =  DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            String date = format.format(huidigeGebruiker.getDatum());
-            System.out.println(String.format("%d. %s ( %s) --------------------- %-10s",counter, huidigeGebruiker.getGebruikersnaam(),date, Integer.toString(huidigeGebruiker.getLevel())));
-            stringBuilder.append(String.format("%d. %s ( %s) --------------------- %-10s \n",counter, huidigeGebruiker.getGebruikersnaam(),date, Integer.toString(huidigeGebruiker.getLevel())));
-        }
-        return stringBuilder.toString();
-    }
-
     public void updateGebruikers(){
         File gbrfile = new File("resources/Gebruikers.csv");
 
@@ -133,6 +114,24 @@ public class GebruikersLijst extends Gebruiker {
         }catch (IOException ex){
             System.out.println("Er is een fout gebeurd bij het updaten van de gebruikers");
         }
+    }
+
+    //Getters & setters
+    public ArrayList<Gebruiker> getLijst() {
+        return lijst;
+    }
+
+    public Gebruiker getGebruiker(String gebruikersnaam){
+        for (Gebruiker huidigeGebruiker: lijst) {
+            if(gebruikersnaam.equals(huidigeGebruiker.getGebruikersnaam())){
+                return huidigeGebruiker;
+            }
+        }
+        return null;
+    }
+
+    public void setGebruiker(Gebruiker nieweSpeler) {
+        this.lijst.add(nieweSpeler);
     }
 }
 

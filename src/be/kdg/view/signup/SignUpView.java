@@ -54,7 +54,7 @@ public class SignUpView extends BorderPane {
 
         this.btnLogIn = new Button("Log in");
 
-        Image backButton = new Image("./backbutton.png");
+        Image backButton = new Image("foto/backbutton.png");
         ImageView imageView = new ImageView(backButton);
         this.btnBack = new Button("",imageView);
     }

@@ -1,7 +1,7 @@
 package be.kdg.view.nonogram;
 
-import be.kdg.model.GebruikersLijst;
 import be.kdg.model.Nonogram;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.TextAlignment;
 
 import java.util.ArrayList;
 
@@ -42,11 +43,11 @@ public class NonogramView extends BorderPane {
     private void initialiseNodes() {
         this.lblTitel = new Label();//Tekst wordt ingeladen in de presenter
 
-        Image backButton = new Image("./backbutton.png");
+        Image backButton = new Image("foto/backbutton.png");
         ImageView imageView = new ImageView(backButton);
         this.btnBack = new Button("",imageView);
 
-        this.btnScorenboard = new Button("Scorenboard");
+        this.btnScorenboard = new Button("Scoreboard");
         this.btnSpelregels = new Button("Spelregels");
         //de buttons moet genoeg afstand hebben van de rand
         this.buttonBox = new HBox();
@@ -114,11 +115,13 @@ public class NonogramView extends BorderPane {
     }
 
     private void layoutGrid(int grote){//De vakjes in de grid een hoogte en breedte geven
-        //liquide maken => grootte 5=100, 10=50px
+        //liquide maken => grootte 5=100,6-9=75px 10=50px
         int liquide = 0;
-        if(grote<10){
+        if(grote<=5){
             liquide=100;
-        }else {
+        }else if(grote <= 9){
+            liquide=75;
+        } else {
             liquide=50;
         }
 
@@ -137,6 +140,15 @@ public class NonogramView extends BorderPane {
         rijGrid.getColumnConstraints().add(new ColumnConstraints(liquide));
         for(int rij = 1; rij<= grote; rij++){
             rijGrid.getRowConstraints().add(new RowConstraints(liquide));
+        }
+
+        for(int rij = 0; rij<grote; rij++){
+            ArrayList<Label> kolomLijst = new ArrayList<>();
+            for(int kolom = 0; kolom<grote; kolom++){
+                Label lbl = nonogram.get(rij).get(kolom);
+                lbl.setMinWidth(liquide);
+                lbl.setMinHeight(liquide);
+            }
         }
     }
 

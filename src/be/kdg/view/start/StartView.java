@@ -32,7 +32,7 @@ public class StartView extends BorderPane {
 
     private void initialiseNodes() {
         this.lblTitel = new Label("Nonogram");
-        this.btnScorenboard = new Button("Scorenboard");
+        this.btnScorenboard = new Button("Scoreboard");
 
 
         this.usernameBox = new HBox();

@@ -1,20 +1,16 @@
 package be.kdg.view.start;
 
 import be.kdg.model.GebruikersLijst;
-import be.kdg.model.Spel;
 import be.kdg.view.nonogram.NonogramPresenter;
 import be.kdg.view.nonogram.NonogramView;
-import be.kdg.view.scorenboard.ScorenboardPresenter;
-import be.kdg.view.scorenboard.ScorenboardView;
+import be.kdg.view.scoreboard.ScoreboardPresenter;
+import be.kdg.view.scoreboard.ScoreboardView;
 import be.kdg.view.signup.SignUpPresenter;
 import be.kdg.view.signup.SignUpView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 public class StartPresenter {
     private GebruikersLijst model;
@@ -31,8 +27,8 @@ public class StartPresenter {
         view.getBtnScorenboard().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                ScorenboardView scorenboardView = new ScorenboardView();
-                ScorenboardPresenter scorenboardPresenter = new ScorenboardPresenter(model,scorenboardView);
+                ScoreboardView scorenboardView = new ScoreboardView();
+                ScoreboardPresenter scorenboardPresenter = new ScoreboardPresenter(model,scorenboardView);
 
                 view.getScene().setRoot(scorenboardView);
                 scorenboardView.getScene().getWindow().sizeToScene();

@@ -1,16 +1,12 @@
 package be.kdg;
 
 import be.kdg.model.GebruikersLijst;
-import be.kdg.model.Nonogram;
-import be.kdg.model.Spel;
 import be.kdg.view.start.StartPresenter;
 import be.kdg.view.start.StartView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
-import java.util.Scanner;
 
 public class Main extends Application {
 
@@ -23,7 +19,7 @@ public class Main extends Application {
         StartPresenter presenter = new StartPresenter(model,view);
 
         stage.setTitle("Nonogram");
-        stage.getIcons().add(new Image("favicon-32x32.png"));//Icontje van de applicatie
+        stage.getIcons().add(new Image("foto/favicon-32x32.png"));//Icontje van de applicatie
         stage.setWidth(900);
         stage.setHeight(800);
         stage.setScene(new Scene(view));

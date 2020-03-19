@@ -4,23 +4,17 @@ import be.kdg.model.Gebruiker;
 import be.kdg.model.GebruikersLijst;
 import be.kdg.view.felicitatie.FelicitatiePresenter;
 import be.kdg.view.felicitatie.FelicitatieView;
-import be.kdg.view.scorenboard.ScorenboardPresenter;
-import be.kdg.view.scorenboard.ScorenboardView;
+import be.kdg.view.scoreboard.ScoreboardPresenter;
+import be.kdg.view.scoreboard.ScoreboardView;
 import be.kdg.view.start.StartPresenter;
 import be.kdg.view.start.StartView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.RowConstraints;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.util.ArrayList;
@@ -82,8 +76,8 @@ public class NonogramPresenter {
 
                 if(cancelNonogram.getResult().equals(jaButton)){
                     speler.getOpgeslagenSpel().getMijnNonogram().pauzeerGebruikerNonogram(speler.getGebruikersnaam());
-                    ScorenboardView scorenboardView = new ScorenboardView();
-                    ScorenboardPresenter scorenboardPresenter = new ScorenboardPresenter(model,scorenboardView);
+                    ScoreboardView scorenboardView = new ScoreboardView();
+                    ScoreboardPresenter scorenboardPresenter = new ScoreboardPresenter(model,scorenboardView);
 
                     view.getScene().setRoot(scorenboardView);
                     scorenboardView.getScene().getWindow().sizeToScene();
