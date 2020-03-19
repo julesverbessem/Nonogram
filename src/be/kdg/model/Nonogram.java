@@ -52,7 +52,6 @@ public class Nonogram {
 
         for (int rij = 0; rij < grootte; rij++) {
             for (int kolom = 0; kolom < grootte; kolom++) {
-
                 if(patroon[rij][kolom].getWaarde().equals(this.achterLiggendPatroon[frij][fkolom].getWaarde())){
                     if(this.achterLiggendPatroon[rij][kolom].getWaarde().equals("O")){
                         System.out.println("Juist");
@@ -68,6 +67,7 @@ public class Nonogram {
                     }
                 }
             }
+
         }
 
         return rtrn;
@@ -238,19 +238,12 @@ public class Nonogram {
     public void resetGebruikerNonogram(String gebruikersnaam){
         String filenaam = gebruikersnaam+"Nonogram.csv";
         File csvGebruikernonogram= new File("resources/nonograms/gebruikersnonogrammen/"+filenaam);
-        try(Scanner fileScanner = new Scanner(csvGebruikernonogram)){
-            int rowcounter=0;
-            while(fileScanner.hasNext()){
-                String row = fileScanner.nextLine();
-                String[] vakken = new String[grootte];
-                vakken = row.split(";");
-                for (int i = 0; i < vakken.length; i++) {
-                    this.patroon[rowcounter][i].setDefaultWaarde();
-                }
-                rowcounter++;
+        System.out.println(grootte);
+        for (int rij = 0; rij < grootte; rij++) {
+            for (int kolom = 0; kolom < grootte; kolom++) {
+                this.patroon[rij][kolom].setDefaultWaarde();
             }
-        }catch (IOException ex){
-            System.out.println("Fout bij het inlezen van bestand " + csvGebruikernonogram.getName());
+
         }
         List<String> gebruikersnonogram = new ArrayList<>();
             for (Vakje[] vakjes : patroon) {
